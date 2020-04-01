@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../css/footer.css" rel="stylesheet" type="text/css"/>
+       
         <title>footer</title>
     </head>
     <body>
@@ -52,18 +52,18 @@
                         </div>
                         <div class="footer-redes">
                             <a href="https://www.facebook.com" >
-                                <img src=".../imagenes/facebook.png" alt="facebook"/>
+                                <img src=".../images/facebook.png" alt="facebook"/>
                             </a>
                             <a href="https://www.twitter.com" >
-                                <img src="../imagenes/twitter.png" alt="twitter"/>
+                                <img src="../images/twitter.png" alt="twitter"/>
                             </a>
 
                             <a href="https://www.youtube.com" >
-                                <img src=".../imagenes/youtube.png" alt="youtube">
+                                <img src=".../images/youtube.png" alt="youtube">
                             </a>
 
                             <a href="https://web.whatsapp.com/" >
-                                <img src=".../imagenes/whatsapp.png" alt="whatsapp">
+                                <img src=".../images/whatsapp.png" alt="whatsapp">
                             </a>
 
                         </div>

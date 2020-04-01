@@ -10,10 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>cabecera</title>
+      
     </head>
     <body>
         <header>
-            <h1>cabecera</h1>
+            <h1>Pagina Principal del Banco Universidad Nacional</h1>
         </header>
     </body>
 </html>

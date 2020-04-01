@@ -10,7 +10,7 @@ and open the template in the editor.
 
 *{box-sizing:border-box;}
 
-.container{
+.container-social{
     width:95%;
     max-width:900px;
     padding:32px 64px;
@@ -18,15 +18,50 @@ and open the template in the editor.
 }
 
 .social{
-    /*las imágenes usadas tienen width de 48px*/
     width:30px;
     position:fixed;
     top:50px;
     right:0;
-        /*border:1px solid #000;*/
     top:50%;
-  
     height:205px;
-  
     margin-top:-100px;
+}
+
+.footer-copy-redes {
+	width: 100%;
+	background: #3498db;
+        text-align: center;
+}
+
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+.footer-copy {
+    font-size: 20px;
+    color: #fff;
+}
+
+.footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.footer-redes a {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
 }
