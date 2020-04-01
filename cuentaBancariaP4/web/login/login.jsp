@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 30/03/2020, 08:20:03 PM
+    Document   : login
+    Created on : 01/04/2020, 02:23:34 PM
     Author     : Bryan
 --%>
 
@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Inicio Seccion</title>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
-        <title>Pagina Principal</title>
     </head>
     <body>
-        <%@ include file="header.jsp" %>
-        <%@ include file="informacion.jsp" %>
-        <%@ include file="redes.jsp" %>
-        <%@ include file="footer.jsp" %>
+       
+        <%@include file="../inicio/header.jsp" %>         
+        <%@include file="../inicio/redes.jsp" %> 
+        <%@include file="../inicio/footer.jsp" %> 
     </body>
 </html>

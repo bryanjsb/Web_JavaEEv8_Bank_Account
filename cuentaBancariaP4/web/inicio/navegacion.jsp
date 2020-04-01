@@ -16,9 +16,9 @@
     <div>
         <nav>
             <ul id="button">
-
-                <li><a href=”#”>Iniciar Seccion</a></li>                   
-                <li><a href=”#”>Inicio</a></li>
+               
+                <li><a href="../login/login.jsp">Iniciar Seccion</a></li>                   
+                <li><a href="../inicio/index.jsp">Inicio</a></li>
             </ul>
         </nav>
     </div>

@@ -13,4 +13,9 @@ public abstract class ServicioFecha {
         return fmt.format(fecha);
     }
 
+    public static String HoraActual() {
+        DateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS", new Locale("es", "CR"));
+        java.util.Date fecha = Calendar.getInstance().getTime();
+        return fmt.format(fecha);
+    }
 }

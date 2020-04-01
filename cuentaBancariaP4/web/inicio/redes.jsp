@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Redes</title>
+        <link href="../css/redes.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-social">

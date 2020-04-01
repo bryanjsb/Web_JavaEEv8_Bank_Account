@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Informacion</title>
-        <link href="../css/informacionPrincipal.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="body1">
         <div id="wrapper">
