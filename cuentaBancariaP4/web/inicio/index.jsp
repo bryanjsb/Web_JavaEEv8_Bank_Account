@@ -14,8 +14,9 @@
     </head>
     <body>
         <%@ include file="header.jsp" %>
+
         <%@ include file="informacion.jsp" %>
-       <%@ include file="redes.jsp" %>
-       <%@ include file="footer.jsp" %>
+        <%@ include file="redes.jsp" %>
+        <%@ include file="footer.jsp" %>
     </body>
 </html>

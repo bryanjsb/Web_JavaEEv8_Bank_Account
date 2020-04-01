@@ -28,21 +28,21 @@ and open the template in the editor.
 }
 
 .footer-copy-redes {
-	width: 100%;
-	background: #3498db;
-        text-align: center;
+    width: 100%;
+    background: #3498db;
+    text-align: center;
 }
 
 .main-copy-redes {
-	width: 98%;
-	max-width: 1000px;
-	padding: 15px 0;
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	-ms-align-items: center;
-	align-items: center;
+    width: 98%;
+    max-width: 1000px;
+    padding: 15px 0;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
 }
 
 .footer-copy {
@@ -51,17 +51,17 @@ and open the template in the editor.
 }
 
 .footer-redes {
-	width: 30%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .footer-redes a {
-	display: inline-block;
-	text-decoration: none;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }

@@ -11,12 +11,15 @@ and open the template in the editor.
 .header {
     background-color: darkblue;
     background-image: url('.../images/banner.png');
-    /*background-image: url('.../images/banco1.jpg');*/
     background-position: right;
     background-repeat: no-repeat;
     border-radius: 8px;
     color: white;
     margin: 4px;
     padding: 4px 16px 4px 16px;
-    
+}
+
+.headerp{
+
+    text-align: left;
 }

@@ -9,28 +9,28 @@ and open the template in the editor.
 */
 
 .footer-container {
-	width: 100%;
-	background:#1abc9c ;
-	color: #ecf0f1;
+    width: 100%;
+    background:#1abc9c ;
+    color: #ecf0f1;
 }
 
 .footer-main {
-	margin: 30px;
-	display: flex;
-	flex-wrap: wrap;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .footer-main .footer-columna {
-	width: calc(100%/3);
-	text-align: justify;
-        text-align: center;
-        display: inline-block;
+    width: calc(100%/3);
+    text-align: justify;
+    text-align: center;
+    display: inline-block;
 }
 
 .footer-main .footer-columna h3 {
-	font-size: 25px;
-	color: #2c3e50;
-	margin-bottom: 20px;
+    font-size: 25px;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
 

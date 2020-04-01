@@ -12,9 +12,9 @@
         <title>Informacion</title>
         <link href="../css/informacionPrincipal.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-         <div id="wrapper">
-            
+    <body class="body1">
+        <div id="wrapper">
+
             <div id="contents" >
                 <section>
                     <h1>Informacion Del Banco</h1>
@@ -78,10 +78,10 @@
                         </p>
                     </article>
                 </section>
-                
+
             </div>
-            
+
         </div>
-         
+
     </body>
 </html>
