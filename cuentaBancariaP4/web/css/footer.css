@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31/03/2020, 05:39:49 PM
+    Author     : Bryan
+*/
+
+.footer-container {
+	width: 100%;
+	background:#1abc9c ;
+	color: #ecf0f1;
+}
+
+.footer-main {
+	margin: 30px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.footer-main .footer-columna {
+	width: calc(100%/3);
+	text-align: justify;
+        text-align: center;
+        display: inline-block;
+}
+
+.footer-main .footer-columna h3 {
+	font-size: 25px;
+	color: #2c3e50;
+	margin-bottom: 20px;
+}
+
+
+.footer-copy-redes {
+	width: 100%;
+	background: #3498db;
+        text-align: center;
+}
+
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+.footer-copy {
+    font-size: 20px;
+    color: #fff;
+}
+
+.footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.footer-redes a {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
