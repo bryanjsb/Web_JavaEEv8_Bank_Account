@@ -13,7 +13,7 @@
       
     </head>
     <body>
-        <header>
+        <header class="header">
             <h1>Pagina Principal del Banco Universidad Nacional</h1>
         </header>
     </body>

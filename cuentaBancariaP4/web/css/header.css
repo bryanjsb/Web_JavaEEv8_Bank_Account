@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : Bryan
 */
 
-header {
+.header {
     background-color: darkblue;
     background-image: url('.../images/banner.png');
     /*background-image: url('.../images/banco1.jpg');*/
