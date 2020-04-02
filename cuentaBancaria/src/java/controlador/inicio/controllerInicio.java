@@ -33,21 +33,21 @@ public class controllerInicio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          if(request.getServletPath().equals("/vista/login/login")){
-            Login(request, response);
+            this.Login(request, response);
         }
         if(request.getServletPath().equals("/vista/index")){
-            index(request, response);
+            this.index(request, response);
         }
     }
 
      protected void Login(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        request.getRequestDispatcher("vista/login/login.jsp").forward( request, response); 
+        request.getRequestDispatcher("/vista/login/login.jsp").forward( request, response); 
     }
      
       protected void index(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        request.getRequestDispatcher("vista/index.jsp").forward( request, response); 
+        request.getRequestDispatcher("/vista/index.jsp").forward( request, response); 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

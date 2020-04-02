@@ -18,8 +18,8 @@
     <div>
         <nav>
             <ul id="button">
-                <li><a href="vista/login/login.jsp">Iniciar Seccion</a></li>                   
-                <li><a href="vista/index.jsp">Inicio</a></li>
+                <li><a href="vista/login/login">Iniciar Seccion</a></li>                   
+                <li><a href="vista/index">Inicio</a></li>
             </ul>
         </nav>
     </div>
