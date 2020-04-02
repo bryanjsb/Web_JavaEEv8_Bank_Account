@@ -31,3 +31,4 @@ hs_err_pid*
 /cuentaBancariaP4/build/
 /conexionBD_mysql/build/
 /conexionBD_mysql/dist/
+/cuentaBancariaP4/dist/
