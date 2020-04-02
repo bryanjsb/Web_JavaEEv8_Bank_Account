@@ -77,10 +77,10 @@ public class ServicioUsuario {
 
     public static void main(String[] args) {
         ServicioUsuario se = new ServicioUsuario();
-        Optional<Usuario> us = se.obtenerUsuario("1");
+        Optional<Usuario> us = se.obtenerUsuario("3");
 
         System.out.println(us);
-        
+        System.out.println(us.get().getRol());
         List<Usuario> estudiantes = se.obtenerListaUsuarios();
    
         estudiantes.forEach((e) -> {

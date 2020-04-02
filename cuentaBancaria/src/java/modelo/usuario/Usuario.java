@@ -5,13 +5,12 @@
  */
 package modelo.usuario;
 
-import java.io.Serializable;
 
 /**
  *
  * @author Bryan
  */
-public class Usuario implements Serializable{
+public class Usuario {
     
     private String idUsuario;
     private String claveAcceso;
@@ -25,6 +24,11 @@ public class Usuario implements Serializable{
         this.rol = rol;
     }
 
+    public Usuario() {
+        this("","",0,0);
+    }
+
+    
     public String getIdUsuario() {
         return idUsuario;
     }
