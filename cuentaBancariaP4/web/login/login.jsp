@@ -24,7 +24,7 @@
                     <h1>Iniciar Seccion</h1>
                     <article>
                         <h2>Ingrese los datos</h2>
-                         <form class="formLogin"  method="POST" action="ServicioLogin">
+                         <form class="formLogin"  method="GET" action="ServicioLogin">
                     <table>
                         <tr>
                             <td class="etiqueta">
@@ -46,7 +46,8 @@
                         </tr>
                         <tr>
                             <td class="controles" colspan="2">
-                                <button>Entrar</button>
+                                <button type="submit">Entrar</button>
+                               
                             </td>
                         </tr>
                     </table>
