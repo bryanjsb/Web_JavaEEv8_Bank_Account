@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31/03/2020, 08:23:56 PM
+    Author     : Bryan
+*/
+
+
+@import "footer.css";
+@import "header.css";
+@import "redes.css";
+@import "login.css";
+@import "navegacion.css";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.body1 {
+    background-image: url('../images/fondoPrincipal.jpg');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+}
+
+
+#wrapper {
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+
+#wrapper,
+#wrapper div,
+#wrapper header,
+#wrapper footer,
+#wrapper section,
+#wrapper article,
+#wrapper p {
+    margin: 8px;
+    padding: 8px;
+}
+
+#wrapper #contents {
+    border-top: 1px solid darkslateblue;
+    border-bottom: 1px solid darkslateblue;
+    border-left: 1px solid darkslateblue;
+    border-right:  1px solid darkslateblue;
+    background-color: rgba(219, 226, 248, 0.3);
+}
+
+
+#wrapper h1 {
+    padding: 8px;
+    color: #0c2461;
+    font-size: 25pt;
+}
+
+#wrapper h2 {
+    color: #b71540;
+    font-size: 20pt;
+}
+
+#wrapper p {
+    color: #130f40;
+    font-size: 12pt;
+    text-align: justify;
+}
+
+.main_title {
+    display: block;
+    padding-left: 18px;
+    font-size: 16pt;
+    color: darkred;
+    font-weight: bold;
+}
