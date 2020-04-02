@@ -25,5 +25,9 @@ hs_err_pid*
 
 #Excepcion carpeta libreria
 !/cuentaBancariaP4/libreria
-!/libreria
+!/cuentaBancaria/libreria
+
+
 /cuentaBancariaP4/build/
+/conexionBD_mysql/build/
+/conexionBD_mysql/dist/
