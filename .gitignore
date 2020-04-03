@@ -37,3 +37,6 @@ hs_err_pid*
 /modeloCuentaBancaria/nbproject/private/
 /modeloCuentaBancaria/build/
 /modeloCuentaBancaria/dist/
+/modeloCuentaBancariaLib/nbproject/private/
+/modeloCuentaBancariaLib/build/
+/modeloCuentaBancariaLib/dist/
