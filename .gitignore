@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+
 *.war
 *.nar
 *.ear
@@ -34,3 +34,6 @@ hs_err_pid*
 /cuentaBancariaP4/dist/
 /cuentaBancaria/build/
 /cuentaBancaria/dist/
+/modeloCuentaBancaria/nbproject/private/
+/modeloCuentaBancaria/build/
+/modeloCuentaBancaria/dist/

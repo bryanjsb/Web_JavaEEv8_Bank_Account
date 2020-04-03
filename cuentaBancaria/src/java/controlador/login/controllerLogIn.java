@@ -24,7 +24,7 @@ import modelo.usuario.Usuario;
  */
 @WebServlet(name = "controllerLogIn",
         urlPatterns = {"/controllerLogIn",
-            "/vista/login/ServicioLogin"})
+            "/vista/login/ServicioLogin","/ServicioLogin"})
 public class controllerLogIn extends HttpServlet {
 
     /**
@@ -41,26 +41,29 @@ public class controllerLogIn extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         
-        if(request.getServletPath().equals("/vista/login/ServicioLogin")){
+        if(request.getServletPath().equals("/ServicioLogin")){
         
             String us = (String) request.getParameter("usuario");       
 
-            Optional<Usuario> usuario = servicioUsuario.obtenerUsuario(us);
+            Optional<Usuario> usuario = servicioUsuario.obtenerUsuario("3");
             
-            
-            
-            switch (usuario.get().getRol()) {
-                case 0:
-                    request.getRequestDispatcher("vista/cajero/cajeroInicio.jsp")
+            if("3".equals(us)){
+             request.getRequestDispatcher("vista/cajero/cajeroInicio.jsp")
                             .forward(request, response);
-                    break;
-                case 1:
-                    request.getRequestDispatcher("vista/cliente/clienteInicio.jsp")
-                            .forward(request, response);
-                    break;
-                default:
-                    break;
             }
+            
+//            switch (usuario.get().getRol()) {
+//                case 0:
+//                    request.getRequestDispatcher("vista/cajero/cajeroInicio.jsp")
+//                            .forward(request, response);
+//                    break;
+//                case 1:
+//                    request.getRequestDispatcher("vista/cliente/clienteInicio.jsp")
+//                            .forward(request, response);
+//                    break;
+//                default:
+//                    break;
+//            }
          }
 
     }
