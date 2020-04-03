@@ -25,7 +25,7 @@
                     <h1>Iniciar Seccion</h1>
                     <article>
                         <h2>Ingrese los datos</h2>
-                         <form class="formLogin"  method="GET" action="ServicioLogin">
+                         <form class="formLogin"  method="GET" action="controllerLogin">
                     <table>
                         <tr>
                             <td class="etiqueta">
