@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +75,17 @@ public class controllerLogin extends HttpServlet {
     
     
     
-    
+    private String checkId(String txt) {
+        String r = txt;
+
+        Pattern pat = Pattern.compile("([1-9,A])-?([0-9]{4})-?([0-9]{4})");
+        Matcher m = pat.matcher(txt);
+        if (m.find()) {
+            r = String.format("%s%s%s", m.group(1), m.group(2), m.group(3));
+        }
+
+        return r;
+    }
     
     
     
