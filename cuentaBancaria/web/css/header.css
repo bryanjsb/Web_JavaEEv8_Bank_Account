@@ -10,7 +10,7 @@ and open the template in the editor.
 
 .header {
     background-color: darkblue;
-    background-image: url('.../images/banner.png');
+    background-image: url('../images/banner.png');
     background-position: right;
     background-repeat: no-repeat;
     border-radius: 8px;

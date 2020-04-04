@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.dao.DaoUsuario;
 import modelo.usuario.Usuario;
 
@@ -37,41 +38,53 @@ public class controllerLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet controllerLogin</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Usuario " + request.getParameter("usuario") + "</h1>");
-            out.println("<h1>Password " + request.getParameter("password") + "</h1>");
-           
-            DaoUsuario se =  DaoUsuario.obtenerInstancia();
+         String usuario= request.getParameter("usuario");
+         String clave= request.getParameter("password");
+         boolean usuarioValido=false;
+         DaoUsuario daoUsuario= DaoUsuario.obtenerInstancia();
+         if(usuario!=null && clave!=null){
+             usuarioValido=daoUsuario.verificarUsuario(usuario, clave);
+         }
+       
+         if(usuarioValido){
+//             HttpSession session=request.getSession(true);  
+             
+             Optional<Usuario>tipoUsuario=daoUsuario.obtenerUsuario(usuario);
+             
+//             session.setAttribute("usuarioLogin",tipoUsuario);  
+//              session.setMaxInactiveInterval(60 * 3);
+              
+              
+              //request.getRequestDispatcher("principal.jsp").forward(
+            //        request, response);
+            String redirecion=redireccionarUsuario(tipoUsuario);
+//            response.sendRedirect(redirecion);
+             request.getRequestDispatcher(redirecion).forward(
+                    request, response);
+         }
 
-            boolean e = se.verificarUsuario(request.getParameter("usuario"), request.getParameter("password"));
-
-            if (e) {
-                out.println("<h1> verificado </h1>");
-            } else {
-                out.println("<h1> no verificado </h1>");
-            }
-
-            List<Usuario> usuario=se.obtenerListaUsuarios();
-            usuario.forEach((usuario1) -> {
-                out.println("<h1>" + usuario1 + "</h1>");
-            });
-            
-            
-            out.println("</body>");
-            out.println("</html>");
-        }
-
-//request.getRequestDispatcher("/vista/index.jsp").forward( request, response);
     }
 
+    
+    private String redireccionarUsuario(Optional<Usuario> usuario){
+        return(usuario.get().getRol()==0)?"/vista/cajero/cajero.jsp":
+                "/vista/cliente/cliente.jsp";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
