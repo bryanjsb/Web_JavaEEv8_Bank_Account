@@ -9,22 +9,28 @@
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        
+        <header class="header">
+            <div>
+                <div> <h1>Bienvenido al menú de depósitos</h1></div>
+                <%@page import="servicios.ServicioFecha"%>
+                <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
+                 <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
+                <%@ include file="/vista/navegacion.jsp" %>
+            </div>
+        </header>
         <div id="wrapper">
-            <header>
-                <%@include file="/vista/header.jsp" %> 
-                <span class="main_title">Bienvenido al menú de depósitos</span>
-            </header>
+           
+                
             <div id="contents">
                 <section id="seccion1">
                     
                 </section>
             </div>
             
-            <footer>
-                <p>
-                    Banco centroamericano a su servicio
-                </p>
-            </footer>
+            
+                <%@ include file="/vista/informacion.jsp" %>
+           
         </div>
         <nav>
                 <p>

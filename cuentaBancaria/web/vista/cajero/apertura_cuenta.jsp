@@ -44,7 +44,7 @@
         <nav>
             <p>
                 Haga clic
-                <a href="cajero.jsp">aquí</a>
+                <a href="vista/cajero/cajero.jsp">aquí</a>
                 para ir a la página principal.
             </p> 
         </nav>

@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/cajero.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cliente/transf_remota.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/src/java/controlador/login/controllerLogin.java</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cliente/consulta_cuenta.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/retiro.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/apertura_cuenta.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cliente/vinculacion_cuenta.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/transferencia.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/Deposito.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/acreditacion.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cliente/cliente.jsp</file>
+        </group>
     </open-files>
 </project-private>
