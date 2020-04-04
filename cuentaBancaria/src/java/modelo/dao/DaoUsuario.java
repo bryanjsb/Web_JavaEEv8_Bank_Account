@@ -1,6 +1,6 @@
 package modelo.dao;
 
-import modelo.datos.BaseDatos;
+import modelo.datos.BaseDatosBanco;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.usuario.Usuario;
 
-public class ServicioUsuario {
+public class DaoUsuario {
 
+    public boolean verificarUsuario(String usuario, String clave) {
+        boolean encontrado = false;
+            try (Connection cnx = obtenerConexion();
+                    PreparedStatement stm = cnx.prepareStatement(IMEC_Usuario.VERIFICAR.obtenerComando())) {
+                stm.clearParameters();
+                stm.setString(1, usuario);
+                stm.setString(2, clave);
+                ResultSet rs = stm.executeQuery();
+                encontrado = rs.next();
+            }
+        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | IOException | SQLException ex) {
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            bd.cerrarConexion();
+        }
+        return encontrado;
+    }
+    
     public Optional<Usuario> obtenerUsuario(String id) {
         Optional<Usuario> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
@@ -70,23 +91,50 @@ public class ServicioUsuario {
             InstantiationException,
             IOException,
             SQLException {
-        BaseDatos bd = BaseDatos.obtenerInstancia();
+         bd = BaseDatosBanco.obtenerInstancia();
         Connection cnx = bd.obtenerConexion();
         return cnx;
     }
 
     public static void main(String[] args) {
-        ServicioUsuario se = new ServicioUsuario();
+        DaoUsuario se = new DaoUsuario();
         Optional<Usuario> us = se.obtenerUsuario("3");
 
         System.out.println(us);
         System.out.println(us.get().getRol());
         List<Usuario> estudiantes = se.obtenerListaUsuarios();
    
+        System.out.println("verificar");
+        
+        if(se.verificarUsuario("3", "3")){
+            System.out.println("si verifica");
+        }
+        else{
+            System.out.println("no verifica");
+        }
+        
         estudiantes.forEach((e) -> {
             System.out.println(e);
         });
 
     }
+    
+     private DaoUsuario() {
+        try {
+            this.bd = BaseDatosBanco.obtenerInstancia();
+            bd.obtenerConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static DaoUsuario obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new DaoUsuario();
+        }
+        return instancia;
+    }
 
+     private static DaoUsuario instancia = null;
+    private  BaseDatosBanco bd = null;
+    
 }

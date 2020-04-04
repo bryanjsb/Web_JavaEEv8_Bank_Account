@@ -7,15 +7,21 @@ package controlador.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Optional;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.DaoUsuario;
+import modelo.usuario.Usuario;
 
 /**
  *
  * @author Bryan
  */
+@WebServlet(name = "controllerLogin", urlPatterns = {"/controllerLogin"})
 public class controllerLogin extends HttpServlet {
 
     /**
@@ -30,18 +36,40 @@ public class controllerLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet controllerLogin</title>");            
+            out.println("<title>Servlet controllerLogin</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet controllerLogin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Usuario " + request.getParameter("usuario") + "</h1>");
+            out.println("<h1>Password " + request.getParameter("password") + "</h1>");
+           
+            DaoUsuario se =  DaoUsuario.obtenerInstancia();
+
+            boolean e = se.verificarUsuario(request.getParameter("usuario"), request.getParameter("password"));
+
+            if (e) {
+                out.println("<h1> verificado </h1>");
+            } else {
+                out.println("<h1> no verificado </h1>");
+            }
+
+            List<Usuario> usuario=se.obtenerListaUsuarios();
+            usuario.forEach((usuario1) -> {
+                out.println("<h1>" + usuario1 + "</h1>");
+            });
+            
+            
             out.println("</body>");
             out.println("</html>");
         }
+
+//request.getRequestDispatcher("/vista/index.jsp").forward( request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

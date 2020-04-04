@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-public class BaseDatos {
+public class BaseDatosBanco {
 
     // <editor-fold defaultstate="collapsed" desc="constructores">
-    private BaseDatos()
+    private BaseDatosBanco()
             throws ClassNotFoundException,
             IllegalAccessException,
             InstantiationException,
@@ -33,10 +33,10 @@ public class BaseDatos {
         }
     }
 
-    public static BaseDatos obtenerInstancia() {
+    public static BaseDatosBanco obtenerInstancia() {
         if (instancia == null) {
             try {
-                instancia = new BaseDatos();
+                instancia = new BaseDatosBanco();
             } catch (IOException
                     | ClassNotFoundException
                     | IllegalAccessException
@@ -61,10 +61,12 @@ public class BaseDatos {
     public void cerrarConexion() {
         bd.closeConnection();
     }
+    
+   
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="SINGLETON">
-    private static BaseDatos instancia = null;
+    private static BaseDatosBanco instancia = null;
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="atributos BD">
     private static final String ARCHIVO_CONFIGURACION = "bd.properties";

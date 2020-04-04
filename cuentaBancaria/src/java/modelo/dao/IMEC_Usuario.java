@@ -6,8 +6,9 @@ public enum IMEC_Usuario {
   
     EXCLUIR("DELETE FROM usuario WHERE id_usuario=?; "),
     CONSULTAR("SELECT id_usuario, clave_acceso,clave_vencida, rol FROM usuario WHERE id_usuario=? "),
-    LISTAR("SELECT id_usuario, clave_acceso, clave_vencida,rol FROM usuario ORDER BY id_usuario; ");
-
+    LISTAR("SELECT id_usuario, clave_acceso, clave_vencida,rol FROM usuario ORDER BY id_usuario; "),
+    VERIFICAR("SELECT id_usuario FROM usuario WHERE id_usuario=? AND clave_acceso=?; ");
+    
     IMEC_Usuario(String comando) {
         this.comando = comando;
     }
