@@ -29,5 +29,7 @@
                     para ir a la página principal.
                 </p> 
             </nav>
+        
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

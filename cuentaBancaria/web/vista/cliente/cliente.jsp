@@ -14,13 +14,13 @@
             <div id="contents">
                 <section id="seccion1">
                    <p>
-                        <a href="consulta_cuenta.jsp">Consulta de cuentas y movimientos</a>
+                        <a href="vista/cliente/consulta_cuenta.jsp">Consulta de cuentas y movimientos</a>
                     </p>
                     <p>
-                        <a href="vinculacion_cuenta.jsp">Vinculación de cuentas</a>
+                        <a href="vista/cliente/vinculacion_cuenta.jsp">Vinculación de cuentas</a>
                     </p>
                     <p>
-                        <a href="transf_remota.jsp">Transferencia remota</a>
+                        <a href="vista/cliente/transf_remota.jsp">Transferencia remota</a>
                     </p>
                 </section>
             </div>
@@ -33,10 +33,12 @@
         <nav>
                 <p>
                     Haga clic
-                    <a href="index.jsp">aquí</a>
+                    <a href="vista/index.jsp">aquí</a>
                     para ir a la página principal.
                 </p> 
             </nav>
+        
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>
 

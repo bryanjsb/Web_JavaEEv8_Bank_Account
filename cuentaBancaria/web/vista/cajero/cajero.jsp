@@ -35,19 +35,19 @@
             <div id="contents">
                 <section id="seccion1">
                     <p>
-                        <a href="apertura_cuenta.jsp">Apertura de cuentas</a>
+                        <a href="vista/cajero/apertura_cuenta.jsp">Apertura de cuentas</a>
                     </p>
                     <p>
-                        <a href="Deposito.jsp">Depósito</a>
+                        <a href="vista/cajero/Deposito.jsp">Depósito</a>
                     </p>
                     <p>
-                        <a href="retiro.jsp">Retiro</a>
+                        <a href="vista/cajero/retiro.jsp">Retiro</a>
                     </p>
                     <p>
-                        <a href="transferencia.jsp">Transferencia en cajas</a>
+                        <a href="vista/cajero/transferencia.jsp">Transferencia en cajas</a>
                     </p>
                     <p>
-                        <a href="acreditacion.jsp">Acreditación de intereses</a>
+                        <a href="vista/cajero/acreditacion.jsp">Acreditación de intereses</a>
                     </p>
                 </section>
             </div>

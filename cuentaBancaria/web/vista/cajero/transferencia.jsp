@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <title>Transferencia en cajas</title>
-        <link href="default.css" rel="stylesheet" type="text/css"/>
+        <base href="http://localhost:8084/cuentaBancaria/">
+
+        <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wrapper">
@@ -29,5 +32,6 @@
                     para ir a la página principal.
                 </p> 
             </nav>
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>
