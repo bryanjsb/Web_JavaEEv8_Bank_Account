@@ -1,3 +1,4 @@
+<%@page import="modelo.cliente.Cliente"%>
 <!DOCTYPE html>
 <%@page import="servicios.ServicioFecha"%>
 <html>
@@ -20,8 +21,7 @@
                 <div>
                     <nav>
                         <ul id="button">
-                            <li><a href="vista/login/login">Iniciar Seccion</a></li>                   
-                            <li><a href="vista/index">Inicio</a></li>
+                            <li><a href="controllerLogOut">Cerrar Seccion</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -31,7 +31,28 @@
 
             <div id="contents">
                 <section id="seccion1">
+                    <h1>Buscando Cliente</h1>
+                    <article>
+                        <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
+                              action="ServicioRegistro" method="GET">
+                            <table>
+                                
+                                <tr>
+                                    <td class="etiqueta">
+                                        <label for="buscarCliente" >Identificación Cliente:&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+                                        <input type="search" size="30" maxlength="9"
+                                               id="buscarCliente" name="buscarCliente" autocomplete="off"
+                                               placeholder="(max 9 digitos: ej 102340567 )"
+                                               />
+                                    </td>
+                                </tr>   
+                            </table>
 
+                        </form>
+
+                    </article>
                 </section>
             </div>
 

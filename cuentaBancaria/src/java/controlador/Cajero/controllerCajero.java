@@ -6,12 +6,12 @@
 package controlador.Cajero;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.cliente.Cliente;
 import modelo.moneda.DaoMoneda;
 
 /**
@@ -19,7 +19,7 @@ import modelo.moneda.DaoMoneda;
  * @author Bryan
  */
 @WebServlet(name = "controllerCajero",
-        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente"})
+        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente","/vista/cajero/apertura_cuenta"})
 public class controllerCajero extends HttpServlet {
 
     /**
@@ -39,6 +39,11 @@ public class controllerCajero extends HttpServlet {
 
             registarCliente(request, response);
         }
+        
+         if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
+
+            aperturaCuentaCliente(request, response);
+        }
     }
 
     private void registarCliente(HttpServletRequest request, HttpServletResponse response)
@@ -48,6 +53,17 @@ public class controllerCajero extends HttpServlet {
         request.setAttribute("listaMonedas", daoMoneda.obtenerListaMoneda());
 
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
+    }
+    
+    
+    private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();
+
+        request.setAttribute("listaMonedas", daoMoneda.obtenerListaMoneda());
+        Cliente cliente = new Cliente();
+        request.setAttribute("Cliente", cliente);
+        request.getRequestDispatcher("/vista/cajero/apertura_cuenta.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

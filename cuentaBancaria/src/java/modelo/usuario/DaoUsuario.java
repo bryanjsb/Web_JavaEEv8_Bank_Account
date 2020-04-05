@@ -1,4 +1,4 @@
-package modelo.dao;
+package modelo.usuario;
 
 import modelo.datos.BaseDatosBanco;
 import java.io.IOException;
@@ -12,14 +12,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.usuario.Usuario;
 
 public class DaoUsuario {
 
     public boolean verificarUsuario(String usuario, String clave) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();
-                PreparedStatement stm = cnx.prepareStatement(IMEC_Usuario.VERIFICAR.obtenerComando())) {
+                PreparedStatement stm = cnx.prepareStatement(CRUD_Usuario.VERIFICAR.obtenerComando())) {
             stm.clearParameters();
             stm.setString(1, usuario);
             stm.setString(2, clave);
@@ -36,7 +35,7 @@ public class DaoUsuario {
     public Optional<Usuario> obtenerUsuario(String id) {
         Optional<Usuario> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
-                PreparedStatement stm = cnx.prepareStatement(IMEC_Usuario.CONSULTAR.obtenerComando());) {
+                PreparedStatement stm = cnx.prepareStatement(CRUD_Usuario.CONSULTAR.obtenerComando());) {
             stm.clearParameters();
             stm.setString(1, id);
             try (ResultSet rs = stm.executeQuery()) {
@@ -65,7 +64,7 @@ public class DaoUsuario {
         List<Usuario> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
-                ResultSet rs = stm.executeQuery(IMEC_Usuario.LISTAR.obtenerComando())) {
+                ResultSet rs = stm.executeQuery(CRUD_Usuario.LISTAR.obtenerComando())) {
             while (rs.next()) {
                 Usuario e = new Usuario(
                         rs.getString("id_usuario"),
