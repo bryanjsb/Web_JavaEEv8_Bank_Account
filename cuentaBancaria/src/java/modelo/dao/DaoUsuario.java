@@ -55,6 +55,8 @@ public class DaoUsuario {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }finally {
+            bd.cerrarConexion();
         }
         return r;
     }
@@ -79,6 +81,8 @@ public class DaoUsuario {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }finally {
+            bd.cerrarConexion();
         }
         return r;
     }
@@ -94,6 +98,30 @@ public class DaoUsuario {
         return cnx;
     }
 
+    
+
+    private DaoUsuario() {
+        try {
+            this.bd = BaseDatosBanco.obtenerInstancia();
+            bd.obtenerConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static DaoUsuario obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new DaoUsuario();
+        }
+        return instancia;
+    }
+
+    private static DaoUsuario instancia = null;
+    private BaseDatosBanco bd = null;
+
+    
+    
+    
     public static void main(String[] args) {
         DaoUsuario se = new DaoUsuario();
         Optional<Usuario> us = se.obtenerUsuario("3");
@@ -115,24 +143,4 @@ public class DaoUsuario {
         });
 
     }
-
-    private DaoUsuario() {
-        try {
-            this.bd = BaseDatosBanco.obtenerInstancia();
-            bd.obtenerConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public static DaoUsuario obtenerInstancia() {
-        if (instancia == null) {
-            instancia = new DaoUsuario();
-        }
-        return instancia;
-    }
-
-    private static DaoUsuario instancia = null;
-    private BaseDatosBanco bd = null;
-
 }

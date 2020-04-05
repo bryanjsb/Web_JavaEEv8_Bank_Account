@@ -4,6 +4,8 @@
     Author     : Bryan
 --%>
 
+<%@page import="modelo.moneda.moneda"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,8 +37,8 @@
                 </div>
             </header>
         </div>    
-                    
-                    
+
+
         <div id="wrapper">
             <div id="contents" >
                 <section>
@@ -47,6 +49,20 @@
                               action="ServicioRegistro" method="POST"
                               onsubmit="return verificarRegistro('nuevoUsuario');">
                             <table>
+
+                                <tr>
+                                    <td class="etiqueta">
+                                        <label for="login" >Identificación (<em>login</em>):&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+                                        <input type="text" size="30" maxlength="9"
+                                               id="login" name="login" autocomplete="off"
+                                               placeholder="(max 9 digitos: ej 102340567 )"
+                                               />
+                                    </td>
+                                </tr>
+
+
                                 <tr>
                                     <td class="etiqueta">
                                         <label for="nombre">Nombre de usuario:&nbsp;</label>
@@ -58,70 +74,90 @@
                                 </tr>
                                 <tr>
                                     <td class="etiqueta">
-                                        <label for="login">Usuario (<em>login</em>):&nbsp;</label>
+                                        <label for="apellidos">Apellidos del usuario&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="text" size="30"
-                                               id="login" name="login" autocomplete="off" />
+                                        <input type="text" size="30" autocomplete="off"
+                                               id="apellidos" name="apellidos" />
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td class="etiqueta">
+                                        <label for="telefono">telefono del usuario&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+                                        <input type="tel" size="30" max="8" maxlength="8"
+                                               autocomplete="off"
+                                               placeholder="maximo 8 digitos"
+                                               id="telefono" name="telefono" />
+                                    </td>
+                                </tr>
+
+
                                 <tr>
                                     <td class="etiqueta">
                                         <label for="clave">Clave de acceso:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="password" size="30"
-                                               id="clave" name="clave" />
+                                        <input type="text" size="30"
+                                               id="clave" name="clave" autocomplete="off" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="etiqueta">
                                         <label for="confirmar">Confirmar la clave:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="password" size="30"
-                                               id="confirmar" name="confirmar" />
+                                        <input type="text" size="30"
+                                               id="confirmar" name="confirmar" autocomplete="off" />
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="controles" colspan="2">
-                                        <button type="submit">Ingresar</button>
+                                    <td class="etiqueta">
+                                        <label for="moneda">Tipo de moneda:&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+
+                                        <%
+                                            List<moneda> listaMoneda = (List<moneda>) request.getAttribute("listaMonedas");
+                                            if (listaMoneda.isEmpty()) {
+
+                                                out.println("<select name=\"moneda\" >");
+                                                out.println("<option selected value=\"0\"> no existe tipo moneda </option>");
+                                            } else {
+                                                out.println("<select name=\"moneda\" >");
+                                                out.println("<option selected value=\"0\"> Elige tipo de moneda </option>");
+
+                                                for (moneda m : listaMoneda) {
+                                                    out.println(" <option value=\"" + m.getNombreMoneda()+ "\">" 
+                                                            + m.getDescripcion() +" - "+m.getNombreMoneda()+"  "
+                                                                    +m.getSimboloMoneda()+"</option> ");
+                                                }
+
+                                                out.println("  </select>");
+
+                                            }
+
+                                        %>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="controles" colspan="2"rowspan="3">
+                                        <button type="submit">Registrar Usuario</button>
                                     </td>
                                 </tr>
                             </table>
                         </form>
                     </article>
-                    <article  >
-                        <h2>Informacion para el Cliente</h2>
-                        <p>
-                            Quis enim mi eget, duis consequat pellentesque
-                            penatibus, interdum ante nec vitae, sit neque eu
-                            est. Integer lorem eleifend ultricies arcu, rerum
-                            varius porta dignissim, quis bibendum pharetra
-                            magna at. Hendrerit amet a aenean, at proin sit
-                            vestibulum praesent. Vehicula in a dolor et, ipsum
-                            wisi ut tincidunt ante, praesent odio cursus sed
-                            donec. Nullam cras nulla laoreet sodales,
-                            pellentesque eleifend turpis aptent, euismod
-                            suspendisse necessitatibus pede interdum.
-                        </p>
-                        <p>
-                            Morbi dignissimos fermentum urna, consectetuer a
-                            consectetuer integer tincidunt, est eros mi nec
-                            sollicitudin. Pulvinar lacinia elit voluptate
-                            rutrum, ligula eu eros libero diam. Praesent quam
-                            phasellus lacinia, lobortis fermentum et sed,
-                            lectus vel sed eget. Nec dolor suspendisse amet
-                            posuere, pellentesque habitant fusce ut. Ut velit
-                            vulputate semper pede, proin proin ut eum ac,
-                            congue ut tincidunt ipsum, dolorem erat tortor nam
-                            ultricies.
-                        </p>
-                    </article>
+
                 </section>
 
             </div>
 
         </div>
-                    
-                     <%@include file="/vista/footer.jsp" %> 
+
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

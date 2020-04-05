@@ -90,3 +90,28 @@ body {
     color: darkred;
     font-weight: bold;
 }
+
+
+.formLogin {
+    width: 480px;
+}
+
+.formLogin table {
+    border-collapse: collapse;
+}
+
+.formLogin table th,
+.formLogin table td {
+    padding: 8px;
+}
+
+.formLogin .etiqueta {
+    text-align: right;
+}
+
+.formLogin .campo {
+}
+
+.formLogin .controles {
+    text-align: center;
+}

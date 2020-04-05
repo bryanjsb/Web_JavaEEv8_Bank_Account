@@ -41,7 +41,7 @@
                                         <label for="password">Contraseña:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="text" size="30"
+                                        <input type="password" size="30"
                                                id="password" name="password" autocomplete="off" />
                                     </td>
                                 </tr>

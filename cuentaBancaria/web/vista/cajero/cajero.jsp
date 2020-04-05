@@ -55,7 +55,7 @@
                     <h3>Menu Principal</h3>
                     <article>
                      <p>
-                        <a href="vista/cajero/registrarCliente.jsp">Registro Cliente</a>
+                        <a href="vista/cajero/registrarCliente">Registro Cliente</a>
                     </p>
                     <p>
                         <a href="vista/cajero/apertura_cuenta.jsp">Apertura de cuentas</a>
