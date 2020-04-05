@@ -10,10 +10,10 @@
     <head>
         <base href="http://localhost:8084/cuentaBancaria/">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/redes.css" rel="stylesheet" type="text/css"/>
-        <link href="css/footer.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/redes.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/footer.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
+        
         <title>footer</title>
     </head>
     <body>
@@ -47,8 +47,6 @@
 
                 </div>
 
-
-
                 <div class="footer-copy-redes">
                     <div class="main-copy-redes">
                         <div class="footer-copy">
@@ -73,7 +71,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </footer>
 

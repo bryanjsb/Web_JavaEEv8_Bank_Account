@@ -26,3 +26,23 @@ and open the template in the editor.
 .headerHora{
     text-align: left;
 }
+
+
+#wrapper .header {
+    background-color: darkblue;
+    background-image: url('../images/banner.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    color: white;
+    margin: 4px;
+    padding: 4px 16px 4px 16px;
+}
+
+#wrapper.headerFecha{
+    text-align: left;
+}
+
+#wrapper.headerHora{
+    text-align: left;
+}

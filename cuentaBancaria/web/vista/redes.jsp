@@ -15,8 +15,6 @@
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
         
-        <link href="css/redes.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/redes.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-social">

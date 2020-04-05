@@ -14,8 +14,7 @@
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
         
-        <link href="css/navegacion.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/navegacion.css" rel="stylesheet" type="text/css"/>
+        
         <title>Navegacion</title>
     </head>
 

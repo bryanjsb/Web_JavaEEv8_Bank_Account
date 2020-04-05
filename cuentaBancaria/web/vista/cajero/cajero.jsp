@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="servicios.ServicioFecha"%>
+
 <%@page import="modelo.usuario.Usuario"%>
 
 <html>
@@ -33,7 +33,7 @@
             <div>
 
                 <div> <h1>Pagina Principal Cajero:<%= ideUsuario%></h1></div>
-
+<%@page import="servicios.ServicioFecha"%>
                 <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
                  <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
                 <div>
@@ -50,7 +50,13 @@
         <div id="wrapper">
 
             <div id="contents">
+                
                 <section id="seccion1">
+                    <h3>Menu Principal</h3>
+                    <article>
+                     <p>
+                        <a href="vista/cajero/registrarCliente.jsp">Registro Cliente</a>
+                    </p>
                     <p>
                         <a href="vista/cajero/apertura_cuenta.jsp">Apertura de cuentas</a>
                     </p>
@@ -66,6 +72,7 @@
                     <p>
                         <a href="vista/cajero/acreditacion.jsp">Acreditación de intereses</a>
                     </p>
+                    </article>
                 </section>
             </div>
 

@@ -7,7 +7,7 @@
 
         <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        
+
     </head>
     <body>
 
@@ -20,27 +20,19 @@
                 <%@ include file="/vista/navegacion.jsp" %>
             </div>
         </header>
-        <div id="wrapper">
-
-
+             
+       <div id="wrapper">
             <div id="contents">
-                <section id="seccion1">
-
-                </section>
+                
             </div>
-
-
-            <%@ include file="/vista/informacion.jsp" %>
-
+            <nav>
+                <p>
+                    Haga clic
+                    <a href="cajero.jsp">aquí</a>
+                    para ir a la página principal.
+                </p> 
+            </nav>
         </div>
-        <nav>
-            <p>
-                Haga clic
-                <a href="cajero.jsp">aquí</a>
-                para ir a la página principal.
-            </p> 
-        </nav>
-
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>
