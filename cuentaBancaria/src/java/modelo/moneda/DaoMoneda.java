@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.dao.DaoUsuario;
+
 import modelo.datos.BaseDatosBanco;
 
 /**
@@ -68,7 +68,7 @@ public class DaoMoneda {
             this.bd = BaseDatosBanco.obtenerInstancia();
             bd.obtenerConexion();
         } catch (SQLException ex) {
-            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DaoMoneda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

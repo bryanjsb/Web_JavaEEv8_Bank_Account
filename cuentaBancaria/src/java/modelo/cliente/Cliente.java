@@ -3,34 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo.usuario;
+package modelo.cliente;
 
 import java.util.logging.Logger;
+import modelo.usuario.Usuario;
 
 /**
  *
  * @author Bryan
  */
-public class usuarioCliente {
-    private String numeroCuenta, usuarioIdUsuario,apellidos,nombre,telefono;
-    private Usuario user;
-    public usuarioCliente(String numeroCuenta, String usuarioIdUsuario,
-            String apellidos, String nombre, String telefono,Usuario user) {
-        this.numeroCuenta = numeroCuenta;
+public class Cliente {
+    private String idCliente, usuarioIdUsuario,apellidos,nombre,telefono;
+    
+    public Cliente( String idCliente,String usuarioIdUsuario,
+            String apellidos, String nombre, String telefono) {
+        this.idCliente=idCliente;
         this.usuarioIdUsuario = usuarioIdUsuario;
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.user=user;
     }
-    private static final Logger LOG = Logger.getLogger(usuarioCliente.class.getName());
+    
+    public Cliente(){
+        this("","","","","");
+    }
+    private static final Logger LOG = Logger.getLogger(Cliente.class.getName());
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
+    public String getIdCliente() {
+        return idCliente;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getUsuarioIdUsuario() {
@@ -63,14 +67,6 @@ public class usuarioCliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
     }
     
  

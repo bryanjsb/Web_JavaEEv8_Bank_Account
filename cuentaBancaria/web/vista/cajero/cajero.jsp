@@ -58,7 +58,7 @@
                         <a href="vista/cajero/registrarCliente">Registro Cliente</a>
                     </p>
                     <p>
-                        <a href="vista/cajero/apertura_cuenta.jsp">Apertura de cuentas</a>
+                        <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
                     </p>
                     <p>
                         <a href="vista/cajero/Deposito.jsp">Depósito</a>
