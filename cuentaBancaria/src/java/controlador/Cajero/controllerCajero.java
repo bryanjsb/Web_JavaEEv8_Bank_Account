@@ -45,7 +45,7 @@ public class controllerCajero extends HttpServlet {
             throws ServletException, IOException {
         DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();
 
-        request.setAttribute("listaMonedas", daoMoneda.obtenerListaUsuarios());
+        request.setAttribute("listaMonedas", daoMoneda.obtenerListaMoneda());
 
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
     }

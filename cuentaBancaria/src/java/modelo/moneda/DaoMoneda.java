@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.dao.DaoUsuario;
-import modelo.dao.IMEC_Usuario;
 import modelo.datos.BaseDatosBanco;
-import modelo.usuario.Usuario;
 
 /**
  *
@@ -25,7 +23,7 @@ import modelo.usuario.Usuario;
  */
 public class DaoMoneda {
    
-    public List<moneda> obtenerListaUsuarios() {
+    public List<moneda> obtenerListaMoneda() {
         List<moneda> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
