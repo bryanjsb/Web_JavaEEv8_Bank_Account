@@ -18,23 +18,21 @@ public class DaoUsuario {
 
     public boolean verificarUsuario(String usuario, String clave) {
         boolean encontrado = false;
-            try (Connection cnx = obtenerConexion();
-                    PreparedStatement stm = cnx.prepareStatement(IMEC_Usuario.VERIFICAR.obtenerComando())) {
-                stm.clearParameters();
-                stm.setString(1, usuario);
-                stm.setString(2, clave);
-                ResultSet rs = stm.executeQuery();
-                encontrado = rs.next();
-            }
-        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | IOException | SQLException ex) {
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(IMEC_Usuario.VERIFICAR.obtenerComando())) {
+            stm.clearParameters();
+            stm.setString(1, usuario);
+            stm.setString(2, clave);
+            ResultSet rs = stm.executeQuery();
+            encontrado = rs.next();
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | IOException | SQLException ex) {
             Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         finally {
+        } finally {
             bd.cerrarConexion();
         }
         return encontrado;
     }
-    
+
     public Optional<Usuario> obtenerUsuario(String id) {
         Optional<Usuario> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
@@ -91,7 +89,7 @@ public class DaoUsuario {
             InstantiationException,
             IOException,
             SQLException {
-         bd = BaseDatosBanco.obtenerInstancia();
+        bd = BaseDatosBanco.obtenerInstancia();
         Connection cnx = bd.obtenerConexion();
         return cnx;
     }
@@ -103,23 +101,22 @@ public class DaoUsuario {
         System.out.println(us);
         System.out.println(us.get().getRol());
         List<Usuario> estudiantes = se.obtenerListaUsuarios();
-   
+
         System.out.println("verificar");
-        
-        if(se.verificarUsuario("3", "3")){
+
+        if (se.verificarUsuario("3", "3")) {
             System.out.println("si verifica");
-        }
-        else{
+        } else {
             System.out.println("no verifica");
         }
-        
+
         estudiantes.forEach((e) -> {
             System.out.println(e);
         });
 
     }
-    
-     private DaoUsuario() {
+
+    private DaoUsuario() {
         try {
             this.bd = BaseDatosBanco.obtenerInstancia();
             bd.obtenerConexion();
@@ -127,6 +124,7 @@ public class DaoUsuario {
             Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static DaoUsuario obtenerInstancia() {
         if (instancia == null) {
             instancia = new DaoUsuario();
@@ -134,7 +132,7 @@ public class DaoUsuario {
         return instancia;
     }
 
-     private static DaoUsuario instancia = null;
-    private  BaseDatosBanco bd = null;
-    
+    private static DaoUsuario instancia = null;
+    private BaseDatosBanco bd = null;
+
 }

@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>Sistema web de cuentas bancarias</title>
-        <link href="default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wrapper">
@@ -13,7 +14,7 @@
             </header>
             <div id="contents">
                 <section id="seccion1">
-                   <p>
+                    <p>
                         <a href="vista/cliente/consulta_cuenta.jsp">Consulta de cuentas y movimientos</a>
                     </p>
                     <p>
@@ -31,13 +32,13 @@
             </footer>
         </div>
         <nav>
-                <p>
-                    Haga clic
-                    <a href="vista/index.jsp">aquí</a>
-                    para ir a la página principal.
-                </p> 
-            </nav>
-        
+            <p>
+                Haga clic
+                <a href="vista/index.jsp">aquí</a>
+                para ir a la página principal.
+            </p> 
+        </nav>
+
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

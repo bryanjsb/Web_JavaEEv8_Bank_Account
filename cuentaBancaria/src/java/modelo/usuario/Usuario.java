@@ -5,13 +5,12 @@
  */
 package modelo.usuario;
 
-
 /**
  *
  * @author Bryan
  */
 public class Usuario {
-    
+
     private String idUsuario;
     private String claveAcceso;
     private int claveVencida;
@@ -25,10 +24,9 @@ public class Usuario {
     }
 
     public Usuario() {
-        this("","",0,0);
+        this("", "", 0, 0);
     }
 
-    
     public String getIdUsuario() {
         return idUsuario;
     }
@@ -63,8 +61,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return String.format("{ %s, %s, %s, %s }",idUsuario,claveAcceso,claveVencida,rol);
+        return String.format("{ %s, %s, %s, %s }", idUsuario, claveAcceso, claveVencida, rol);
     }
-    
-    
+
 }

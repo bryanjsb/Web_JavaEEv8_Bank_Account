@@ -10,7 +10,7 @@
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
+
         <header class="header">
             <div>
                 <div> <h1>Bienvenido al menú para abrir una cuenta</h1></div>
@@ -48,6 +48,6 @@
                 para ir a la página principal.
             </p> 
         </nav>
-                <%@include file="/vista/footer.jsp" %> 
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

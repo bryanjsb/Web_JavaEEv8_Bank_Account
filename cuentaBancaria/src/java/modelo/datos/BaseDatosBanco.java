@@ -61,8 +61,6 @@ public class BaseDatosBanco {
     public void cerrarConexion() {
         bd.closeConnection();
     }
-    
-   
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="SINGLETON">

@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>Transferencia remota</title>
-        <link href="default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wrapper">
@@ -12,10 +13,10 @@
             </header>
             <div id="contents">
                 <section id="seccion1">
-                    
+
                 </section>
             </div>
-            
+
             <footer>
                 <p>
                     Banco centroamericano a su servicio
@@ -23,13 +24,13 @@
             </footer>
         </div>
         <nav>
-                <p>
-                    Haga clic
-                    <a href="usuarios.jsp">aquí</a>
-                    para ir a la página principal.
-                </p> 
-            </nav>
-        
+            <p>
+                Haga clic
+                <a href="usuarios.jsp">aquí</a>
+                para ir a la página principal.
+            </p> 
+        </nav>
+
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

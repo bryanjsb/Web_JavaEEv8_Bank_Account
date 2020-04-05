@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.inicio;
+package controlador.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Bryan
  */
-@WebServlet(name = "controllerInicio",
-        urlPatterns = {"/controllerInicio", "/vista/index", "/vista/login/login"})
-public class controllerInicio extends HttpServlet {
+@WebServlet(name = "controllerLogOut", urlPatterns = {"/controllerLogOut"})
+public class controllerLogOut extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,22 +33,12 @@ public class controllerInicio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if (request.getServletPath().equals("/vista/login/login")) {
-            this.Login(request, response);
-        }
-        if (request.getServletPath().equals("/vista/index")) {
-            this.index(request, response);
-        }
-    }
+        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
 
-    protected void Login(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/vista/login/login.jsp").forward(request, response);
-    }
-
-    protected void index(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/vista/index.jsp").forward(request, response);
+        HttpSession sesion = request.getSession(true);
+        sesion.removeAttribute("usuario");
+        sesion.invalidate();
+        response.sendRedirect("vista/login/login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
