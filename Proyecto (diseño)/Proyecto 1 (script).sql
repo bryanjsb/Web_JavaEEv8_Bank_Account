@@ -64,7 +64,6 @@ CREATE TABLE IF NOT EXISTS `eif209_2001_p01`.`moneda` (
   `simbolo` VARCHAR(4) NOT NULL,
   `tipo_cambio_compra` DOUBLE NOT NULL,
   `tipo_cambio_venta` DOUBLE NOT NULL,
-  `numueroUnico` VARCHAR(2) NOT NULL,
   PRIMARY KEY (`nombre`))
 ENGINE = InnoDB;
 
