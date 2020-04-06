@@ -8,16 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <title>Redes</title>
         <base href="http://localhost:8084/cuentaBancaria/">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Redes</title>
-        
+     
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
         
     </head>
     <body>
-        <div class="container-social">
+        
             <div class="social">
                 <a href="https://www.facebook.com" >
                     <img src="images/facebook.png" alt="facebook"/>
@@ -35,6 +35,6 @@
                 </a>
 
             </div>
-        </div>
+      
     </body>
 </html>

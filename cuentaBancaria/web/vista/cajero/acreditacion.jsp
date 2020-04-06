@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>Acreditación de intereses</title>
-        <base href="http://localhost:8084/cuentaBancaria/">
 
-        <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <title>Acreditación de intereses</title>
+       <%@ include file="/general.jsp" %>
     </head>
     <body>
         <div id="wrapper">

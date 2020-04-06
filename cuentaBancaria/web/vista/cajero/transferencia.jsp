@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+   
         <title>Transferencia en cajas</title>
-        <base href="http://localhost:8084/cuentaBancaria/">
-
-        <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+     <%@ include file="/general.jsp" %>
     </head>
     <body>
         <div id="wrapper">
