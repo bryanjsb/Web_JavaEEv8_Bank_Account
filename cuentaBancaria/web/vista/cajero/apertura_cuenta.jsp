@@ -3,12 +3,9 @@
 <%@page import="servicios.ServicioFecha"%>
 <html>
     <head>
-        <meta charset="UTF-8" />
+   <%@ include file="/general.jsp" %>
         <title>Apertura de cuenta</title>
-        <base href="http://localhost:8084/cuentaBancaria/">
-
-        <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
 

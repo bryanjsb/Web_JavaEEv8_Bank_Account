@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+       <%@ include file="/general.jsp" %>
         <title>Consulta de cuentas y movimientos</title>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div id="wrapper">

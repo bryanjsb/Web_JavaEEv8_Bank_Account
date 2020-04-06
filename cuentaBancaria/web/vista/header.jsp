@@ -9,14 +9,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <base href="http://localhost:8084/cuentaBancaria/">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <%@ include file="/general.jsp" %>
         <title>cabecera</title>
-        
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
-        
-    
     </head>
     <body>
         <header class="header">

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+   
         <title>Sistema web de cuentas bancarias</title>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/default.css" rel="stylesheet" type="text/css"/>
+ <%@ include file="/general.jsp" %>
     </head>
     <body>
         <div id="wrapper">

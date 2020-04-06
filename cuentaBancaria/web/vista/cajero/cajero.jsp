@@ -5,11 +5,7 @@
 <html>
     <head>
 
-        <meta charset="UTF-8" />
-        <base href="http://localhost:8084/cuentaBancaria/">
-
-        <link href="../../css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <%@ include file="/general.jsp" %>
 
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
