@@ -20,7 +20,7 @@ import modelo.datos.BaseDatosBanco;
 
 public class DaoCuenta {
 
-    public boolean verificarCliente(String numCuenta) {
+    public boolean verificarCuenta(String numCuenta) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Cuenta.VERIFICAR.obtenerComando())) {
@@ -36,7 +36,7 @@ public class DaoCuenta {
         return encontrado;
     }
 
-    public Optional<cuenta> obtenerCliente(String numCuenta) {
+    public Optional<cuenta> obtenerMovimiento(String numCuenta) {
         Optional<cuenta> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Cuenta.CONSULTAR.obtenerComando());) {
@@ -70,7 +70,7 @@ public class DaoCuenta {
         return r;
     }
 
-    public List<cuenta> obtenerListaClientes() {
+    public List<cuenta> obtenerListaCuenta() {
         List<cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
