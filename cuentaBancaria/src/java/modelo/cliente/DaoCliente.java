@@ -18,14 +18,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
 
-
-
 /**
  *
  * @author Bryan
  */
 public class DaoCliente {
-    
+
     public boolean verificarCliente(String idCliente) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();
@@ -51,11 +49,11 @@ public class DaoCliente {
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
                     r = Optional.of(new Cliente(
-                           rs.getString("id_cliente"),
-                        rs.getString("usuario_id_usuario"),
-                        rs.getString("apellidos"),
-                        rs.getString("nombre"),
-                        rs.getString("telefono")
+                            rs.getString("id_cliente"),
+                            rs.getString("usuario_id_usuario"),
+                            rs.getString("apellidos"),
+                            rs.getString("nombre"),
+                            rs.getString("telefono")
                     ));
                 }
             }
@@ -65,7 +63,7 @@ public class DaoCliente {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }finally {
+        } finally {
             bd.cerrarConexion();
         }
         return r;
@@ -92,7 +90,7 @@ public class DaoCliente {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }finally {
+        } finally {
             bd.cerrarConexion();
         }
         return r;
@@ -108,8 +106,6 @@ public class DaoCliente {
         Connection cnx = bd.obtenerConexion();
         return cnx;
     }
-
-    
 
     private DaoCliente() {
         try {

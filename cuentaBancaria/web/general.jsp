@@ -12,8 +12,8 @@
         <base href="http://localhost:8084/cuentaBancaria/">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
-       
+
     </head>
     <body> <%@ include file="vista/redes.jsp" %></body>
-  
+
 </html>

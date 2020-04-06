@@ -6,26 +6,26 @@
 package modelo.cliente;
 
 import java.util.logging.Logger;
-import modelo.usuario.Usuario;
 
 /**
  *
  * @author Bryan
  */
 public class Cliente {
-    private String idCliente, usuarioIdUsuario,apellidos,nombre,telefono;
-    
-    public Cliente( String idCliente,String usuarioIdUsuario,
+
+    private String idCliente, usuarioIdUsuario, apellidos, nombre, telefono;
+
+    public Cliente(String idCliente, String usuarioIdUsuario,
             String apellidos, String nombre, String telefono) {
-        this.idCliente=idCliente;
+        this.idCliente = idCliente;
         this.usuarioIdUsuario = usuarioIdUsuario;
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.telefono = telefono;
     }
-    
-    public Cliente(){
-        this("","","","","");
+
+    public Cliente() {
+        this("", "", "", "", "");
     }
     private static final Logger LOG = Logger.getLogger(Cliente.class.getName());
 
@@ -68,6 +68,5 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
- 
+
 }

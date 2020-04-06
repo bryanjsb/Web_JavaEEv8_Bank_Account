@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      
+
         <title>Retiros</title>
         <%@ include file="/general.jsp" %>
     </head>

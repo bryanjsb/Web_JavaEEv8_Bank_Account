@@ -22,7 +22,7 @@ import modelo.datos.BaseDatosBanco;
  * @author Bryan
  */
 public class DaoMoneda {
-   
+
     public List<moneda> obtenerListaMoneda() {
         List<moneda> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -44,7 +44,7 @@ public class DaoMoneda {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }finally {
+        } finally {
             bd.cerrarConexion();
         }
         return r;
@@ -60,8 +60,6 @@ public class DaoMoneda {
         Connection cnx = bd.obtenerConexion();
         return cnx;
     }
-
-    
 
     private DaoMoneda() {
         try {
@@ -81,9 +79,5 @@ public class DaoMoneda {
 
     private static DaoMoneda instancia = null;
     private BaseDatosBanco bd = null;
-
-
-
-
 
 }

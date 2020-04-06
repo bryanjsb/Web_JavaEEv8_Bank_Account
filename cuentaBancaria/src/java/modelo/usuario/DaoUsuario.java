@@ -54,7 +54,7 @@ public class DaoUsuario {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }finally {
+        } finally {
             bd.cerrarConexion();
         }
         return r;
@@ -80,7 +80,7 @@ public class DaoUsuario {
                 | InstantiationException
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }finally {
+        } finally {
             bd.cerrarConexion();
         }
         return r;
@@ -96,8 +96,6 @@ public class DaoUsuario {
         Connection cnx = bd.obtenerConexion();
         return cnx;
     }
-
-    
 
     private DaoUsuario() {
         try {
@@ -118,9 +116,6 @@ public class DaoUsuario {
     private static DaoUsuario instancia = null;
     private BaseDatosBanco bd = null;
 
-    
-    
-    
     public static void main(String[] args) {
         DaoUsuario se = new DaoUsuario();
         Optional<Usuario> us = se.obtenerUsuario("3");

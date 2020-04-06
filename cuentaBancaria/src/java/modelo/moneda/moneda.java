@@ -10,7 +10,8 @@ package modelo.moneda;
  * @author Bryan
  */
 public class moneda {
-   private final String nombreMoneda;
+
+    private final String nombreMoneda;
     private final String descripcion;
     private final String simboloMoneda;
     private final double tipoCambioCompra;
@@ -23,9 +24,9 @@ public class moneda {
         this.tipoCambioCompra = tipoCambioCompra;
         this.tipoCambioVenta = tipoCambioVenta;
     }
-    
-    public moneda(){
-        this("CRC","Colón","₡",1.0,1.0);
+
+    public moneda() {
+        this("CRC", "Colón", "₡", 1.0, 1.0);
     }
 
     public String getNombreMoneda() {
@@ -52,15 +53,15 @@ public class moneda {
     public String toString() {
         return "moneda{" + "nombreMoneda=" + nombreMoneda + ", descripcion=" + descripcion + ", simboloMoneda=" + simboloMoneda + ", tipoCambioCompra=" + tipoCambioCompra + ", tipoCambioVenta=" + tipoCambioVenta + '}';
     }
-    
-    public String mostrarMoneda(){
-        StringBuilder s= new StringBuilder();
-        s.append(String.format("%s %s:Compra:%f%n", nombreMoneda,simboloMoneda,
+
+    public String mostrarMoneda() {
+        StringBuilder s = new StringBuilder();
+        s.append(String.format("%s %s:Compra:%f%n", nombreMoneda, simboloMoneda,
                 tipoCambioCompra));
-         s.append(String.format("%s %s:Venta:%f%n", nombreMoneda,simboloMoneda,
+        s.append(String.format("%s %s:Venta:%f%n", nombreMoneda, simboloMoneda,
                 tipoCambioVenta));
-        
+
         return s.toString();
     }
-    
+
 }

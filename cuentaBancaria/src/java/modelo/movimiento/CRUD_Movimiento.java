@@ -5,7 +5,6 @@
  */
 package modelo.movimiento;
 
-
 public enum CRUD_Movimiento {
 //    INSERTAR("INSERT INTO movimiento (id_movimiento, num_cuenta, monto, fecha, aplicado, movimientocol) VALUES (?, ?, ?, ?, ?, ?); "),
 //    MODIFICAR("UPDATE movimiento SET id_movimiento=?, num_cuenta=?,monto=?,fecha=?,aplicado=?,movimientocol=? WHERE id_movimiento=?; "),

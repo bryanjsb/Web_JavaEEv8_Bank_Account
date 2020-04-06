@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-   
+
         <title>Transferencia en cajas</title>
-     <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
     </head>
     <body>
         <div id="wrapper">

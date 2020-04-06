@@ -1,9 +1,8 @@
-
 package modelo.movimiento;
 
 import java.util.Date;
 
-public class movimiento{
+public class movimiento {
 
     public movimiento(int id_movimiento, String num_cuenta, double monto, Date fecha, int aplicado, String movimientocol) {
         this.id_movimiento = id_movimiento;
@@ -42,15 +41,12 @@ public class movimiento{
     public String toString() {
         return "Movimiento{" + "id_movimiento=" + id_movimiento + ", num_cuenta=" + num_cuenta + ", monto=" + monto + ", fecha=" + fecha + ", aplicado=" + aplicado + ", movimientocol=" + movimientocol + '}';
     }
-    
-    
-    
+
     private final int id_movimiento;
     private final String num_cuenta;
     private final double monto;
     private final Date fecha;
     private final int aplicado;
     private final String movimientocol;
-    
-    
+
 }

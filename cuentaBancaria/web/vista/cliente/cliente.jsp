@@ -1,9 +1,27 @@
+<%@page import="modelo.usuario.Usuario"%>
 <!DOCTYPE html>
 <html>
     <head>
-   
+
         <title>Sistema web de cuentas bancarias</title>
- <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
+        
+         <%@ include file="/general.jsp" %>
+
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
+        <%
+
+            // Verifica los datos de la sesión para redirigir la página.
+            // Observe que si la sesión ha expirado, el servidor asigna
+            // una sesión nueva, por lo que los datos del usuario no
+            // estarán disponibles.
+            if (request.getSession(true).getAttribute("usuario") == null) {
+                response.sendRedirect("vista/login/login");
+            }
+        %>
+        <%            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
     </head>
     <body>
         <div id="wrapper">
