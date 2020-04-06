@@ -36,7 +36,7 @@ public class DaoTipo_cuenta {
         return encontrado;
     }
 
-    public Optional<tipo_cuenta> obtenerMovimiento(String idTipo_cuenta) {
+    public Optional<tipo_cuenta> obtenerTipo_cuenta(String idTipo_cuenta) {
         Optional<tipo_cuenta> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Tipo_cuenta.CONSULTAR.obtenerComando());) {
