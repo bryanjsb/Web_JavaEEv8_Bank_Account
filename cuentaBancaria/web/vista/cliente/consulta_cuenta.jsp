@@ -20,8 +20,7 @@
             // una sesión nueva, por lo que los datos del usuario no
             // estarán disponibles.
             if (request.getSession(true).getAttribute("usuario") == null) {
-                response.sendRedirect("vista/login/login");
-                request.getParameter("finalizoLog");
+                request.getRequestDispatcher("/seccionCaducada").forward(request, response);
             }
         %>
 

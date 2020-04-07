@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Bryan
  */
-@WebServlet(name = "controllerLogOut", urlPatterns = {"/controllerLogOut"})
+@WebServlet(name = "controllerLogOut", urlPatterns = {"/controllerLogOut","/seccionCaducada"})
 public class controllerLogOut extends HttpServlet {
 
     /**
@@ -37,9 +37,18 @@ public class controllerLogOut extends HttpServlet {
         HttpSession sesion = request.getSession(true);
         sesion.removeAttribute("usuario");
         sesion.invalidate();
-        response.sendRedirect("vista/login/login");
+       if (request.getServletPath().equals("/seccionCaducada")) {
+            this.seccionCaducada(request, response);
+        }else{
+        response.sendRedirect("vista/login/login");}
     }
 
+    
+    private void seccionCaducada(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/vista/login/login.jsp").forward(request, response);
+    
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
