@@ -1,8 +1,8 @@
+<%@page import="modelo.usuario.Usuario"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@ include file="/general.jsp" %>
-        <title>Consulta de cuentas y movimientos</title>
 
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
@@ -24,6 +24,12 @@
                 request.getParameter("finalizoLog");
             }
         %>
+
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
+        <title>Cuenta Cliente:<%= ideUsuario%> Consulta de cuentas y movimientos</title>
     </head>
     <body>
         <div id="wrapper">

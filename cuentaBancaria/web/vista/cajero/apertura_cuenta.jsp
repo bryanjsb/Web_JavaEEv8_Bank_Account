@@ -1,10 +1,10 @@
+<%@page import="modelo.usuario.Usuario"%>
 <%@page import="modelo.cliente.Cliente"%>
 <!DOCTYPE html>
 <%@page import="servicios.ServicioFecha"%>
 <html>
     <head>
         <%@ include file="/general.jsp" %>
-        <title>Apertura de cuenta</title>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -25,6 +25,12 @@
                 request.getParameter("finalizoLog");
             }
         %>
+
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
+        <title>Cuenta Cajero <%= ideUsuario%> Apertura de cuenta</title>
     </head>
     <body>
 

@@ -4,6 +4,8 @@
     Author     : Bryan
 --%>
 
+<%@page import="modelo.usuario.Usuario"%>
+<%@page import="modelo.usuario.Usuario"%>
 <%@page import="modelo.moneda.moneda"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +13,7 @@
 <html>
     <head>
         <%@ include file="/general.jsp" %>
-        <title>Registro Cliente Nuevo</title>
+
 
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
@@ -33,6 +35,13 @@
                 request.getParameter("finalizoLog");
             }
         %>
+
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
+        <title>Cuenta Cajero <%= ideUsuario%> Registro Cliente Nuevo</title>
+
     </head>
     <body>
 

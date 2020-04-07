@@ -1,8 +1,8 @@
+<%@page import="modelo.usuario.Usuario"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@ include file="/general.jsp" %>
-        <title>Transferencia remota</title>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -23,6 +23,12 @@
                 request.getParameter("finalizoLog");
             }
         %>
+
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
+        <title>Cuenta Cajero <%= ideUsuario%> Transferencia remota</title>
     </head>
     <body>
         <div id="wrapper">

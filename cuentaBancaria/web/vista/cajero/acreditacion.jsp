@@ -1,8 +1,8 @@
+<%@page import="modelo.usuario.Usuario"%>
+<%@page import="modelo.usuario.Usuario"%>
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>Acreditación de intereses</title>
         <%@ include file="/general.jsp" %>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
@@ -24,6 +24,12 @@
                 request.getParameter("finalizoLog");
             }
         %>
+
+        <%
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String ideUsuario = usuario.getIdUsuario();
+        %>
+        <title>Cuenta Cajero <%= ideUsuario%> Acreditación de intereses</title>
     </head>
     <body>
         <div id="wrapper">

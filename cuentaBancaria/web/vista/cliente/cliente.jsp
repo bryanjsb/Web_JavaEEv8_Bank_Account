@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Sistema web de cuentas bancarias</title>
+
         <jsp:directive.include file="/general.jsp"/>
 
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
@@ -29,6 +29,9 @@
         <%            Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
         %>
+
+        <title>Cuenta Cliente:<%= ideUsuario%> Sistema web de cuentas bancaria</title>
+
     </head>
     <body>
         <div id="wrapper">
