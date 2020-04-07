@@ -1,6 +1,4 @@
-
 package modelo.transferencia;
-
 
 public enum CRUD_Transferencia {
 //    INSERTAR("INSERT INTO transferencia (id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado) VALUES (?, ?, ?, ?, ?, ?); "),

@@ -1,7 +1,4 @@
-
 package modelo.tipo_cuenta;
-
-
 
 public enum CRUD_Tipo_cuenta {
 //    INSERTAR("INSERT INTO tipo_cuenta (id_tipo_cuenta, descripcion, tasa_interes) VALUES (?, ?, ?); "),

@@ -37,7 +37,6 @@ public class controllerLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
 
         log(request, response);
 
@@ -52,7 +51,7 @@ public class controllerLogin extends HttpServlet {
         DaoUsuario daoUsuario = DaoUsuario.obtenerInstancia();
         if (usuario != null && clave != null) {
             usuarioValido = daoUsuario.verificarUsuario(usuario = checkId(usuario), clave);
-             
+
         }
 
         if (usuarioValido) {
@@ -79,7 +78,6 @@ public class controllerLogin extends HttpServlet {
             // se registre en el sitio.
             //request.getRequestDispatcher("errorIngreso.jsp?error=2").forward(
             //        request, response);
-           
             response.sendRedirect("vista/login/login");
         }
 

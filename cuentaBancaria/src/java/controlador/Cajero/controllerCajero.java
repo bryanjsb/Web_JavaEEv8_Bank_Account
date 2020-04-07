@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.cliente.Cliente;
 import modelo.moneda.DaoMoneda;
+import modelo.moneda.moneda;
 
 /**
  *
@@ -48,10 +49,10 @@ public class controllerCajero extends HttpServlet {
 
     private void registarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();
 
-        request.setAttribute("listaMonedas", daoMoneda.obtenerListaMoneda());
+        moneda moneda = new moneda();
 
+        request.setAttribute("listaMonedas1", moneda);
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
     }
 

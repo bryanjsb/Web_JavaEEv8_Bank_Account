@@ -9,7 +9,7 @@ package modelo.usuario;
  *
  * @author Bryan
  */
-public class Usuario {
+public class Usuario implements java.io.Serializable {
 
     private String idUsuario;
     private String claveAcceso;

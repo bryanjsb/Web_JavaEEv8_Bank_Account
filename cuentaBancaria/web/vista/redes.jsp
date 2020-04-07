@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Redes</title>
+
         <base href="http://localhost:8084/cuentaBancaria/">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 

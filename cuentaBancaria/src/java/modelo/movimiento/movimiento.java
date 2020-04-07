@@ -2,7 +2,7 @@ package modelo.movimiento;
 
 import java.util.Date;
 
-public class movimiento {
+public class movimiento implements java.io.Serializable {
 
     public movimiento(int id_movimiento, String num_cuenta, double monto, Date fecha, int aplicado, String movimientocol) {
         this.id_movimiento = id_movimiento;

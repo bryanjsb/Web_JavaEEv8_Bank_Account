@@ -1,6 +1,4 @@
-
 package modelo.favorita;
-
 
 public class favorita {
 
@@ -21,8 +19,7 @@ public class favorita {
     public String toString() {
         return "favorita{" + "cliente_id_cliente=" + cliente_id_cliente + ", cuenta_num_cuenta=" + cuenta_num_cuenta + '}';
     }
-       
-    
+
     private final String cliente_id_cliente;
     private final String cuenta_num_cuenta;
 }

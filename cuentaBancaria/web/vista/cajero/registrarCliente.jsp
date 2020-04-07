@@ -13,6 +13,26 @@
         <%@ include file="/general.jsp" %>
         <title>Registro Cliente Nuevo</title>
 
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
+        <%
+            //comprueba que tenga la misma seccion
+            HttpSession sesionActual;
+            sesionActual = request.getSession(true);
+            out.println(
+                    String.format("Sesión actual:&nbsp;%s<br />",
+                            sesionActual.getId()));
+
+        %>
+
+        <%            // Verifica los datos de la sesión para redirigir la página.
+            // Observe que si la sesión ha expirado, el servidor asigna
+            // una sesión nueva, por lo que los datos del usuario no
+            // estarán disponibles.
+            if (request.getSession(true).getAttribute("usuario") == null) {
+                response.sendRedirect("vista/login/login");
+                request.getParameter("finalizoLog");
+            }
+        %>
     </head>
     <body>
 
@@ -117,26 +137,14 @@
                                     <td class="campo">
 
                                         <%
-                                            List<moneda> listaMoneda = (List<moneda>) request.getAttribute("listaMonedas");
-                                            if (listaMoneda.isEmpty()) {
+                                            moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
 
-                                                out.println("<select name=\"moneda\" >");
-                                                out.println("<option selected value=\"0\"> no existe tipo moneda </option>");
-                                            } else {
-                                                out.println("<select name=\"moneda\" >");
-                                                out.println("<option selected value=\"0\"> Elige tipo de moneda </option>");
-
-                                                for (moneda m : listaMoneda) {
-                                                    out.println(" <option value=\"" + m.getNombreMoneda() + "\">"
-                                                            + m.getDescripcion() + " - " + m.getNombreMoneda() + "  "
-                                                            + m.getSimboloMoneda() + "</option> ");
-                                                }
-
-                                                out.println("  </select>");
-
-                                            }
-
+                                            out.println(listaMoneda1.mostrarListaMonedaJSP());
                                         %>
+
+
+
+
                                     </td>
                                 </tr>
 

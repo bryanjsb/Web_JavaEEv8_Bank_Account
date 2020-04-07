@@ -1,6 +1,6 @@
 package modelo.tipo_cuenta;
 
-public class tipo_cuenta {
+public class tipo_cuenta implements java.io.Serializable {
 
     public tipo_cuenta(int id_tipo_cuenta, String descripcion, double tasa_interes) {
         this.id_tipo_cuenta = id_tipo_cuenta;
@@ -24,11 +24,9 @@ public class tipo_cuenta {
     public String toString() {
         return "Tipo_cuenta{" + "tipo_cuenta=" + id_tipo_cuenta + ", descripcion=" + descripcion + ", tasa_interes=" + tasa_interes + '}';
     }
-    
-    
-    
+
     private final int id_tipo_cuenta;
     private final String descripcion;
     private final double tasa_interes;
-    
+
 }

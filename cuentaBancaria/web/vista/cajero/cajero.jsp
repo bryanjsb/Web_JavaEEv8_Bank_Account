@@ -6,6 +6,7 @@
     <head>
 
         <jsp:directive.include file="/general.jsp"/>
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
             HttpSession sesionActual;
@@ -16,11 +17,7 @@
 
         %>
 
-
-        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
-        <%
-
-            // Verifica los datos de la sesión para redirigir la página.
+        <%            // Verifica los datos de la sesión para redirigir la página.
             // Observe que si la sesión ha expirado, el servidor asigna
             // una sesión nueva, por lo que los datos del usuario no
             // estarán disponibles.
@@ -29,7 +26,7 @@
                 request.getParameter("finalizoLog");
             }
         %>
-        <%            
+        <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
         %>

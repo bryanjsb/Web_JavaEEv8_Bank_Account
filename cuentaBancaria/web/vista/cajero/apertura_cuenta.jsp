@@ -5,7 +5,26 @@
     <head>
         <%@ include file="/general.jsp" %>
         <title>Apertura de cuenta</title>
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
+        <%
+            //comprueba que tenga la misma seccion
+            HttpSession sesionActual;
+            sesionActual = request.getSession(true);
+            out.println(
+                    String.format("Sesión actual:&nbsp;%s<br />",
+                            sesionActual.getId()));
 
+        %>
+
+        <%            // Verifica los datos de la sesión para redirigir la página.
+            // Observe que si la sesión ha expirado, el servidor asigna
+            // una sesión nueva, por lo que los datos del usuario no
+            // estarán disponibles.
+            if (request.getSession(true).getAttribute("usuario") == null) {
+                response.sendRedirect("vista/login/login");
+                request.getParameter("finalizoLog");
+            }
+        %>
     </head>
     <body>
 

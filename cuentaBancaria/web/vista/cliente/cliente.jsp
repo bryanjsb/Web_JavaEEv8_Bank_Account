@@ -4,11 +4,11 @@
     <head>
 
         <title>Sistema web de cuentas bancarias</title>
-       <jsp:directive.include file="/general.jsp"/>
-       
+        <jsp:directive.include file="/general.jsp"/>
+
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
-       
-             <%
+
+        <%
             //comprueba que tenga la misma seccion
             HttpSession sesionActual;
             sesionActual = request.getSession(true);
@@ -17,10 +17,8 @@
                             sesionActual.getId()));
 
         %>
-        
-        <%
 
-            // Verifica los datos de la sesión para redirigir la página.
+        <%            // Verifica los datos de la sesión para redirigir la página.
             // Observe que si la sesión ha expirado, el servidor asigna
             // una sesión nueva, por lo que los datos del usuario no
             // estarán disponibles.
@@ -41,7 +39,7 @@
             <div id="contents">
                 <section id="seccion1">
                     <p>
-                        Bienvenido :<%=ideUsuario %>
+                        Bienvenido :<%=ideUsuario%>
                     </p>
                     <p>
                         <a href="vista/cliente/consulta_cuenta.jsp">Consulta de cuentas y movimientos</a>
