@@ -4,6 +4,7 @@
     Author     : Bryan
 --%>
 
+<%@page import="modelo.cliente.Cliente"%>
 <%@page import="modelo.usuario.Usuario"%>
 <%@page import="modelo.usuario.Usuario"%>
 <%@page import="modelo.moneda.moneda"%>
@@ -39,6 +40,7 @@
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
+            String idClienteNuevo=(String)session.getAttribute("idBusqueda");
         %>
         <title>Cuenta Cajero <%= ideUsuario%> Registro Cliente Nuevo</title>
 
@@ -71,9 +73,8 @@
                     <h1>Registrando Usuario Nuevo.</h1>
                     <article>
                         <h2>Formulario Registro Nuevo</h2>
-                        <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
-                              action="ServicioRegistro" method="POST"
-                              onsubmit="return verificarRegistro('nuevoUsuario');">
+                        <form class="formLogin" 
+                              action="registarNuevoUsuario" method="GET">
                             <table>
 
                                 <tr>
@@ -82,8 +83,8 @@
                                     </td>
                                     <td class="campo">
                                         <input type="text" size="30" maxlength="9"
-                                               id="login" name="login" autocomplete="off"
-                                               placeholder="(max 9 digitos: ej 102340567 )"
+                                               id="login" name="login" autocomplete="off" 
+                                               value=<%=idClienteNuevo%>
                                                />
                                     </td>
                                 </tr>
@@ -130,35 +131,27 @@
                                                id="clave" name="clave" autocomplete="off" />
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="etiqueta">
-                                        <label for="confirmar">Confirmar la clave:&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                        <input type="text" size="30"
-                                               id="confirmar" name="confirmar" autocomplete="off" />
-                                    </td>
-                                </tr>
-                                <tr>
+                                
+                                <!--<tr>
                                     <td class="etiqueta">
                                         <label for="moneda">Tipo de moneda:&nbsp;</label>
                                     </td>
                                     <td class="campo">
 
                                         <%
-                                            moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
+                                           // moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
 
-                                            out.println(listaMoneda1.mostrarListaMonedaJSP());
+                                            //out.println(listaMoneda1.mostrarListaMonedaJSP());
                                         %>
 
 
 
 
                                     </td>
-                                </tr>
+                                </tr>-->
 
                                 <tr>
-                                    <td class="controles" colspan="2"rowspan="3">
+                                    <td class="controles" colspan="2">
                                         <button type="submit">Registrar Usuario</button>
                                     </td>
                                 </tr>

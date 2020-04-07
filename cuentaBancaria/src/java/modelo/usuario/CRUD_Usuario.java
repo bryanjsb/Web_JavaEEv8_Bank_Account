@@ -1,7 +1,7 @@
 package modelo.usuario;
 
 public enum CRUD_Usuario {
-    INSERTAR("INSERT INTO usuario (id_usuario, clave_acceso, clave_vencida,rol) VALUES (?, ?, ?,?); "),
+    INSERTAR("INSERT INTO usuario (id_usuario,clave_acceso,clave_vencida,rol) VALUES (?,?,?,?); "),
     MODIFICAR("UPDATE usuario SET id_usuario=?, clave_acceso=?,clave_vencida=?,rol=? WHERE id_usuario=?; "),
     EXCLUIR("DELETE FROM usuario WHERE id_usuario=?; "),
     CONSULTAR("SELECT id_usuario, clave_acceso,clave_vencida, rol FROM usuario WHERE id_usuario=? "),

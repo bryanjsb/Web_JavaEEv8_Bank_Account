@@ -36,6 +36,11 @@ public class controllerCajero extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        if (request.getServletPath().equals("/controllerCajero")) {
+
+            paginaPrincipalCajero(request, response);
+        }
+        
         if (request.getServletPath().equals("/vista/cajero/registrarCliente")) {
 
             registarCliente(request, response);
@@ -47,22 +52,21 @@ public class controllerCajero extends HttpServlet {
         }
     }
 
+    private void paginaPrincipalCajero( HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    response.sendRedirect("vista/cajero/cajero.jsp");
+    
+    }
     private void registarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        moneda moneda = new moneda();
-
-        request.setAttribute("listaMonedas1", moneda);
+       
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
     }
 
     private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();
-
-        request.setAttribute("listaMonedas", daoMoneda.obtenerListaMoneda());
-        Cliente cliente = new Cliente();
-        request.setAttribute("Cliente", cliente);
+        
         request.getRequestDispatcher("/vista/cajero/apertura_cuenta.jsp").forward(request, response);
     }
 

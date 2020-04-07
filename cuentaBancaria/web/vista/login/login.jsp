@@ -51,11 +51,7 @@
 
                     %>
 
-                    <%                        String s = (String) sesionActual.getAttribute("finalizoLog");
-                        if (s != null) {
-                            out.println("<h4>FINALIZO LA SECCIÓN!!!</h4>");
-                        }
-                    %>
+                  
                     <h1>Iniciar Seccion</h1>
                     <article>
 

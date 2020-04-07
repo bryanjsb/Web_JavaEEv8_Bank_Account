@@ -64,4 +64,9 @@ public class Usuario implements java.io.Serializable {
         return String.format("{ %s, %s, %s, %s }", idUsuario, claveAcceso, claveVencida, rol);
     }
 
+    public boolean insertarUsuario(){
+    DaoUsuario du=DaoUsuario.obtenerInstancia();
+    
+    return du.insertarUsuario(this);
+    }
 }

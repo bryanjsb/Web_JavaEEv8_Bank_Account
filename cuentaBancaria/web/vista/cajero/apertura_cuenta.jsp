@@ -55,7 +55,7 @@
                     <h1>Buscando Cliente</h1>
                     <article>
                         <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
-                              action="ServicioRegistro" method="GET">
+                              action="ClienteBuscar" method="GET">
                             <table>
 
                                 <tr>
@@ -67,6 +67,10 @@
                                                id="buscarCliente" name="buscarCliente" autocomplete="off"
                                                placeholder="(max 9 digitos: ej 102340567 )"
                                                />
+                                    </td>
+                                    <td class="controles" colspan="2">
+                                        <button type="submit">Buscar</button>
+
                                     </td>
                                 </tr>   
                             </table>

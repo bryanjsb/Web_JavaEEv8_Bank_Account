@@ -24,6 +24,63 @@ import modelo.datos.BaseDatosBanco;
  */
 public class DaoCliente {
 
+     public boolean registrarCliente(Cliente nuevoCliente) {
+        boolean exito = false;
+        int registrosActualizados = 0;
+        try {
+            Connection cnx = bd.obtenerConexion();
+
+            try (PreparedStatement stm = cnx.prepareStatement(CRUD_Cliente.INSERTAR.obtenerComando())) {
+                stm.clearParameters();
+
+                stm.setString(1,nuevoCliente.getIdCliente());
+            stm.setString(2,nuevoCliente.getUsuarioIdUsuario());
+            stm.setString(3,nuevoCliente.getApellidos());
+            stm.setString(4,nuevoCliente.getNombre());
+            stm.setString(5,nuevoCliente.getTelefono());
+
+//                stm.setTimestamp(4, DateConversion.util2Timestamp((java.util.Date) nuevoUsuario.ultimoAcceso()));
+//
+//                stm.setInt(5, nuevoUsuario.prioridad());
+
+                registrosActualizados = stm.executeUpdate();
+                exito = registrosActualizados == 1;
+            }
+
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+        return exito;
+    }
+    public boolean insertarCliente(Cliente cliente) {
+        boolean insertado = false;
+
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement s = cnx.prepareStatement(CRUD_Cliente.INSERTAR.obtenerComando());) {
+
+            s.setString(1,cliente.getIdCliente());
+            s.setString(2,cliente.getUsuarioIdUsuario());
+            s.setString(3,cliente.getApellidos());
+            s.setString(4,cliente.getNombre());
+            s.setString(5,cliente.getTelefono());
+           s.executeUpdate();
+           insertado= s.execute();
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return insertado;
+
+    }
+
     public boolean verificarCliente(String idCliente) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();

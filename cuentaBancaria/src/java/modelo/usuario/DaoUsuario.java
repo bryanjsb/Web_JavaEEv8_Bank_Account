@@ -15,6 +15,60 @@ import java.util.logging.Logger;
 
 public class DaoUsuario {
 
+     public boolean registrarUsuario(Usuario nuevoUsuario) {
+        boolean exito = false;
+        int registrosActualizados = 0;
+        try {
+            Connection cnx = bd.obtenerConexion();
+
+            try (PreparedStatement stm = cnx.prepareStatement(CRUD_Usuario.INSERTAR.obtenerComando())) {
+                stm.clearParameters();
+
+                stm.setString(1,nuevoUsuario.getIdUsuario());
+            stm.setString(2,nuevoUsuario.getClaveAcceso());
+            stm.setInt(3,nuevoUsuario.getClaveVencida());
+            stm.setInt(4,nuevoUsuario.getRol());
+
+//                stm.setTimestamp(4, DateConversion.util2Timestamp((java.util.Date) nuevoUsuario.ultimoAcceso()));
+//
+//                stm.setInt(5, nuevoUsuario.prioridad());
+
+                registrosActualizados = stm.executeUpdate();
+                exito = registrosActualizados == 1;
+            }
+
+        } catch (SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+        return exito;
+    }
+    public boolean insertarUsuario(Usuario usuario) {
+        boolean insertado = false;
+
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement s = cnx.prepareStatement(CRUD_Usuario.INSERTAR.obtenerComando());) {
+
+            s.setString(1,usuario.getIdUsuario());
+            s.setString(2,usuario.getClaveAcceso());
+            s.setInt(3,usuario.getClaveVencida());
+            s.setInt(4,usuario.getRol());
+           s.executeUpdate();
+           insertado= s.execute();
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return insertado;
+
+    }
     public boolean verificarUsuario(String usuario, String clave) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();

@@ -84,8 +84,8 @@ public class controllerLogin extends HttpServlet {
     }
 
     private String redireccionarUsuario(Optional<Usuario> usuario) {
-        return (usuario.get().getRol() == 0) ? "vista/cajero/cajero.jsp"
-                : "vista/cliente/cliente.jsp";
+        return (usuario.get().getRol() == 0) ? "controllerCajero"
+                : "controllerCliente";
     }
 
     private String checkId(String txt) {

@@ -10,9 +10,9 @@ package modelo.cliente;
  * @author Bryan
  */
 public enum CRUD_Cliente {
-//    INSERTAR("INSERT INTO usuario (id_usuario, clave_acceso, clave_vencida,rol) VALUES (?, ?, ?,?); "),
-//    MODIFICAR("UPDATE usuario SET id_usuario=?, clave_acceso=?,clave_vencida=?,rol=? WHERE id_usuario=?; "),
-//    EXCLUIR("DELETE FROM usuario WHERE id_usuario=?; "),
+    INSERTAR("INSERT INTO cliente (id_cliente,usuario_id_usuario,apellidos,nombre,telefono) VALUES (?,?,?,?,?); "),
+    //    MODIFICAR("UPDATE usuario SET id_usuario=?, clave_acceso=?,clave_vencida=?,rol=? WHERE id_usuario=?; "),
+    //    EXCLUIR("DELETE FROM usuario WHERE id_usuario=?; "),
     CONSULTAR("SELECT id_cliente, usuario_id_usuario,apellidos, nombre,telefono FROM cliente"
             + " WHERE id_cliente=?; "),
     LISTAR("SELECT id_cliente, usuario_id_usuario,apellidos, nombre,telefono FROM cliente"
