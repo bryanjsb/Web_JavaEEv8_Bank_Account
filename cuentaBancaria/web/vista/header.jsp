@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
         <title>cabecera</title>
     </head>
     <body>

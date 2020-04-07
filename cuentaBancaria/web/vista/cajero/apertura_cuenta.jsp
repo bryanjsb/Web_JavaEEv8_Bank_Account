@@ -3,9 +3,9 @@
 <%@page import="servicios.ServicioFecha"%>
 <html>
     <head>
-   <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
         <title>Apertura de cuenta</title>
-        
+
     </head>
     <body>
 
@@ -33,7 +33,7 @@
                         <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
                               action="ServicioRegistro" method="GET">
                             <table>
-                                
+
                                 <tr>
                                     <td class="etiqueta">
                                         <label for="buscarCliente" >Identificación Cliente:&nbsp;</label>

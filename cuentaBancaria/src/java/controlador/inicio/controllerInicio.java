@@ -43,6 +43,7 @@ public class controllerInicio extends HttpServlet {
     protected void Login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/vista/login/login.jsp").forward(request, response);
+            
     }
 
     protected void index(HttpServletRequest request, HttpServletResponse response)

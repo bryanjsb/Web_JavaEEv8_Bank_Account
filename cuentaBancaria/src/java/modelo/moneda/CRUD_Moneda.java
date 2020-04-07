@@ -10,10 +10,10 @@ package modelo.moneda;
  * @author Bryan
  */
 public enum CRUD_Moneda {
-     LISTAR("SELECT nombre, descripcion, simbolo,tipo_cambio_compra,tipo_cambio_venta"
-             + " FROM moneda ORDER BY nombre; ");
+    LISTAR("SELECT nombre, descripcion, simbolo,tipo_cambio_compra,tipo_cambio_venta"
+            + " FROM moneda ORDER BY nombre; ");
 
-     CRUD_Moneda(String comando) {
+    CRUD_Moneda(String comando) {
         this.comando = comando;
     }
 

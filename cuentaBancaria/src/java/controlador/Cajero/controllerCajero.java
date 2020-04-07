@@ -19,7 +19,7 @@ import modelo.moneda.DaoMoneda;
  * @author Bryan
  */
 @WebServlet(name = "controllerCajero",
-        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente","/vista/cajero/apertura_cuenta"})
+        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente", "/vista/cajero/apertura_cuenta"})
 public class controllerCajero extends HttpServlet {
 
     /**
@@ -39,8 +39,8 @@ public class controllerCajero extends HttpServlet {
 
             registarCliente(request, response);
         }
-        
-         if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
+
+        if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
 
             aperturaCuentaCliente(request, response);
         }
@@ -54,8 +54,7 @@ public class controllerCajero extends HttpServlet {
 
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
     }
-    
-    
+
     private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();

@@ -5,7 +5,17 @@
 <html>
     <head>
 
-        <%@ include file="/general.jsp" %>
+        <jsp:directive.include file="/general.jsp"/>
+        <%
+            //comprueba que tenga la misma seccion
+            HttpSession sesionActual;
+            sesionActual = request.getSession(true);
+            out.println(
+                    String.format("Sesión actual:&nbsp;%s<br />",
+                            sesionActual.getId()));
+
+        %>
+
 
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
@@ -16,9 +26,11 @@
             // estarán disponibles.
             if (request.getSession(true).getAttribute("usuario") == null) {
                 response.sendRedirect("vista/login/login");
+                request.getParameter("finalizoLog");
             }
         %>
-        <%            Usuario usuario = (Usuario) session.getAttribute("usuario");
+        <%            
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
         %>
         <title>Cuenta Cajero <%= ideUsuario%></title>
@@ -29,7 +41,7 @@
             <div>
 
                 <div> <h1>Pagina Principal Cajero:<%= ideUsuario%></h1></div>
-<%@page import="servicios.ServicioFecha"%>
+                <%@page import="servicios.ServicioFecha"%>
                 <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
                  <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
                 <div>
@@ -46,28 +58,28 @@
         <div id="wrapper">
 
             <div id="contents">
-                
+
                 <section id="seccion1">
                     <h3>Menu Principal</h3>
                     <article>
-                     <p>
-                        <a href="vista/cajero/registrarCliente">Registro Cliente</a>
-                    </p>
-                    <p>
-                        <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
-                    </p>
-                    <p>
-                        <a href="vista/cajero/Deposito.jsp">Depósito</a>
-                    </p>
-                    <p>
-                        <a href="vista/cajero/retiro.jsp">Retiro</a>
-                    </p>
-                    <p>
-                        <a href="vista/cajero/transferencia.jsp">Transferencia en cajas</a>
-                    </p>
-                    <p>
-                        <a href="vista/cajero/acreditacion.jsp">Acreditación de intereses</a>
-                    </p>
+                        <p>
+                            <a href="vista/cajero/registrarCliente">Registro Cliente</a>
+                        </p>
+                        <p>
+                            <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
+                        </p>
+                        <p>
+                            <a href="vista/cajero/Deposito.jsp">Depósito</a>
+                        </p>
+                        <p>
+                            <a href="vista/cajero/retiro.jsp">Retiro</a>
+                        </p>
+                        <p>
+                            <a href="vista/cajero/transferencia.jsp">Transferencia en cajas</a>
+                        </p>
+                        <p>
+                            <a href="vista/cajero/acreditacion.jsp">Acreditación de intereses</a>
+                        </p>
                     </article>
                 </section>
             </div>

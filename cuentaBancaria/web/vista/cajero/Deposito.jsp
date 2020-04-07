@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <title>Depósitos</title>
         <%@ include file="/general.jsp" %>
 
@@ -17,10 +17,10 @@
                 <%@ include file="/vista/navegacion.jsp" %>
             </div>
         </header>
-             
-       <div id="wrapper">
+
+        <div id="wrapper">
             <div id="contents">
-                
+
             </div>
             <nav>
                 <p>

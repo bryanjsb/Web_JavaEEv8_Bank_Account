@@ -37,7 +37,7 @@ public class controllerLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+        
 
         log(request, response);
 
@@ -45,12 +45,14 @@ public class controllerLogin extends HttpServlet {
 
     protected void log(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
         String usuario = request.getParameter("usuario");
         String clave = request.getParameter("password");
         boolean usuarioValido = false;
         DaoUsuario daoUsuario = DaoUsuario.obtenerInstancia();
         if (usuario != null && clave != null) {
             usuarioValido = daoUsuario.verificarUsuario(usuario = checkId(usuario), clave);
+             
         }
 
         if (usuarioValido) {
@@ -59,7 +61,6 @@ public class controllerLogin extends HttpServlet {
 
             HttpSession sesion = request.getSession(true);
             sesion.setAttribute("usuario", tipoUsuario.get());
-            request.setAttribute("usuario", tipoUsuario.get());
             // ------------------------------------------------
             // Fija el tiempo de expiración de la sesión
             // en 3 minutos, independientemente de lo especificado
@@ -78,6 +79,7 @@ public class controllerLogin extends HttpServlet {
             // se registre en el sitio.
             //request.getRequestDispatcher("errorIngreso.jsp?error=2").forward(
             //        request, response);
+           
             response.sendRedirect("vista/login/login");
         }
 

@@ -9,8 +9,8 @@
 <html>
     <head>
         <%@ include file="/general.jsp" %>
-        
-        
+
+
         <title>Navegacion</title>
     </head>
 

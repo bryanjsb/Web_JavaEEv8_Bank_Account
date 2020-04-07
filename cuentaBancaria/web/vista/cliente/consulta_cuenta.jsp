@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
         <title>Consulta de cuentas y movimientos</title>
 
     </head>

@@ -12,7 +12,7 @@
     <head>
         <%@ include file="/general.jsp" %>
         <title>Registro Cliente Nuevo</title>
-        
+
     </head>
     <body>
 
@@ -127,9 +127,9 @@
                                                 out.println("<option selected value=\"0\"> Elige tipo de moneda </option>");
 
                                                 for (moneda m : listaMoneda) {
-                                                    out.println(" <option value=\"" + m.getNombreMoneda()+ "\">" 
-                                                            + m.getDescripcion() +" - "+m.getNombreMoneda()+"  "
-                                                                    +m.getSimboloMoneda()+"</option> ");
+                                                    out.println(" <option value=\"" + m.getNombreMoneda() + "\">"
+                                                            + m.getDescripcion() + " - " + m.getNombreMoneda() + "  "
+                                                            + m.getSimboloMoneda() + "</option> ");
                                                 }
 
                                                 out.println("  </select>");

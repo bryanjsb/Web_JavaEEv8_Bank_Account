@@ -1,4 +1,3 @@
-
 package modelo.cuenta;
 
 import java.util.Date;
@@ -62,9 +61,7 @@ public class cuenta {
     public String toString() {
         return "Cuenta{" + "numero_cuenta=" + num_cuenta + ", tipo_cuenta=" + tipo_cuenta_id_tipo_cuenta + ", id_cliente=" + cliente_id_cliente + ", moneda_nombre=" + moneda_nombre + ", fecha_creacion=" + fecha_creacion + ", limite_transferencia=" + limite_transferencia_diaria + ", activa=" + activa + ", saldo_inicial=" + saldo_inicial + ", fecha_ultima=" + fecha_ultima_aplicacion + ", saldo_final=" + saldo_final + '}';
     }
-    
-       
-    
+
     private final String num_cuenta;
     private final int tipo_cuenta_id_tipo_cuenta;
     private final String cliente_id_cliente;
@@ -75,5 +72,5 @@ public class cuenta {
     private final double saldo_inicial;
     private final Date fecha_ultima_aplicacion;
     private final double saldo_final;
-    
+
 }

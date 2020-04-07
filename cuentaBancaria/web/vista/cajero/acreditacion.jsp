@@ -3,7 +3,7 @@
     <head>
 
         <title>Acreditación de intereses</title>
-       <%@ include file="/general.jsp" %>
+        <%@ include file="/general.jsp" %>
     </head>
     <body>
         <div id="wrapper">
