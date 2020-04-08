@@ -5,7 +5,7 @@
  */
 package modelo.cliente;
 
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -27,7 +27,6 @@ public class Cliente {
     public Cliente() {
         this("", "", "", "", "");
     }
-    private static final Logger LOG = Logger.getLogger(Cliente.class.getName());
 
     public String getIdCliente() {
         return idCliente;

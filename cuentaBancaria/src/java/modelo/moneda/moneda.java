@@ -5,7 +5,6 @@
  */
 package modelo.moneda;
 
-import static java.lang.System.out;
 import java.util.List;
 
 /**

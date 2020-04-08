@@ -40,9 +40,13 @@
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
-            Cliente cliente = (Cliente) session.getAttribute("cliente");
 
+            Cliente cliente = (Cliente) session.getAttribute("cliente");
             String idClienteNuevo = (String) cliente.getIdCliente();
+            String nombre = (String) cliente.getNombre();
+
+            String apellidos = (String) cliente.getApellidos();
+            String telefono = (String) cliente.getTelefono();
 
         %>
         <title>Cuenta Cajero <%= ideUsuario%> Registro Cliente Nuevo</title>
@@ -98,8 +102,9 @@
                                         <label for="nombre">Nombre de usuario:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="text" size="30"
-                                               id="nombre" name="nombre" autocomplete="off" />
+                                        <input type="text" size="30" 
+                                               id="nombre" name="nombre" autocomplete="off" 
+                                               />
                                     </td>
                                 </tr>
                                 <tr>
@@ -107,8 +112,9 @@
                                         <label for="apellidos">Apellidos del usuario&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="text" size="30" autocomplete="off"
-                                               id="apellidos" name="apellidos" />
+                                        <input type="text" size="30" autocomplete="off" 
+                                               id="apellidos" name="apellidos" 
+                                               />
                                     </td>
                                 </tr>
 
@@ -118,40 +124,12 @@
                                     </td>
                                     <td class="campo">
                                         <input type="tel" size="30" max="8" maxlength="8"
-                                               autocomplete="off"
+                                               autocomplete="off"  
                                                placeholder="maximo 8 digitos"
-                                               id="telefono" name="telefono" />
+                                               id="telefono" name="telefono" 
+                                               />
                                     </td>
                                 </tr>
-
-
-                                <tr>
-                                    <td class="etiqueta">
-                                        <label for="clave">Clave de acceso:&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                        <input type="text" size="30"
-                                               id="clave" name="clave" autocomplete="off" />
-                                    </td>
-                                </tr>
-
-                                <!--<tr>
-                                    <td class="etiqueta">
-                                        <label for="moneda">Tipo de moneda:&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-
-                                <%
-                                    // moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
-
-                                    //out.println(listaMoneda1.mostrarListaMonedaJSP());
-%>
-
-
-
-
-                            </td>
-                        </tr>-->
 
                                 <tr>
                                     <td class="controles" colspan="2">

@@ -50,6 +50,36 @@ public class DaoCliente {
 
         return insertado;
     }
+    
+     public boolean agregarCliente(Cliente cliente,Usuario usuario) {
+         boolean insertado = false;
+         DaoUsuario daousuario=DaoUsuario.obtenerInstancia();
+         if(!daousuario.agregarUsuario(usuario)){
+             return false;
+         }
+        
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(CRUD_Cliente.INSERTAR.obtenerComando())) {
+
+            stm.clearParameters();
+            stm.setString(1, cliente.getIdCliente());
+            stm.setString(2, cliente.getUsuarioIdUsuario());
+            stm.setString(3, cliente.getApellidos());
+            stm.setString(4, cliente.getNombre());
+            stm.setString(5, cliente.getTelefono());
+            
+            if (stm.executeUpdate() != 1) {
+                throw new SQLException();
+            } else {
+                insertado = true;
+            }
+            
+        } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
+            Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return insertado;
+    }
 
     public boolean verificarCliente(String idCliente) {
         boolean encontrado = false;
@@ -178,9 +208,9 @@ public class DaoCliente {
             System.out.println(e);
         });
         System.out.println("INSERTAR");
-         DaoUsuario daousuario=DaoUsuario.obtenerInstancia();
-         daousuario.agregarUsuario(new Usuario("99999999","99999999",0,1));
-        se.agregarCliente(new Cliente("99999999", "99999999", "99999999", "99999999", "99999999"));
+//         DaoUsuario daousuario=DaoUsuario.obtenerInstancia();
+//         daousuario.agregarUsuario(new Usuario("99999999","99999999",0,1));
+//        se.agregarCliente(new Cliente("99999999", "99999999", "99999999", "99999999", "99999999"));
         
         
     }

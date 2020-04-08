@@ -12,13 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.cliente.Cliente;
+import modelo.cliente.DaoCliente;
+import modelo.usuario.Usuario;
+import servicios.generadorClave;
 
 /**
  *
  * @author Bryan
  */
 @WebServlet(name = "controllerCajero",
-        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente", "/vista/cajero/apertura_cuenta"})
+        urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente",
+            "/vista/cajero/apertura_cuenta","/ClienteBuscar","/registarNuevoUsuario"
+        
+        })
 public class controllerCajero extends HttpServlet {
 
     /**
@@ -45,8 +52,16 @@ public class controllerCajero extends HttpServlet {
         }
 
         if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
-
             aperturaCuentaCliente(request, response);
+        }
+        
+        
+         if (request.getServletPath().equals("/ClienteBuscar")) {
+            this.buscarCliente(request.getParameter("buscarCliente"), request, response);
+        }
+
+        if (request.getServletPath().equals("/registarNuevoUsuario")) {
+            this.registrarCliente(request, response);
         }
     }
 
@@ -57,18 +72,65 @@ public class controllerCajero extends HttpServlet {
     }
     private void registarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession sesion = request.getSession(true);
-       
-        request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
+        response.sendRedirect("/cuentaBancaria/vista/cajero/registrarCliente.jsp");
     }
 
     private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getRequestDispatcher("/vista/cajero/apertura_cuenta.jsp").forward(request, response);
+        response.sendRedirect("/cuentaBancaria/vista/cajero/apertura_cuenta.jsp");
     }
 
+      private void buscarCliente(String id, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String destino = null;
+        HttpSession sesion = request.getSession(true);
+        DaoCliente dc = DaoCliente.obtenerInstancia();
+        if (dc.verificarCliente(id)) {
+
+            sesion.setAttribute("cliente", dc.obtenerCliente(id).get());
+            destino = "vista/cajero/registrarCliente";
+        } else {
+
+            Cliente cliente=new Cliente();
+            cliente.setIdCliente(id);
+           sesion.setAttribute("cliente", cliente);
+            destino = "vista/cajero/registrarCliente";
+        }
+        response.sendRedirect(destino);
+
+    }
+
+    private void registrarCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sesion = request.getSession(true);
+        Cliente clienteNuevo = new Cliente(
+                request.getParameter("login"),
+                request.getParameter("login"),
+                request.getParameter("apellidos"),
+                request.getParameter("nombre"),
+                request.getParameter("telefono")
+        );
+        
+        sesion.setAttribute("cliente", clienteNuevo);
+        Usuario usuarioNuevo = new Usuario(
+                request.getParameter("login"),
+                generadorClave.getPassword(), 0, 1
+        );
+        
+        sesion.setAttribute("cliente", usuarioNuevo);
+        
+        DaoCliente dc = DaoCliente.obtenerInstancia();
+        
+        if (dc.agregarCliente(clienteNuevo,usuarioNuevo)) {
+
+            response.sendRedirect("controllerCajero");
+        } else {
+            //error
+        }
+
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

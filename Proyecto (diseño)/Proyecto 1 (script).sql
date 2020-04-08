@@ -43,13 +43,17 @@ CREATE TABLE IF NOT EXISTS `eif209_2001_p01`.`cliente` (
   `apellidos` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `telefono` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_cliente`),
-  INDEX `fk_cliente_usuario1_idx` (`usuario_id_usuario` ASC),
+  PRIMARY KEY (`id_cliente`)
+    ,
+INDEX `fk_cliente_usuario1_idx` (`usuario_id_usuario` ASC),
   CONSTRAINT `fk_cliente_usuario1`
     FOREIGN KEY (`usuario_id_usuario`)
     REFERENCES `eif209_2001_p01`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
+   
+    )
+   
 ENGINE = InnoDB;
 
 
