@@ -18,4 +18,10 @@ public abstract class ServicioFecha {
         java.util.Date fecha = Calendar.getInstance().getTime();
         return fmt.format(fecha);
     }
+    
+    public static String AñoActual() {
+        DateFormat fmt = new SimpleDateFormat("yyyy", new Locale("es", "CR"));
+        java.util.Date año = Calendar.getInstance().getTime();
+        return fmt.format(año);
+    }
 }

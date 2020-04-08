@@ -22,6 +22,10 @@ public class generadorClave {
 	public static String getPinNumber() {
 		return getPassword(NUMEROS, 4);
 	}
+        
+        public static String getPinNumber(int len) {
+		return getPassword(NUMEROS, len);
+	}
  
 	public static String getPassword() {
 		return getPassword(8);
