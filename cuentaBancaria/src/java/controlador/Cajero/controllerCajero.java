@@ -11,9 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.cliente.Cliente;
-import modelo.moneda.DaoMoneda;
-import modelo.moneda.moneda;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -60,6 +58,7 @@ public class controllerCajero extends HttpServlet {
     private void registarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession sesion = request.getSession(true);
        
         request.getRequestDispatcher("/vista/cajero/registrarCliente.jsp").forward(request, response);
     }

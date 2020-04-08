@@ -33,14 +33,17 @@
             // estarán disponibles.
             if (request.getSession(true).getAttribute("usuario") == null) {
                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
-                
+
             }
         %>
 
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
-            String idClienteNuevo=(String)session.getAttribute("idBusqueda");
+            Cliente cliente = (Cliente) session.getAttribute("cliente");
+
+            String idClienteNuevo = (String) cliente.getIdCliente();
+
         %>
         <title>Cuenta Cajero <%= ideUsuario%> Registro Cliente Nuevo</title>
 
@@ -131,24 +134,24 @@
                                                id="clave" name="clave" autocomplete="off" />
                                     </td>
                                 </tr>
-                                
+
                                 <!--<tr>
                                     <td class="etiqueta">
                                         <label for="moneda">Tipo de moneda:&nbsp;</label>
                                     </td>
                                     <td class="campo">
 
-                                        <%
-                                           // moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
+                                <%
+                                    // moneda listaMoneda1 = (moneda) request.getAttribute("listaMonedas1");
 
-                                            //out.println(listaMoneda1.mostrarListaMonedaJSP());
-                                        %>
-
-
+                                    //out.println(listaMoneda1.mostrarListaMonedaJSP());
+%>
 
 
-                                    </td>
-                                </tr>-->
+
+
+                            </td>
+                        </tr>-->
 
                                 <tr>
                                     <td class="controles" colspan="2">
@@ -166,7 +169,7 @@
         </div>
 
         <%@include file="/vista/footer.jsp" %> 
-        
-        
+
+
     </body>
 </html>

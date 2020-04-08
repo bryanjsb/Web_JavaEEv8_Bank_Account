@@ -38,11 +38,11 @@ public class controllerCliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         if (request.getServletPath().equals("/controllerCliente")) {
             this.paginaPrincipalCliente(request, response);
         }
-        
+
         if (request.getServletPath().equals("/ClienteBuscar")) {
             this.buscarCliente(request.getParameter("buscarCliente"), request, response);
         }
@@ -50,29 +50,29 @@ public class controllerCliente extends HttpServlet {
         if (request.getServletPath().equals("/registarNuevoUsuario")) {
             this.registrarCliente(request, response);
         }
-
-//            sesion.setAttribute("usuario", tipoUsuario.get());
     }
 
-    private void paginaPrincipalCliente( HttpServletRequest request, HttpServletResponse response)
+    private void paginaPrincipalCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    response.sendRedirect("vista/cliente/cliente.jsp");
-    
+        response.sendRedirect("vista/cliente/cliente.jsp");
+
     }
+
     private void buscarCliente(String id, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cliente cliente = new Cliente();
+
         String destino = null;
         HttpSession sesion = request.getSession(true);
-        DaoCliente dc=DaoCliente.obtenerInstancia();
+        DaoCliente dc = DaoCliente.obtenerInstancia();
         if (dc.verificarCliente(id)) {
 
-            sesion.setAttribute("cliente",  dc.obtenerCliente(id));
-            sesion.setAttribute("idBusqueda", dc.obtenerCliente(id).get().getIdCliente());
-            destino = "controllerCajero";
+            sesion.setAttribute("cliente", dc.obtenerCliente(id));
+            destino = "vista/cajero/registrarCliente";
         } else {
 
-            sesion.setAttribute("idBusqueda", id);
+            Cliente cliente=new Cliente();
+            cliente.setIdCliente(id);
+           sesion.setAttribute("cliente", cliente);
             destino = "vista/cajero/registrarCliente";
         }
         response.sendRedirect(destino);
@@ -81,23 +81,26 @@ public class controllerCliente extends HttpServlet {
 
     private void registrarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        Cliente clienteNuevo= new Cliente(
+        HttpSession sesion = request.getSession(true);
+        Cliente clienteNuevo = new Cliente(
                 request.getParameter("login"),
                 request.getParameter("login"),
                 request.getParameter("apellidos"),
                 request.getParameter("nombre"),
                 request.getParameter("telefono")
         );
-
-        Usuario usuario = new Usuario(
+        
+        sesion.setAttribute("cliente", clienteNuevo);
+        Usuario usuarioNuevo = new Usuario(
                 request.getParameter("login"),
                 request.getParameter("clave"), 0, 1
         );
         
-        DaoCliente dc=DaoCliente.obtenerInstancia();
-        DaoUsuario du=DaoUsuario.obtenerInstancia();
-        if (dc.registrarCliente(clienteNuevo)&& du.registrarUsuario(usuario)) {
+        sesion.setAttribute("cliente", usuarioNuevo);
+        
+        DaoCliente dc = DaoCliente.obtenerInstancia();
+        DaoUsuario du = DaoUsuario.obtenerInstancia();
+        if (du.agregarUsuario(usuarioNuevo)&&dc.agregarCliente(clienteNuevo)) {
 
             response.sendRedirect("controllerCajero");
         } else {

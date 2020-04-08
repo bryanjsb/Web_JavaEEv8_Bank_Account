@@ -13,7 +13,6 @@
             out.println(
                     String.format("Sesión actual:&nbsp;%s<br />",
                             sesionActual.getId()));
-
         %>
 
         <%            // Verifica los datos de la sesión para redirigir la página.
