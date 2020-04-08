@@ -20,12 +20,12 @@ import modelo.datos.BaseDatosBanco;
 
 public class DaoTipo_cuenta {
 
-    public boolean verificarTipo_cuenta(String idTipo_cuenta) {
+    public boolean verificarTipo_cuenta(int idTipo_cuenta) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Tipo_cuenta.VERIFICAR.obtenerComando())) {
             stm.clearParameters();
-            stm.setString(1, idTipo_cuenta);
+            stm.setInt(1, idTipo_cuenta);
             ResultSet rs = stm.executeQuery();
             encontrado = rs.next();
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | IOException | SQLException ex) {
@@ -36,18 +36,18 @@ public class DaoTipo_cuenta {
         return encontrado;
     }
 
-    public Optional<tipo_cuenta> obtenerTipo_cuenta(String idTipo_cuenta) {
+    public Optional<tipo_cuenta> obtenerTipo_cuenta(int idTipo_cuenta) {
         Optional<tipo_cuenta> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Tipo_cuenta.CONSULTAR.obtenerComando());) {
             stm.clearParameters();
-            stm.setString(1, idTipo_cuenta);
+            stm.setInt(1, idTipo_cuenta);
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
                     r = Optional.of(new tipo_cuenta(
                             rs.getInt("id_tipo_cuenta"),
-                            rs.getString("descripcion"),
-                            rs.getDouble("tasa_interes")
+                            rs.getString("descripción"),
+                            rs.getDouble("tasa_interés")
                     ));
                 }
             }
@@ -71,8 +71,8 @@ public class DaoTipo_cuenta {
             while (rs.next()) {
                 tipo_cuenta e = new tipo_cuenta(
                         rs.getInt("id_tipo_cuenta"),
-                        rs.getString("descripcion"),
-                        rs.getDouble("tasa_interes")
+                        rs.getString("descripción"),
+                        rs.getDouble("tasa_interés")
                 );
                 r.add(e);
             }
@@ -88,7 +88,7 @@ public class DaoTipo_cuenta {
         return r;
     }
 
-    public Connection obtenerConexion() throws
+    private Connection obtenerConexion() throws
             ClassNotFoundException,
             IllegalAccessException,
             InstantiationException,
@@ -117,4 +117,29 @@ public class DaoTipo_cuenta {
 
     private static DaoTipo_cuenta instancia = null;
     private BaseDatosBanco bd = null;
+
+    public static void main(String[] args) {
+        DaoTipo_cuenta dao = obtenerInstancia();
+
+        System.err.println("Verificar");
+        if (dao.verificarTipo_cuenta(7)) {
+            System.err.println("encontrado");
+        } else {
+            System.err.println("NO encontrado");
+        }
+        if (dao.verificarTipo_cuenta(1)) {
+            System.err.println("encontrado");
+        } else {
+            System.err.println("NO encontrado");
+        }
+
+        System.err.println("Mostrar lista TIPO DE CUENTA");
+        dao.obtenerListaTipo_cuenta().forEach((t) -> {
+            System.out.println(t);
+        });
+
+        System.err.println("Obtener Tipo de cuenta");
+        System.out.println(dao.obtenerTipo_cuenta(1));
+        System.out.println(dao.obtenerTipo_cuenta(1));
+    }
 }

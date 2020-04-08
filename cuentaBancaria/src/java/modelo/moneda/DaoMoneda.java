@@ -81,7 +81,7 @@ public class DaoMoneda {
         return r;
     }
 
-    public Connection obtenerConexion() throws
+    private Connection obtenerConexion() throws
             ClassNotFoundException,
             IllegalAccessException,
             InstantiationException,
@@ -112,13 +112,13 @@ public class DaoMoneda {
     private BaseDatosBanco bd = null;
 
     public static void main(String[] args) {
-    DaoMoneda daoMoneda= obtenerInstancia();
-    
+        DaoMoneda daoMoneda = obtenerInstancia();
+
         System.err.println("Mostrar lista moneda");
         daoMoneda.obtenerListaMoneda().forEach((t) -> {
             System.out.println(t);
         });
-    
+
         System.err.println("Obtener moneda colón");
         System.out.println(daoMoneda.obtenerMoneda("CRC"));
         System.err.println("Obtener moneda EURO");

@@ -1,15 +1,23 @@
 <%-- 
-    Document   : crearCuentaCliente
-    Created on : 08/04/2020, 01:06:56 AM
+    Document   : confirmacionCuentaNueva
+    Created on : 08/04/2020, 12:55:58 PM
     Author     : Bryan
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.Date"%>
+<%@page import="modelo.cliente.Cliente"%>
 <%@page import="modelo.usuario.Usuario"%>
+<%@page import="modelo.moneda.moneda"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:directive.include file="/general.jsp"/>
+        <%@ include file="/general.jsp" %>
+
+
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -27,15 +35,23 @@
             // estarán disponibles.
             if (request.getSession(true).getAttribute("usuario") == null) {
                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
+
             }
         %>
+
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
+            /*
+            Cliente cliente = (Cliente) session.getAttribute("cliente");
+            String idClienteNuevo = (String) cliente.getIdCliente();
+            String nombre = (String) cliente.getNombre();
+
+            String apellidos = (String) cliente.getApellidos();
+            String telefono = (String) cliente.getTelefono();
+             */
         %>
-
-
-        <title>Cuenta Cajero <%= ideUsuario%></title>
+        <title>JSP Page</title>
     </head>
     <body>
         <div>
@@ -68,7 +84,7 @@
                         <article>
                             <h2>Formulario Registro Nuevo</h2>
                             <form class="formLogin" 
-                                  action="controllerAperturaCuenta" method="GET">
+                                  action="confirmacionAceptada" method="GET">
                                 <table>
 
                                     <tr>
@@ -128,28 +144,32 @@
 
                                 <tr>
                                     <td class="etiqueta">
-                                        <label for="tipoCuenta">Tipo de Cuenta&nbsp;</label>
+                                        <label for="tipoCuenta">Tipo de cuenta:&nbsp;</label>
                                     </td>
                                     <td class="campo">
+                                        <jsp:useBean class="modelo.tipo_cuenta.tipo_cuenta" id="tipoCuenta" scope="session"></jsp:useBean>
+                                        <%                                            out.print("<label for=\"tipoCuenta\" value=\" " + tipoCuenta.getDescripcion() + "\">"
+                                                    + tipoCuenta.toString() + "&nbsp;</label>");
 
-                                        <jsp:useBean class="modelo.tipo_cuenta.tipo_cuenta" id="ob_tipoCuenta" scope="session">
+                                        %>
 
-                                        </jsp:useBean>
-                                        <%out.print(ob_tipoCuenta.mostrarListaTipoCuentaJSP());%>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td class="etiqueta">
-                                        <label for="tipoMoneda">Tipo de moneda:&nbsp;</label>
+                                        <label for="numeroCuenta">Numero de Cuenta generada:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <jsp:useBean class="modelo.moneda.moneda" id="tipoMoneda" scope="session">
+                                        <%                                     out.print("<label for=\"numeroCuenta\" value=\" "
+                                                    + session.getAttribute("numeroCuenta") + "\">"
+                                                    + session.getAttribute("numeroCuenta") + "&nbsp;</label>");
 
-                                        </jsp:useBean>
-                                        <%out.print(tipoMoneda.mostrarListaMonedaJSP());%>
+                                        %>
                                     </td>
                                 </tr>
+
+
 
 
                                 <tr>
@@ -157,17 +177,49 @@
                                         <label for="limiteDiario">Limite Diario:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <input type="number" size="30" maxlength="30"
-                                               id="limiteDiario" name="limiteDiario" autocomplete="off" 
-                                               />
+                                        <%                                            moneda moneda = (moneda) session.getAttribute("tipoMoneda");
+                                            out.print("<label for=\"limiteDiario\" value=\" "
+                                                    + session.getAttribute("limiteDiario") + "\">"
+                                                    + moneda.getSimboloMoneda() + " " + session.getAttribute("limiteDiario") + "&nbsp;</label>");
+
+                                        %>
                                     </td>
                                 </tr>
 
 
+                                <tr>
+                                    <td class="etiqueta">
+                                        <label for="saldoInicial">saldo Inicial:&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+
+                                        <%                                            out.print("<label for=\"saldoInicial\" value=\" " + session.getAttribute("saldoInicial") + "\">"
+                                                    + moneda.getSimboloMoneda() + " " + session.getAttribute("saldoInicial") + "&nbsp;</label>");
+
+                                        %>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="etiqueta">
+                                        <label for="fechaCreacion">Fecha de creacion:&nbsp;</label>
+                                    </td>
+                                    <td class="campo">
+
+                                        <%                                            Date fecha = (Date) session.getAttribute("fechaCreacion");
+                                            DateFormat fmt = new SimpleDateFormat("dd 'de' MMMM, yyyy", new Locale("es", "CR"));
+                                            out.print("<label for=\"fechaCreacion\" value=\" " + fmt.format(fecha) + "\">"
+                                                    + fmt.format(fecha) + "&nbsp;</label>");
+
+                                        %>
+
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td class="controles" colspan="2">
-                                        <button type="submit">Enviar Solicitud</button>
+                                        <button type="submit">Crear Cuenta</button>
                                     </td>
                                 </tr>
                             </table>
@@ -181,6 +233,5 @@
         </div>
 
         <%@include file="/vista/footer.jsp" %> 
-
     </body>
 </html>

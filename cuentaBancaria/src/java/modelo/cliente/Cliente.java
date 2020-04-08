@@ -5,8 +5,6 @@
  */
 package modelo.cliente;
 
-
-
 /**
  *
  * @author Bryan
@@ -67,5 +65,5 @@ public class Cliente implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
 }

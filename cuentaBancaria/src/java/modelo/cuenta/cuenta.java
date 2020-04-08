@@ -1,10 +1,17 @@
 package modelo.cuenta;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
-public class cuenta {
+public class cuenta implements java.io.Serializable {
 
-    public cuenta(String num_cuenta, int tipo_cuenta_id_tipo_cuenta, String cliente_id_cliente, String moneda_nombre, Date fecha_creacion, double limite_transferencia_diaria, int activa, double saldo_inicial, Date fecha_ultima_aplicacion, double saldo_final) {
+    public cuenta(String num_cuenta, int tipo_cuenta_id_tipo_cuenta,
+            String cliente_id_cliente, String moneda_nombre,
+            Date fecha_creacion, double limite_transferencia_diaria,
+            int activa, double saldo_inicial, Date fecha_ultima_aplicacion, double saldo_final) {
         this.num_cuenta = num_cuenta;
         this.tipo_cuenta_id_tipo_cuenta = tipo_cuenta_id_tipo_cuenta;
         this.cliente_id_cliente = cliente_id_cliente;
@@ -15,6 +22,10 @@ public class cuenta {
         this.saldo_inicial = saldo_inicial;
         this.fecha_ultima_aplicacion = fecha_ultima_aplicacion;
         this.saldo_final = saldo_final;
+    }
+
+    public cuenta() {
+        this("", 0, "", "", new Date(), 0.0, 0, 0.0, new Date(), 0.0);
     }
 
     public String getNumero_cuenta() {
@@ -62,6 +73,20 @@ public class cuenta {
         return "Cuenta{" + "numero_cuenta=" + num_cuenta + ", tipo_cuenta=" + tipo_cuenta_id_tipo_cuenta + ", id_cliente=" + cliente_id_cliente + ", moneda_nombre=" + moneda_nombre + ", fecha_creacion=" + fecha_creacion + ", limite_transferencia=" + limite_transferencia_diaria + ", activa=" + activa + ", saldo_inicial=" + saldo_inicial + ", fecha_ultima=" + fecha_ultima_aplicacion + ", saldo_final=" + saldo_final + '}';
     }
 
+    public void actualizarfechaUltimaAplicacion() {
+        DateFormat fmt = new SimpleDateFormat("dd 'de' MMMM, yyyy", new Locale("es", "CR"));
+        java.util.Date fecha = Calendar.getInstance().getTime();
+        fecha_ultima_aplicacion = fecha;
+    }
+
+    public Date getFecha_ultima_aplicacion() {
+        return fecha_ultima_aplicacion;
+    }
+
+    public void setFecha_ultima_aplicacion(Date fecha_ultima_aplicacion) {
+        this.fecha_ultima_aplicacion = fecha_ultima_aplicacion;
+    }
+
     private final String num_cuenta;
     private final int tipo_cuenta_id_tipo_cuenta;
     private final String cliente_id_cliente;
@@ -70,7 +95,7 @@ public class cuenta {
     private final double limite_transferencia_diaria;
     private final int activa;
     private final double saldo_inicial;
-    private final Date fecha_ultima_aplicacion;
+    private Date fecha_ultima_aplicacion;
     private final double saldo_final;
 
 }

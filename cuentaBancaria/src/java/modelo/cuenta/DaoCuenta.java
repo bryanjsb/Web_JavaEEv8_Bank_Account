@@ -17,8 +17,39 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
+import util.conversion.DateConversion;
 
 public class DaoCuenta {
+
+    public boolean agregarCuenta(cuenta cuenta) {
+        boolean insertado = false;
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(CRUD_Cuenta.INSERTAR.obtenerComando())) {
+
+            stm.clearParameters();
+            stm.setString(1, cuenta.getNumero_cuenta());
+            stm.setInt(2, cuenta.getTipo_cuenta_id_tipo_cuenta());
+            stm.setString(3, cuenta.getId_cliente());
+            stm.setString(4, cuenta.getMoneda_nombre());
+            stm.setTimestamp(5, DateConversion.util2Timestamp((java.util.Date) cuenta.getFecha_creacion()));
+            stm.setDouble(6, cuenta.getLimite_transferencia());
+            stm.setInt(7, cuenta.getActiva());
+            stm.setDouble(8, cuenta.getSaldo_inicial());
+            stm.setTimestamp(9, DateConversion.util2Timestamp((java.util.Date) cuenta.getFecha_ultima()));
+            stm.setDouble(10, cuenta.getSaldo_final());
+
+            if (stm.executeUpdate() != 1) {
+                throw new SQLException();
+            } else {
+                insertado = true;
+            }
+
+        } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
+            Logger.getLogger(DaoCuenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return insertado;
+    }
 
     public boolean verificarCuenta(String numCuenta) {
         boolean encontrado = false;

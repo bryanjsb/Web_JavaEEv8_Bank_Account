@@ -37,3 +37,13 @@ INSERT INTO `eif209_2001_p01`.`cliente`
     ,('117620191', '117620191', 'Garita Gutiérrez', 'Rebecca', '86793562')
 	;
 SELECT * FROM  `eif209_2001_p01`.`cliente`;
+
+
+INSERT INTO `eif209_2001_p01`.`tipo_cuenta` 
+(`id_tipo_cuenta`, `descripción`, `tasa_interés`)
+ VALUES ('1', 'Cuenta De Ahorros', '6.3'),
+ ('2', 'Cuenta Corriente', '5.0'),
+  ('3', 'Cuenta De Nómina', '3.7'),
+  ('4', 'Cuenta de Valores', '8.2');
+  
+SELECT * FROM `eif209_2001_p01.tipo_cuenta`;

@@ -58,7 +58,7 @@
                 <section id="seccion1">
                     <h3>Menu Principal</h3>
                     <article>
-                        
+
                         <p>
                             <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
                         </p>
@@ -91,6 +91,6 @@
 
         <%@include file="/vista/footer.jsp" %> 
     </body>
-    
+
 </html>
 

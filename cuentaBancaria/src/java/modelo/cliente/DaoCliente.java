@@ -37,27 +37,27 @@ public class DaoCliente {
             stm.setString(3, cliente.getApellidos());
             stm.setString(4, cliente.getNombre());
             stm.setString(5, cliente.getTelefono());
-            
+
             if (stm.executeUpdate() != 1) {
                 throw new SQLException();
             } else {
                 insertado = true;
             }
-            
+
         } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
             Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return insertado;
     }
-    
-     public boolean agregarCliente(Cliente cliente,Usuario usuario) {
-         boolean insertado = false;
-         DaoUsuario daousuario=DaoUsuario.obtenerInstancia();
-         if(!daousuario.agregarUsuario(usuario)){
-             return false;
-         }
-        
+
+    public boolean agregarCliente(Cliente cliente, Usuario usuario) {
+        boolean insertado = false;
+        DaoUsuario daousuario = DaoUsuario.obtenerInstancia();
+        if (!daousuario.agregarUsuario(usuario)) {
+            return false;
+        }
+
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Cliente.INSERTAR.obtenerComando())) {
 
@@ -67,13 +67,13 @@ public class DaoCliente {
             stm.setString(3, cliente.getApellidos());
             stm.setString(4, cliente.getNombre());
             stm.setString(5, cliente.getTelefono());
-            
+
             if (stm.executeUpdate() != 1) {
                 throw new SQLException();
             } else {
                 insertado = true;
             }
-            
+
         } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
             Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,7 +132,7 @@ public class DaoCliente {
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
                 ResultSet rs = stm.executeQuery(CRUD_Cliente.LISTAR.obtenerComando())) {
-            
+
             while (rs.next()) {
                 Cliente e = new Cliente(
                         rs.getString("id_cliente"),
@@ -184,15 +184,15 @@ public class DaoCliente {
 
     private static DaoCliente instancia = null;
     private BaseDatosBanco bd = null;
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         DaoCliente se = DaoCliente.obtenerInstancia();
-         
-          System.out.println("Obtener cliente");
+
+        System.out.println("Obtener cliente");
         Optional<Cliente> us = se.obtenerCliente("304760577");
 
         System.out.println(us);
-        
+
         System.out.println("verificar cliente");
 
         if (se.verificarCliente("304760577")) {
@@ -201,9 +201,9 @@ public class DaoCliente {
             System.out.println("no encontrado");
         }
 
-         List<Cliente> clientes = se.obtenerListaClientes();
+        List<Cliente> clientes = se.obtenerListaClientes();
         System.out.println("Obtener lista cliente");
-        
+
         clientes.forEach((e) -> {
             System.out.println(e);
         });
@@ -211,7 +211,6 @@ public class DaoCliente {
 //         DaoUsuario daousuario=DaoUsuario.obtenerInstancia();
 //         daousuario.agregarUsuario(new Usuario("99999999","99999999",0,1));
 //        se.agregarCliente(new Cliente("99999999", "99999999", "99999999", "99999999", "99999999"));
-        
-        
+
     }
 }

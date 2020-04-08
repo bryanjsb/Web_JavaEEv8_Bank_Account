@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 
 public class DaoUsuario {
 
-    public boolean agregarUsuario(Usuario usuario){
-        boolean insertado=false;
+    public boolean agregarUsuario(Usuario usuario) {
+        boolean insertado = false;
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Usuario.INSERTAR.obtenerComando())) {
 
@@ -25,18 +25,18 @@ public class DaoUsuario {
             stm.setString(2, usuario.getClaveAcceso());
             stm.setInt(3, usuario.getClaveVencida());
             stm.setInt(4, usuario.getRol());
-            
+
             if (stm.executeUpdate() != 1) {
                 throw new SQLException();
-            }else{
-                insertado=true;
+            } else {
+                insertado = true;
             }
         } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
             Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return insertado;
     }
-    
+
     public boolean verificarUsuario(String usuario, String clave) {
         boolean encontrado = false;
         try (Connection cnx = obtenerConexion();
@@ -108,7 +108,7 @@ public class DaoUsuario {
         return r;
     }
 
-    public Connection obtenerConexion() throws
+    private Connection obtenerConexion() throws
             ClassNotFoundException,
             IllegalAccessException,
             InstantiationException,
@@ -159,7 +159,7 @@ public class DaoUsuario {
         });
 
         System.out.println("insertar");
-        se.agregarUsuario(new Usuario("1","1111",0,1));
+        se.agregarUsuario(new Usuario("1", "1111", 0, 1));
         us = se.obtenerUsuario("1");
 
         System.out.println(us);
