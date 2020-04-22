@@ -143,7 +143,8 @@
                                     </td>
                                     <td class="campo">
                                         <jsp:useBean class="modelo.tipo_cuenta.tipo_cuenta" id="tipoCuenta" scope="session"></jsp:useBean>
-                                        <%                                            out.print("<label for=\"tipoCuenta\" value=\" " + tipoCuenta.getDescripcion() + "\">"
+                                        <%  out.print("<label for=\"tipoCuenta\" value=\" "
+                                                    + tipoCuenta.getDescripcion() + "\">"
                                                     + tipoCuenta.toString() + "&nbsp;</label>");
 
                                         %>
@@ -172,10 +173,10 @@
                                         <label for="limiteDiario">Limite Diario:&nbsp;</label>
                                     </td>
                                     <td class="campo">
-                                        <%                                            moneda moneda = (moneda) session.getAttribute("tipoMoneda");
-                                            out.print("<label for=\"limiteDiario\" value=\" "
+                                        <jsp:useBean class="modelo.moneda.moneda" id="tipoMoneda" scope="session"></jsp:useBean>
+                                        <%                                            out.print("<label for=\"limiteDiario\" value=\" "
                                                     + session.getAttribute("limiteDiario") + "\">"
-                                                    + moneda.getSimboloMoneda() + " " + session.getAttribute("limiteDiario") + "&nbsp;</label>");
+                                                    + tipoMoneda.getSimboloMoneda() + " " + session.getAttribute("limiteDiario") + "&nbsp;</label>");
 
                                         %>
                                     </td>
@@ -189,7 +190,7 @@
                                     <td class="campo">
 
                                         <%                                            out.print("<label for=\"saldoInicial\" value=\" " + session.getAttribute("saldoInicial") + "\">"
-                                                    + moneda.getSimboloMoneda() + " " + session.getAttribute("saldoInicial") + "&nbsp;</label>");
+                                                    + tipoMoneda.getSimboloMoneda() + " " + session.getAttribute("saldoInicial") + "&nbsp;</label>");
 
                                         %>
 

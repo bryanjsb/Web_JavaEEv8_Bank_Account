@@ -50,7 +50,7 @@ public class tipo_cuenta implements java.io.Serializable {
 
             listaTipoCuenta.forEach((m) -> {
                 s.append(String.format(" <option value=\"" + m.getId_tipo_cuenta() + "\">"
-                        + m.getDescripcion() + " - " + m.getTasa_interes() + "</option> "));
+                        + m.getId_tipo_cuenta() + " - " + m.getDescripcion() + " - " + m.getTasa_interes() + "</option> "));
             });
 
             s.append("  </select>");

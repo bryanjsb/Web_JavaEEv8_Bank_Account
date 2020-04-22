@@ -14,8 +14,7 @@ import servicios.generadorClave;
 
 @WebServlet(name = "controllerCajero",
         urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente",
-            "/vista/cajero/apertura_cuenta", "/ClienteBuscar", "/registarNuevoUsuario",
-            "/vista/cajero/crearCuentaCliente",})
+            "/ClienteBuscar", "/registarNuevoUsuario"})
 public class controllerCajero extends HttpServlet {
 
     /**
@@ -41,10 +40,6 @@ public class controllerCajero extends HttpServlet {
             this.paginaRegistarCliente(request, response);
         }
 
-        if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
-            aperturaCuentaCliente(request, response);
-        }
-
         if (request.getServletPath().equals("/ClienteBuscar")) {
             this.buscarCliente(request.getParameter("buscarCliente"), request, response);
         }
@@ -53,9 +48,6 @@ public class controllerCajero extends HttpServlet {
             this.registrarCliente(request, response);
         }
 
-        if (request.getServletPath().equals("/vista/cajero/crearCuentaCliente")) {
-            this.crearCuenta(request, response);
-        }
     }
 
     private void paginaPrincipalCajero(HttpServletRequest request, HttpServletResponse response)
@@ -67,11 +59,6 @@ public class controllerCajero extends HttpServlet {
     private void paginaRegistarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("/cuentaBancaria/vista/cajero/registrarCliente.jsp");
-    }
-
-    private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.sendRedirect("/cuentaBancaria/vista/cajero/apertura_cuenta.jsp");
     }
 
     private void buscarCliente(String id, HttpServletRequest request, HttpServletResponse response)
@@ -122,12 +109,6 @@ public class controllerCajero extends HttpServlet {
         } else {
             //
         }
-
-    }
-
-    protected void crearCuenta(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.sendRedirect("/cuentaBancaria/vista/cajero/crearCuentaCliente.jsp");
 
     }
 
