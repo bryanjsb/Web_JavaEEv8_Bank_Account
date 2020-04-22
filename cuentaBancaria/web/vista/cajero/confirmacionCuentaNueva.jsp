@@ -1,9 +1,3 @@
-<%-- 
-    Document   : confirmacionCuentaNueva
-    Created on : 08/04/2020, 12:55:58 PM
-    Author     : Bryan
---%>
-
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Locale"%>

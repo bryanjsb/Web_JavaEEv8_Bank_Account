@@ -1,9 +1,3 @@
-<%-- 
-    Document   : navegacion
-    Created on : 01/04/2020, 12:38:31 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

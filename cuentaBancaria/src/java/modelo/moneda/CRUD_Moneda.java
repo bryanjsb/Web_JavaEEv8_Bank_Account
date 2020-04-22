@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.moneda;
 
-/**
- *
- * @author Bryan
- */
 public enum CRUD_Moneda {
     CONSULTAR("SELECT nombre, descripcion, simbolo,tipo_cambio_compra,tipo_cambio_venta"
             + " FROM moneda WHERE nombre=? "),

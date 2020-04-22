@@ -1,9 +1,3 @@
-<%-- 
-    Document   : general
-    Created on : 06/04/2020, 03:04:06 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

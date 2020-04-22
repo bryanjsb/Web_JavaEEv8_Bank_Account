@@ -1,9 +1,3 @@
-<%-- 
-    Document   : redes
-    Created on : 31/03/2020, 06:34:59 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

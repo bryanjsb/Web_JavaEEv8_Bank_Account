@@ -41,9 +41,10 @@ SELECT * FROM  `eif209_2001_p01`.`cliente`;
 
 INSERT INTO `eif209_2001_p01`.`tipo_cuenta` 
 (`id_tipo_cuenta`, `descripción`, `tasa_interés`)
- VALUES ('1', 'Cuenta De Ahorros', '6.3'),
- ('2', 'Cuenta Corriente', '5.0'),
-  ('3', 'Cuenta De Nómina', '3.7'),
-  ('4', 'Cuenta de Valores', '8.2');
+ VALUES ('1', 'Cuenta De Ahorros', '0.03'),
+ ('2', 'Cuenta Corriente', '0.05'),
+  ('3', 'Cuenta De Nómina', '0.37'),
+  ('4', 'Cuenta de Valores', '0.2')
   
+  ;
 SELECT * FROM `eif209_2001_p01.tipo_cuenta`;

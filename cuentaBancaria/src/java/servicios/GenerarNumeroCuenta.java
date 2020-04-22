@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicios;
 
-import com.sun.corba.se.spi.ior.IOR;
-
-/**
- *
- * @author Bryan
- */
 public class GenerarNumeroCuenta implements java.io.Serializable {
 
     public static String generarNumeroCuentaAuto(String moneda) {

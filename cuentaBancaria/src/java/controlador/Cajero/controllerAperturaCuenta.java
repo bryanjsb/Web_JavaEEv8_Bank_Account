@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador.Cajero;
 
 import java.io.IOException;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +16,6 @@ import modelo.tipo_cuenta.tipo_cuenta;
 import servicios.GenerarNumeroCuenta;
 import servicios.ServicioFecha;
 
-/**
- *
- * @author Bryan
- */
 @WebServlet(name = "controllerAperturaCuenta",
         urlPatterns = {"/controllerAperturaCuenta",
             "/vista/cajero/confirmacionCuentaNueva",

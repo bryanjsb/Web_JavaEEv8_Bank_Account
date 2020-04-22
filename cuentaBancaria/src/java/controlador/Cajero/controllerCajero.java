@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador.Cajero;
 
 import java.io.IOException;
@@ -17,10 +12,6 @@ import modelo.cliente.DaoCliente;
 import modelo.usuario.Usuario;
 import servicios.generadorClave;
 
-/**
- *
- * @author Bryan
- */
 @WebServlet(name = "controllerCajero",
         urlPatterns = {"/controllerCajero", "/vista/cajero/registrarCliente",
             "/vista/cajero/apertura_cuenta", "/ClienteBuscar", "/registarNuevoUsuario",

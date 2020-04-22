@@ -1,9 +1,3 @@
-<%-- 
-    Document   : crearCuentaCliente
-    Created on : 08/04/2020, 01:06:56 AM
-    Author     : Bryan
---%>
-
 <%@page import="modelo.usuario.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

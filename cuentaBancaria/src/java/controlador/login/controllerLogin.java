@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador.login;
 
 import java.io.IOException;
@@ -18,10 +13,6 @@ import javax.servlet.http.HttpSession;
 import modelo.usuario.DaoUsuario;
 import modelo.usuario.Usuario;
 
-/**
- *
- * @author Bryan
- */
 @WebServlet(name = "controllerLogin", urlPatterns = {"/controllerLogin"})
 public class controllerLogin extends HttpServlet {
 

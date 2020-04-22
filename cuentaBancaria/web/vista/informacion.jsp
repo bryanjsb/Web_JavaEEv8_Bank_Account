@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Informacion
-    Created on : 31/03/2020, 07:06:50 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

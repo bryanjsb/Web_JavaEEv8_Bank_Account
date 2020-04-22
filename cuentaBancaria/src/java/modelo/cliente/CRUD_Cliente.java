@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.cliente;
 
-/**
- *
- * @author Bryan
- */
 public enum CRUD_Cliente {
     INSERTAR("INSERT INTO cliente (id_cliente,usuario_id_usuario,apellidos,nombre,telefono) VALUES (?,?,?,?,?); "),
     //    MODIFICAR("UPDATE usuario SET id_usuario=?, clave_acceso=?,clave_vencida=?,rol=? WHERE id_usuario=?; "),

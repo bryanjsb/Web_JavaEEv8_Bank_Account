@@ -1,9 +1,3 @@
-<%-- 
-    Document   : registrarCliente
-    Created on : 04/04/2020, 07:26:14 PM
-    Author     : Bryan
---%>
-
 <%@page import="modelo.cliente.Cliente"%>
 <%@page import="modelo.usuario.Usuario"%>
 <%@page import="modelo.usuario.Usuario"%>

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicios;
 
-/**
- *
- * @author Bryan
- */
 public class generadorClave {
 
     public static String NUMEROS = "0123456789";
@@ -19,7 +10,6 @@ public class generadorClave {
 
     public static String ESPECIALES = "ñÑ";
 
-    //
     public static String getPinNumber() {
         return getPassword(NUMEROS, 4);
     }

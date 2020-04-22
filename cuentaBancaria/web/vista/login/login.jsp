@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 01/04/2020, 02:23:34 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

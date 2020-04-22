@@ -1,9 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : 30/03/2020, 08:25:31 PM
-    Author     : Bryan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -23,7 +23,7 @@
             // una sesión nueva, por lo que los datos del usuario no
             // estarán disponibles.
             if (request.getSession(true).getAttribute("usuario") == null) {
-                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
+                request.getRequestDispatcher("/seccionCaducada").forward(request, response);
             }
         %>
         <%            Usuario usuario = (Usuario) session.getAttribute("usuario");
