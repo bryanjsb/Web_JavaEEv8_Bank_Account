@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/apertura_cuenta.jsp</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/src/java/controlador/Cajero/controllerCajero.java</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/src/java/controlador/Cajero/controllerAperturaCuenta.java</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/src/java/controlador/Cajero/controllerCajeroDeposito.java</file>
+            <file>file:/C:/Users/Bryan/Desktop/cuentaBancaria/cuentaBancaria/web/vista/cajero/Deposito.jsp</file>
+        </group>
     </open-files>
 </project-private>
