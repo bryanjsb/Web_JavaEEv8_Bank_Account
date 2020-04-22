@@ -60,6 +60,7 @@
                         <nav>
                             <ul id="button">
                                 <li><a href="controllerLogOut">Cerrar Seccion</a></li>
+                                <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                             </ul>
                         </nav>
                     </div>

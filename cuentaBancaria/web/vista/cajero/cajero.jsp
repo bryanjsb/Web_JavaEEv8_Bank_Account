@@ -44,7 +44,7 @@
                     <nav>
                         <ul id="button">
                             <li><a href="controllerLogOut">Cerrar Seccion</a></li>                   
-                            <li><a href="vista/index">Inicio</a></li>
+                            <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -81,13 +81,6 @@
 
 
         </div>
-
-        <p>
-            Haga clic
-            <a href="index.jsp">aquí</a>
-            para ir a la página principal.
-        </p> 
-
 
         <%@include file="/vista/footer.jsp" %> 
     </body>

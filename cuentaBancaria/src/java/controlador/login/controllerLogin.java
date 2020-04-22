@@ -55,7 +55,7 @@ public class controllerLogin extends HttpServlet {
             // Fija el tiempo de expiración de la sesión
             // en 3 minutos, independientemente de lo especificado
             // en la configuración de la aplicación.
-            sesion.setMaxInactiveInterval(60 * 3);
+            sesion.setMaxInactiveInterval(60 * 30);
 
             String redirecion = redireccionarUsuario(tipoUsuario);
             response.sendRedirect(redirecion);

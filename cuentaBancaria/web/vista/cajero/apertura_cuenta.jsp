@@ -42,6 +42,7 @@
                     <nav>
                         <ul id="button">
                             <li><a href="controllerLogOut">Cerrar Seccion</a></li>
+                            <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -79,20 +80,7 @@
                     </article>
                 </section>
             </div>
-
-            <footer>
-                <p>
-                    Banco centroamericano a su servicio
-                </p>
-            </footer>
         </div>
-        <nav>
-            <p>
-                Haga clic
-                <a href="vista/cajero/cajero.jsp">aquí</a>
-                para ir a la página principal.
-            </p> 
-        </nav>
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

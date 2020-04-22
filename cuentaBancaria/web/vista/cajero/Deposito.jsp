@@ -42,6 +42,7 @@
                     <nav>
                         <ul id="button">
                             <li><a href="controllerLogOut">Cerrar Seccion</a></li>
+                            <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -52,77 +53,73 @@
 
             <div id="contents">
                 <section id="seccion1">
-                    <h1>Realizar Deposito al cliente</h1>
+
                     <article>
-                        <h2>Realizar Deposito al cliente por cedula</h2>
-                        <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
-                              action="ClienteBuscar" method="GET">
+                        <form class="formLogin" name="buscarClienteDeposito" id="buscarClienteDeposito"
+                              action="buscarClienteDeposito" method="GET">
+
+
                             <table>
+                                <thead>
+                                    <tr>
+                                <h3>Realizar Deposito al cliente</h3>
+                                </tr>
+                                <tr>
+                                <p>Seleccione el modo de busqueda:</p>
+                                </tr>
+
 
                                 <tr>
-                                    <td class="etiqueta">
-                                        <label for="buscarCliente" >Identificación Cliente:&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                        <input type="search" size="30" maxlength="9"
-                                               id="buscarCliente" name="buscarCliente" autocomplete="off"
-                                               placeholder="(max 9 digitos: ej 102340567 )"
-                                               />
-                                    </td>
-                                    <td class="controles" colspan="2">
-                                        <button type="submit">Buscar</button>
 
-                                    </td>
-                                </tr>   
+                                <div>
+                                    <input type="radio" id="numCuenta" name="busquedaDeposito" value="0">
+                                    <label for="numCuenta">Numero Cuenta</label>
+                                </div>
+
+
+                                <div>
+                                    <input type="radio" id="idUsuario" name="busquedaDeposito" value="1"
+                                           <label for="idUsuario">Identificación del Usuario</label>  
+                                </div>
+
+                                </tr>
+
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td class="campo">
+                                            <input type="search" size="40" maxlength="40"
+                                                   id="buscarCliente" name="buscarDepostio" autocomplete="off"
+
+                                                   />
+                                        </td>
+
+                                        <td class="controles" colspan="10" rowspan="4" >
+                                            <button type="submit"
+                                                    style="width:190px; height:25px">
+                                                Buscar      </button>
+                                        </td>
+                                    </tr> 
+                                </tbody>
+                                <tfoot>
+
+                                </tfoot>
                             </table>
 
                         </form>
 
                     </article>
 
-
-                    <article>
-                        <h2>Realizar Deposito al cliente por numero de cuenta</h2>
-                        <form class="formLogin" name="nuevoUsuario" id="nuevoUsuario"
-                              action="ClienteBuscar" method="GET">
-                            <table>
-
-                                <tr>
-                                    <td class="etiqueta">
-                                        <label for="buscarCliente" >Identificación Cliente:&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                        <input type="search" size="30" maxlength="9"
-                                               id="buscarCliente" name="buscarCliente" autocomplete="off"
-                                               placeholder="(max 9 digitos: ej 102340567 )"
-                                               />
-                                    </td>
-                                    <td class="controles" colspan="2">
-                                        <button type="submit">Buscar</button>
-
-                                    </td>
-                                </tr>   
-                            </table>
-
-                        </form>
-
-                    </article>
                 </section>
             </div>
 
-            <footer>
-                <p>
-                    Banco centroamericano a su servicio
-                </p>
-            </footer>
+
         </div>
-        <nav>
-            <p>
-                Haga clic
-                <a href="vista/cajero/cajero.jsp">aquí</a>
-                para ir a la página principal.
-            </p> 
-        </nav>
+
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>
