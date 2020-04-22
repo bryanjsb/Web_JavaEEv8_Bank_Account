@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public abstract class ServicioFecha {
+public abstract class ServicioFecha implements java.io.Serializable {
 
     public static String fechaActual() {
         DateFormat fmt = new SimpleDateFormat("dd 'de' MMMM, yyyy", new Locale("es", "CR"));

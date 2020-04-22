@@ -1,6 +1,6 @@
 package servicios;
 
-public class generadorClave {
+public class generadorClave implements java.io.Serializable {
 
     public static String NUMEROS = "0123456789";
 

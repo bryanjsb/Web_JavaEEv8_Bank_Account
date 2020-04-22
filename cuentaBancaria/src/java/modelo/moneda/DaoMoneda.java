@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import modelo.datos.BaseDatosBanco;
 
-public class DaoMoneda {
+public class DaoMoneda implements java.io.Serializable{
 
     public Optional<moneda> obtenerMoneda(String id) {
         Optional<moneda> r = Optional.empty();

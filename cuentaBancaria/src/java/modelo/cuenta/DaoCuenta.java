@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
 import util.conversion.DateConversion;
 
-public class DaoCuenta {
+public class DaoCuenta implements java.io.Serializable{
 
     public boolean agregarCuenta(cuenta cuenta) {
         boolean insertado = false;

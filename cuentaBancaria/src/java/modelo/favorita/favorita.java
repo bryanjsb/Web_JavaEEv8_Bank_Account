@@ -1,6 +1,6 @@
 package modelo.favorita;
 
-public class favorita {
+public class favorita implements java.io.Serializable{
 
     public favorita(String cliente_id_cliente, String cuenta_num_cuenta) {
         this.cliente_id_cliente = cliente_id_cliente;

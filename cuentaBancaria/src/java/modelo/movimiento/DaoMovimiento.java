@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
 
-public class DaoMovimiento {
+public class DaoMovimiento implements java.io.Serializable{
 
     public boolean verificarMovimiento(String idMovimiento) {
         boolean encontrado = false;

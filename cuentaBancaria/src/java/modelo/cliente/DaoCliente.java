@@ -15,11 +15,7 @@ import modelo.datos.BaseDatosBanco;
 import modelo.usuario.DaoUsuario;
 import modelo.usuario.Usuario;
 
-/**
- *
- * @author Bryan
- */
-public class DaoCliente {
+public class DaoCliente implements java.io.Serializable {
 
     public boolean agregarCliente(Cliente cliente) {
         boolean insertado = false;

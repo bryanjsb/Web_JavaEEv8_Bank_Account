@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
 
-public class DaoTipo_cuenta {
+public class DaoTipo_cuenta implements java.io.Serializable {
 
     public boolean verificarTipo_cuenta(int idTipo_cuenta) {
         boolean encontrado = false;

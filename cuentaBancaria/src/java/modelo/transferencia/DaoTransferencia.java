@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
 
-public class DaoTransferencia {
+public class DaoTransferencia implements java.io.Serializable {
 
     public boolean verificarTransferencia(String idTransferencia) {
         boolean encontrado = false;
