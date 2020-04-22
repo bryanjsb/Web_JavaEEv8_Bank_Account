@@ -32,7 +32,7 @@
         %>
 
         <%
-            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            /*Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
 
             Cliente cliente = (Cliente) session.getAttribute("cliente");
@@ -41,9 +41,9 @@
 
             String apellidos = (String) cliente.getApellidos();
             String telefono = (String) cliente.getTelefono();
-
+             */
         %>
-        <title>Cuenta Cajero <%= ideUsuario%> Registro Cliente Nuevo</title>
+        <title>Registro Cliente Nuevo</title>
 
     </head>
     <body>
@@ -60,6 +60,7 @@
                         <nav>
                             <ul id="button">
                                 <li><a href="controllerLogOut">Cerrar Seccion</a></li>
+                                <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -67,26 +68,26 @@
             </header>
         </div>    
 
+        <jsp:useBean class="modelo.cliente.Cliente" id="cliente" scope="session"></jsp:useBean>
+            <div id="wrapper">
+                <div id="contents" >
+                    <section>
+                        <h1>Registrando Usuario Nuevo.</h1>
+                        <article>
+                            <h2>Formulario Registro Nuevo</h2>
+                            <form class="formLogin" 
+                                  action="registarNuevoUsuario" method="GET">
+                                <table>
 
-        <div id="wrapper">
-            <div id="contents" >
-                <section>
-                    <h1>Registrando Usuario Nuevo.</h1>
-                    <article>
-                        <h2>Formulario Registro Nuevo</h2>
-                        <form class="formLogin" 
-                              action="registarNuevoUsuario" method="GET">
-                            <table>
-
-                                <tr>
-                                    <td class="etiqueta">
-                                        <label for="login" >Identificación (<em>login</em>):&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                        <input type="text" size="30" maxlength="9"
-                                               id="login" name="login" autocomplete="off" 
-                                               value=<%=idClienteNuevo%>
-                                               />
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="login" >Identificación (<em>login</em>):&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <input type="text" size="30" maxlength="9"
+                                                   id="login" name="login" autocomplete="off" 
+                                                   value=<%=cliente.getIdCliente()%>
+                                            />
                                     </td>
                                 </tr>
 

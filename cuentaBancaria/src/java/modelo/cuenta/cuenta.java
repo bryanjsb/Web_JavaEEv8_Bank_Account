@@ -28,44 +28,84 @@ public class cuenta implements java.io.Serializable {
         this("", 0, "", "", new Date(), 0.0, 0, 0.0, new Date(), 0.0);
     }
 
-    public String getNumero_cuenta() {
+    public String getNum_cuenta() {
         return num_cuenta;
+    }
+
+    public void setNum_cuenta(String num_cuenta) {
+        this.num_cuenta = num_cuenta;
     }
 
     public int getTipo_cuenta_id_tipo_cuenta() {
         return tipo_cuenta_id_tipo_cuenta;
     }
 
-    public String getId_cliente() {
+    public void setTipo_cuenta_id_tipo_cuenta(int tipo_cuenta_id_tipo_cuenta) {
+        this.tipo_cuenta_id_tipo_cuenta = tipo_cuenta_id_tipo_cuenta;
+    }
+
+    public String getCliente_id_cliente() {
         return cliente_id_cliente;
+    }
+
+    public void setCliente_id_cliente(String cliente_id_cliente) {
+        this.cliente_id_cliente = cliente_id_cliente;
     }
 
     public String getMoneda_nombre() {
         return moneda_nombre;
     }
 
+    public void setMoneda_nombre(String moneda_nombre) {
+        this.moneda_nombre = moneda_nombre;
+    }
+
     public Date getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public double getLimite_transferencia() {
+    public void setFecha_creacion(Date fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
+    }
+
+    public double getLimite_transferencia_diaria() {
         return limite_transferencia_diaria;
+    }
+
+    public void setLimite_transferencia_diaria(double limite_transferencia_diaria) {
+        this.limite_transferencia_diaria = limite_transferencia_diaria;
     }
 
     public int getActiva() {
         return activa;
     }
 
+    public void setActiva(int activa) {
+        this.activa = activa;
+    }
+
     public double getSaldo_inicial() {
         return saldo_inicial;
     }
 
-    public Date getFecha_ultima() {
+    public void setSaldo_inicial(double saldo_inicial) {
+        this.saldo_inicial = saldo_inicial;
+    }
+
+    public Date getFecha_ultima_aplicacion() {
         return fecha_ultima_aplicacion;
+    }
+
+    public void setFecha_ultima_aplicacion(Date fecha_ultima_aplicacion) {
+        this.fecha_ultima_aplicacion = fecha_ultima_aplicacion;
     }
 
     public double getSaldo_final() {
         return saldo_final;
+    }
+
+    public void setSaldo_final(double saldo_final) {
+        this.saldo_final = saldo_final;
     }
 
     @Override
@@ -79,23 +119,15 @@ public class cuenta implements java.io.Serializable {
         fecha_ultima_aplicacion = fecha;
     }
 
-    public Date getFecha_ultima_aplicacion() {
-        return fecha_ultima_aplicacion;
-    }
-
-    public void setFecha_ultima_aplicacion(Date fecha_ultima_aplicacion) {
-        this.fecha_ultima_aplicacion = fecha_ultima_aplicacion;
-    }
-
-    private final String num_cuenta;
-    private final int tipo_cuenta_id_tipo_cuenta;
-    private final String cliente_id_cliente;
-    private final String moneda_nombre;
-    private final Date fecha_creacion;
-    private final double limite_transferencia_diaria;
-    private final int activa;
-    private final double saldo_inicial;
+    private String num_cuenta;
+    private int tipo_cuenta_id_tipo_cuenta;
+    private String cliente_id_cliente;
+    private String moneda_nombre;
+    private Date fecha_creacion;
+    private double limite_transferencia_diaria;
+    private int activa;
+    private double saldo_inicial;
     private Date fecha_ultima_aplicacion;
-    private final double saldo_final;
+    private double saldo_final;
 
 }

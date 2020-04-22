@@ -1,4 +1,3 @@
-<%@page import="modelo.usuario.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,13 +22,10 @@
                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
             }
         %>
-        <%
-            Usuario usuario = (Usuario) session.getAttribute("usuario");
-            String ideUsuario = usuario.getIdUsuario();
-        %>
 
 
-        <title>Cuenta Cajero <%= ideUsuario%></title>
+
+        <title>Crear cuenta Cliente</title>
     </head>
     <body>
         <div>
@@ -44,6 +40,7 @@
                         <nav>
                             <ul id="button">
                                 <li><a href="controllerLogOut">Cerrar Seccion</a></li>
+                                <li><a href="controllerCajero">Pagina principal Cajero</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -58,9 +55,9 @@
 
                 <jsp:useBean class="modelo.cliente.Cliente" id="cliente" scope="session"></jsp:useBean>
                     <section>
-                        <h1>Registrando Usuario Nuevo.</h1>
+                        <h1>Creando Cuenta Nueva.</h1>
                         <article>
-                            <h2>Formulario Registro Nuevo</h2>
+                            <h2>Formulario Cuenta Nueva</h2>
                             <form class="formLogin" 
                                   action="controllerAperturaCuenta" method="GET">
                                 <table>

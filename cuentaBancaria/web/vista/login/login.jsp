@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Inicio Seccion</title>
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <!--<%@ include file="/general.jsp" %>-->
         <jsp:directive.include file="/general.jsp" />
     </head>

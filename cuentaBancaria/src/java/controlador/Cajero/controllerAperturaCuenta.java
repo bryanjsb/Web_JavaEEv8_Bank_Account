@@ -43,59 +43,42 @@ public class controllerAperturaCuenta extends HttpServlet {
 
         if (request.getServletPath().equals("/controllerAperturaCuenta")) {
 
+            cuenta cuenta = new cuenta();
             String moneda = request.getParameter("moneda");
-            String numeroCuenta = GenerarNumeroCuenta.
-                    generarNumeroCuentaAuto(moneda);
+            String numeroCuenta = GenerarNumeroCuenta.generarNumeroCuentaAuto(moneda);
 
-            DaoMoneda daoMoneda = DaoMoneda.obtenerInstancia();
-
-            DaoTipo_cuenta daoTipoCuenta = DaoTipo_cuenta.obtenerInstancia();
-            tipo_cuenta tipoCuenta = daoTipoCuenta.obtenerTipo_cuenta(
-                    Integer.parseInt(request.getParameter("tipoCuenta"))).get();
-
-            sesion.setAttribute("numeroCuenta", numeroCuenta);
-
-            sesion.setAttribute("tipoCuenta", tipoCuenta);
-            sesion.setAttribute("idtipoCuenta", request.getParameter("tipoCuenta"));
+            cuenta.setNum_cuenta(numeroCuenta);
+            cuenta.setTipo_cuenta_id_tipo_cuenta(Integer.parseInt(request.getParameter("tipoCuenta")));
 
             Cliente cliente = (Cliente) sesion.getAttribute("cliente");
-            sesion.setAttribute("clienteIdCliente", cliente.getIdCliente());
+            cuenta.setCliente_id_cliente(cliente.getIdCliente());
 
-            sesion.setAttribute("nombreMoneda", moneda);
-            sesion.setAttribute("tipoMoneda", daoMoneda.obtenerMoneda(moneda).get());
+            cuenta.setMoneda_nombre(moneda);
+            cuenta.setFecha_creacion(ServicioFecha.fechaActualCuenta());
 
-            sesion.setAttribute("fechaCreacion", ServicioFecha.fechaActualCuenta());
+            double limiteDiario = Double.parseDouble(request.getParameter("limiteDiario"));
+            cuenta.setLimite_transferencia_diaria(limiteDiario);
 
-            sesion.setAttribute("limiteDiario", request.getParameter("limiteDiario"));
-            sesion.setAttribute("cuentaActiva", 1);
-            sesion.setAttribute("saldoInicial", 0);
+            cuenta.setActiva(1);
+            cuenta.setSaldo_inicial(0.0);
+            cuenta.setSaldo_final(0.0);
 
-            sesion.setAttribute("saldoFinal", 0);
+            cuenta.setFecha_ultima_aplicacion(ServicioFecha.fechaActualCuenta());
 
-            sesion.setAttribute("fechaCreacion", ServicioFecha.fechaActualCuenta());
+            sesion.setAttribute("cuenta", cuenta);
 
+            sesion.setAttribute("fechaCreacion", cuenta.getFecha_creacion());
+            sesion.setAttribute("saldoInicial", cuenta.getSaldo_inicial());
+            sesion.setAttribute("limiteDiario", cuenta.getLimite_transferencia_diaria());
+            sesion.setAttribute("numeroCuenta", cuenta.getNum_cuenta());
             response.sendRedirect("vista/cajero/confirmacionCuentaNueva");
 
         }
 
         if (request.getServletPath().equals("/confirmacionAceptada")) {
 
-//            cuenta cuenta = new cuenta(
-//                    (String) sesion.getAttribute("numeroCuenta"),
-//                    Integer.parseInt((String) sesion.getAttribute("idtipoCuenta")),
-//                    (String) sesion.getAttribute("clienteIdCliente"),
-//                    (String) sesion.getAttribute("nombreMoneda"),
-//                    (Date) sesion.getAttribute("fechaCreacion"),
-//                    Double.parseDouble((String) sesion.getAttribute("limiteDiario")),
-//                    Integer.parseInt((String) sesion.getAttribute("cuentaActiva")),
-//                    Double.parseDouble((String) sesion.getAttribute("saldoInicial")),
-//                    (Date) sesion.getAttribute("fechaCreacion"),
-//                    Double.parseDouble((String) sesion.getAttribute("saldoFinal"))
-//            );
-            cuenta cuenta = new cuenta("aa", 0, "aa", "aa", ServicioFecha.fechaActualCuenta(),
-                    0.0, 0, 0.0, ServicioFecha.fechaActualCuenta(), 0.0);
             DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
-            daoCuenta.agregarCuenta(cuenta);
+            daoCuenta.agregarCuenta((cuenta) sesion.getAttribute("cuenta"));
             response.sendRedirect("controllerCajero");
 
         }

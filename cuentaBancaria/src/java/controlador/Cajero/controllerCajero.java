@@ -30,105 +30,112 @@ public class controllerCajero extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         if (request.getServletPath().equals("/controllerCajero")) {
-
+            
             paginaPrincipalCajero(request, response);
         }
-
+        
         if (request.getServletPath().equals("/vista/cajero/registrarCliente")) {
-
+            
             this.paginaRegistarCliente(request, response);
         }
-
+        
         if (request.getServletPath().equals("/vista/cajero/apertura_cuenta")) {
             aperturaCuentaCliente(request, response);
         }
-
+        
         if (request.getServletPath().equals("/ClienteBuscar")) {
             this.buscarCliente(request.getParameter("buscarCliente"), request, response);
         }
-
+        
         if (request.getServletPath().equals("/registarNuevoUsuario")) {
             this.registrarCliente(request, response);
         }
-
+        
         if (request.getServletPath().equals("/vista/cajero/crearCuentaCliente")) {
             this.crearCuenta(request, response);
         }
     }
-
+    
     private void paginaPrincipalCajero(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("vista/cajero/cajero.jsp");
-
+        
     }
-
+    
     private void paginaRegistarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("/cuentaBancaria/vista/cajero/registrarCliente.jsp");
     }
-
+    
     private void aperturaCuentaCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("/cuentaBancaria/vista/cajero/apertura_cuenta.jsp");
     }
-
+    
     private void buscarCliente(String id, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String destino = null;
         HttpSession sesion = request.getSession(true);
         DaoCliente dc = DaoCliente.obtenerInstancia();
         if (dc.verificarCliente(id)) {
-
+            
             sesion.setAttribute("cliente", dc.obtenerCliente(id).get());
             destino = "vista/cajero/crearCuentaCliente";
         } else {
-
+            
             Cliente cliente = new Cliente();
             cliente.setIdCliente(id);
+            cliente.setUsuarioIdUsuario(id);
             sesion.setAttribute("cliente", cliente);
             destino = "vista/cajero/registrarCliente";
         }
         response.sendRedirect(destino);
-
+        
     }
-
+    
     private void registrarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession(true);
-        Cliente clienteNuevo = new Cliente(
-                request.getParameter("login"),
-                request.getParameter("login"),
-                request.getParameter("apellidos"),
-                request.getParameter("nombre"),
-                request.getParameter("telefono")
-        );
-
+//        Cliente clienteNuevo = new Cliente(
+//                request.getParameter("login"),
+//                request.getParameter("login"),
+//                request.getParameter("apellidos"),
+//                request.getParameter("nombre"),
+//                request.getParameter("telefono")
+//        );
+        
+        Cliente clienteNuevo = (Cliente) sesion.getAttribute("cliente");
+        
+        clienteNuevo.setNombre(request.getParameter("nombre"));
+        clienteNuevo.setApellidos(request.getParameter("apellidos"));
+        clienteNuevo.setTelefono(request.getParameter("telefono"));
+        
         Usuario usuarioNuevo = new Usuario(
                 request.getParameter("login"),
                 generadorClave.getPassword(), 0, 1
         );
 
-        sesion.setAttribute("cliente", usuarioNuevo);
+//        sesion.setAttribute("cliente", usuarioNuevo);
         DaoCliente dc = DaoCliente.obtenerInstancia();
-
+        
         if (dc.agregarCliente(clienteNuevo, usuarioNuevo)) {
-            sesion.setAttribute("cliente", dc.obtenerCliente(request.getParameter("login")).get());
+            sesion.setAttribute("cliente", clienteNuevo);
+//          sesion.setAttribute("cliente", dc.obtenerCliente(request.getParameter("login")).get());
+
             response.sendRedirect("vista/cajero/crearCuentaCliente");
         } else {
-
+            //
         }
-
+        
     }
-
+    
     protected void crearCuenta(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sesion = request.getSession(true);
-
         response.sendRedirect("/cuentaBancaria/vista/cajero/crearCuentaCliente.jsp");
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

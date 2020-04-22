@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DaoUsuario implements java.io.Serializable{
+public class DaoUsuario implements java.io.Serializable {
 
     public boolean agregarUsuario(Usuario usuario) {
         boolean insertado = false;

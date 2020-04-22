@@ -51,24 +51,20 @@ public class controllerLogin extends HttpServlet {
 
             HttpSession sesion = request.getSession(true);
             sesion.setAttribute("usuario", tipoUsuario.get());
-            // ------------------------------------------------
+
             // Fija el tiempo de expiración de la sesión
             // en 3 minutos, independientemente de lo especificado
             // en la configuración de la aplicación.
             sesion.setMaxInactiveInterval(60 * 3);
-//            
 
             String redirecion = redireccionarUsuario(tipoUsuario);
             response.sendRedirect(redirecion);
-//            request.getRequestDispatcher(redirecion).forward(request, response);
         } else {
 
             // Aquí se puede redirigir la página a una diferente
             // dependiendo del tipo de error. Por ejemplo, se puede
             // utilizar una página para solicitar al usuario que
             // se registre en el sitio.
-            //request.getRequestDispatcher("errorIngreso.jsp?error=2").forward(
-            //        request, response);
             response.sendRedirect("vista/login/login");
         }
 

@@ -12,9 +12,10 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.datos.BaseDatosBanco;
+import servicios.ServicioFecha;
 import util.conversion.DateConversion;
 
-public class DaoCuenta implements java.io.Serializable{
+public class DaoCuenta implements java.io.Serializable {
 
     public boolean agregarCuenta(cuenta cuenta) {
         boolean insertado = false;
@@ -22,15 +23,15 @@ public class DaoCuenta implements java.io.Serializable{
                 PreparedStatement stm = cnx.prepareStatement(CRUD_Cuenta.INSERTAR.obtenerComando())) {
 
             stm.clearParameters();
-            stm.setString(1, cuenta.getNumero_cuenta());
+            stm.setString(1, cuenta.getNum_cuenta());
             stm.setInt(2, cuenta.getTipo_cuenta_id_tipo_cuenta());
-            stm.setString(3, cuenta.getId_cliente());
+            stm.setString(3, cuenta.getCliente_id_cliente());
             stm.setString(4, cuenta.getMoneda_nombre());
             stm.setTimestamp(5, DateConversion.util2Timestamp((java.util.Date) cuenta.getFecha_creacion()));
-            stm.setDouble(6, cuenta.getLimite_transferencia());
+            stm.setDouble(6, cuenta.getLimite_transferencia_diaria());
             stm.setInt(7, cuenta.getActiva());
             stm.setDouble(8, cuenta.getSaldo_inicial());
-            stm.setTimestamp(9, DateConversion.util2Timestamp((java.util.Date) cuenta.getFecha_ultima()));
+            stm.setTimestamp(9, DateConversion.util2Timestamp((java.util.Date) cuenta.getFecha_ultima_aplicacion()));
             stm.setDouble(10, cuenta.getSaldo_final());
 
             if (stm.executeUpdate() != 1) {
@@ -157,4 +158,12 @@ public class DaoCuenta implements java.io.Serializable{
 
     private static DaoCuenta instancia = null;
     private BaseDatosBanco bd = null;
+
+    public static void main(String[] args) {
+        DaoCuenta daoCuenta = obtenerInstancia();
+
+        cuenta cuenta = new cuenta("aa", 1, "114450585", "CRC", ServicioFecha.fechaActualCuenta(),
+                0.0, 1, 0.0, ServicioFecha.fechaActualCuenta(), 450.055);
+        daoCuenta.agregarCuenta(cuenta);
+    }
 }
