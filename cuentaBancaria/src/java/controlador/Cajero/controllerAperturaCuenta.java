@@ -10,9 +10,6 @@ import javax.servlet.http.HttpSession;
 import modelo.cliente.Cliente;
 import modelo.cuenta.DaoCuenta;
 import modelo.cuenta.cuenta;
-import modelo.moneda.DaoMoneda;
-import modelo.tipo_cuenta.DaoTipo_cuenta;
-import modelo.tipo_cuenta.tipo_cuenta;
 import servicios.GenerarNumeroCuenta;
 import servicios.ServicioFecha;
 
