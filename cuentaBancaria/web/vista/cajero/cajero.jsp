@@ -63,7 +63,7 @@
                             <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
                         </p>
                         <p>
-                            <a href="vista/cajero/Deposito.jsp">Depósito</a>
+                            <a href="vista/cajero/Deposito">Depósito</a>
                         </p>
                         <p>
                             <a href="vista/cajero/retiro.jsp">Retiro</a>

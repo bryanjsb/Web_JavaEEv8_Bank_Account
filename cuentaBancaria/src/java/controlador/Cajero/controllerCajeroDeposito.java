@@ -6,10 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "controllerCajeroDeposito",
         urlPatterns = {"/controllerCajeroDeposito",
-            "/buscarClienteDeposito"
+            "/buscarClienteDeposito",
+            "/vista/cajero/Deposito"
 
         })
 public class controllerCajeroDeposito extends HttpServlet {
@@ -18,12 +20,54 @@ public class controllerCajeroDeposito extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+         HttpSession sesion = request.getSession(true);
+        if(request.getServletPath().equals("/vista/cajero/Deposito")){
+            paginaDeposito(request, response);
+        
+        }
+        
+        if(request.getServletPath().equals( "/buscarClienteDeposito")){
+        
+            
+        
+        }
+        
+        if(request.getServletPath().equals(" ")){
+        
+        
+        }
+        
+        
+        if(request.getServletPath().equals(" ")){
+        
+        
+        }
+        
+        if(request.getServletPath().equals(" ")){
+        
+        
+        }
     }
 
-    void redireccionarPaginaDepositoCajero(HttpServletRequest request, HttpServletResponse response)
+   private void comprobarTipoBusqueda(HttpServletRequest request,
+           HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
-
-        response.sendRedirect("vista/cajero/buscarClienteDeposito");
+       
+       String tipoBusqueda= request.getParameter("busquedaDeposito");
+       
+       if(tipoBusqueda.equals("numCuenta")){
+       
+           
+       }else if(tipoBusqueda.equals("idUsuario")){
+       
+           
+       }
+     
+   
+   }
+    private void paginaDeposito(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.sendRedirect("/cuentaBancaria/vista/cajero/Deposito.jsp");
 
     }
 

@@ -10,6 +10,8 @@ public enum CRUD_Cuenta {
     //    EXCLUIR("DELETE FROM cuenta WHERE num_cuenta=?; "),
     CONSULTAR("SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta"
             + " WHERE num_cuenta=?; "),
+    CONSULTARCLIENTE("SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta"
+            + " WHERE cliente_id_cliente=?; "),
     LISTAR("SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta"
             + " ORDER BY num_cuenta; "),
     VERIFICAR("SELECT num_cuenta FROM cuenta WHERE num_cuenta=?; ");

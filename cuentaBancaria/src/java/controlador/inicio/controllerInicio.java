@@ -8,34 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "controllerInicio",
-        urlPatterns = {"/controllerInicio", "/vista/index", "/vista/login/login"})
+        urlPatterns = {"/controllerInicio", "/vista/index"})
 public class controllerInicio extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if (request.getServletPath().equals("/vista/login/login")) {
-            this.Login(request, response);
-        }
+       
         if (request.getServletPath().equals("/vista/index")) {
             this.index(request, response);
         }
     }
 
-    protected void Login(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/vista/login/login.jsp").forward(request, response);
-
-    }
+    
 
     protected void index(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

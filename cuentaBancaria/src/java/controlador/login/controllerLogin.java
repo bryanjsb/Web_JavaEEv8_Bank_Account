@@ -13,7 +13,10 @@ import javax.servlet.http.HttpSession;
 import modelo.usuario.DaoUsuario;
 import modelo.usuario.Usuario;
 
-@WebServlet(name = "controllerLogin", urlPatterns = {"/controllerLogin"})
+@WebServlet(name = "controllerLogin",
+        urlPatterns = {"/controllerLogin", "/vista/login/login"
+
+        })
 public class controllerLogin extends HttpServlet {
 
     /**
@@ -29,11 +32,24 @@ public class controllerLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        log(request, response);
+        if (request.getServletPath().equals("/vista/login/login")) {
+            this.paginaLogin(request, response);
+        }
+
+        if (request.getServletPath().equals("/controllerLogin")) {
+            log(request, response);
+
+        }
 
     }
 
-    protected void log(HttpServletRequest request, HttpServletResponse response)
+    private void paginaLogin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/vista/login/login.jsp").forward(request, response);
+
+    }
+
+    private void log(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
         String usuario = request.getParameter("usuario");

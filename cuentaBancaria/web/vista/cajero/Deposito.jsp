@@ -72,13 +72,13 @@
                                 <tr>
 
                                 <div>
-                                    <input type="radio" id="numCuenta" name="busquedaDeposito" value="0">
+                                    <input type="radio" id="numCuenta" name="busquedaDeposito" value="numCuenta">
                                     <label for="numCuenta">Numero Cuenta</label>
                                 </div>
 
 
                                 <div>
-                                    <input type="radio" id="idUsuario" name="busquedaDeposito" value="1"
+                                    <input type="radio" id="idUsuario" name="busquedaDeposito" value="idUsuario"
                                            <label for="idUsuario">Identificación del Usuario</label>  
                                 </div>
 
