@@ -108,13 +108,16 @@ public class controllerCajeroDeposito extends HttpServlet {
         if (ptrCuenta.getActiva() == 1 && ptrCuenta != null) {
             if ((montoDeposito < 0)) {
 
-                response.sendRedirect("/cuentaBancaria/vista/index.jsp");
+                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
 
+                
             } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
-
+                // si entra es por que es su cuenta
                 ptrCuenta.realizarDeposito(montoDeposito);
                 DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
                 daoCuenta.modificarCuenta(ptrCuenta);
+                
+                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
             } else {
                 ptrCuenta.realizarDeposito(montoDeposito);
                 DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
