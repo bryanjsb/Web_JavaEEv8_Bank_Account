@@ -13,7 +13,6 @@
             out.println(
                     String.format("Sesión actual:&nbsp;%s<br />",
                             sesionActual.getId()));
-
         %>
 
         <%            // Verifica los datos de la sesión para redirigir la página.
@@ -47,132 +46,199 @@
         <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
 
             <div id="wrapper">
-                <section>
-                    <h1>deposito por numero de cuenta</h1>
-                    <article>
-                        <form class="formLogin" 
-                              action="realizarDeposito" method="GET">
-                            <table>
+                <div id="contents"> 
+                    <section id="seccion1">
+                        <h1>deposito por numero de cuenta</h1>
+                        <article>
+                            <form class="formLogin" 
+                                  action="realizarDeposito" method="GET">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="etiqueta">
+                                                <label for="numCuenta" >numero de Cuenta&nbsp;</label>
+                                            </td>
+                                            <td class="campo">
+                                            <%
 
-                                <tr>
-                                    <td class="etiqueta">
-                                        <label for="numCuenta" >numero de Cuenta&nbsp;</label>
-                                    </td>
-                                    <td class="campo">
-                                    <%
+                                                out.print("<label for=\"numCuenta\" >"
+                                                        + cuenta.getNum_cuenta() + "&nbsp;</label>");
+                                            %>
+                                        </td>
+                                    </tr>
 
-                                        out.print("<label for=\"numCuenta\" >"
-                                                + cuenta.getNum_cuenta() + "&nbsp;</label>");
-                                    %>
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="duenoCuenta" >Dueño de la cuenta&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%
+                                                out.print("<label for=\"duenoCuenta\" >"
+                                                        + cuenta.nombreCompletoCliente()
+                                                        + "&nbsp;</label>");
+                                            %>
+                                        </td>
+                                    </tr>
 
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="tipoCuenta">tipo de cuenta&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
 
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="tipoCuenta">tipo de cuenta&nbsp;</label>
-                                </td>
-                                <td class="campo">
+                                            <%
+                                                out.print("<label for=\"tipoCuenta\" >"
+                                                        + cuenta.mostrarInfoCuentaDeposito() + "&nbsp;</label>");
+                                            %>
+                                        </td>
 
-                                    <%
-                                        out.print("<label for=\"tipoCuenta\" >"
-                                                + cuenta.getTipo_cuenta_id_tipo_cuenta() + "&nbsp;</label>");
-                                    %>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="idCliente">Id Cliente&nbsp;</label>
-
-                                </td>
-                                <td class="campo">
-                                    <%
-                                        out.print("<label for=\"idCliente\" >"
-                                                + cuenta.getCliente_id_cliente() + "&nbsp;</label>");
-                                    %>
-                                </td>
-
-                            </tr>
-
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="moneda">Moneda&nbsp;</label>
-                                </td>
-                                <td class="campo">
-                                    <%
-                                        out.print("<label for=\"moneda\" value=\" " + cuenta.getMoneda_nombre() + "\">"
-                                                + cuenta.getMoneda_nombre() + "&nbsp;</label>");
-
-                                    %>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="limieteDiario">Limite Diario:&nbsp;</label>
-                                </td>
-                                <td class="campo">
-                                    <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getLimite_transferencia_diaria() + "\">"
-                                                + cuenta.getLimite_transferencia_diaria() + "&nbsp;</label>");
-
-                                    %>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="estado">Estado:&nbsp;</label>
-                                </td>
-                                <td class="campo">
-                                    <%                                            int estadoActual = cuenta.getActiva();
-                                        if (estadoActual == 0) {
-                                            out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
-                                                    + "inabilitada" + "&nbsp;</label>");
-
-                                        } else {
-                                            out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
-                                                    + "Activa" + "&nbsp;</label>");
-                                        }
-                                    %>
-                                </td>
-                            </tr>
+                                    </tr>
 
 
-                            <tr>
-                                <td class="etiqueta">
-                                    <label for="saldoActual">Saldo Actual:&nbsp;</label>
-                                </td>
-                                <td class="campo">
-                                    <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getSaldo_final() + "\">"
-                                                + cuenta.getSaldo_final() + "&nbsp;</label>");
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="moneda">Moneda&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%
+                                                out.print("<label for=\"moneda\" value=\" " + cuenta.getMoneda_nombre() + "\">"
+                                                        + cuenta.obtenerMoneda().getDescripcion() + "&nbsp;</label>");
 
-                                    %>
+                                            %>
 
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="limieteDiario">Limite Diario:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getLimite_transferencia_diaria() + "\">"
+                                                        + cuenta.obtenerMoneda().getSimboloMoneda() + cuenta.getLimite_transferencia_diaria() + "&nbsp;</label>");
+
+                                            %>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="estado">Estado:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%                                            int estadoActual = cuenta.getActiva();
+                                                if (estadoActual == 0) {
+                                                    out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
+                                                            + "inabilitada" + "&nbsp;</label>");
+
+                                                } else {
+                                                    out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
+                                                            + "Activa" + "&nbsp;</label>");
+                                                }
+                                            %>
+                                        </td>
+                                    </tr>
 
 
-                            <tr>
-                                <td class="controles" colspan="2">
-                                    <button type="submit">Realizar Deposito</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="saldoActual">Saldo Actual:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getSaldo_final() + "\">"
+                                                        + cuenta.obtenerMoneda().getSimboloMoneda() + cuenta.getSaldo_final() + "&nbsp;</label>");
 
-                </article>
+                                            %>
 
-            </section>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <input type="search" size="30" maxlength="9"
+                                                   id="verificarId" name="verificarId" autocomplete="off"
+                                                   placeholder="(max 9 digitos: ej 102340567 )"
+                                                   />
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <input type="number" size="30" maxlength="9"
+                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
+
+                                                   />
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="moneda">tipo de moneda a depositar&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <%out.print(cuenta.obtenerMoneda().mostrarListaMonedaStatic());%>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <textarea id="motivoDeposito" name="motivoDeposito"
+                                                      cols="35" rows="2"></textarea>
+                                        </td>
+
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="controles" colspan="2">
+                                            <button type="submit">Realizar Deposito</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr> 
+                                        <td class="controles" colspan="4">
+                                            <span style="color: #b71540"> El tipo de moneda a depositar se 
+                                                convierte al tipo de moneda de 
+                                                la cuenta segun los precios de la moneda 
+                                                del <%= ServicioFecha.fechaActual()%>
+                                            </span>
+                                        </td>
+                                    </tr> 
+                                </tfoot>
+                            </table>
+
+
+                        </form>
+
+                    </article>
+
+                </section>
 
 
 
 
 
+            </div>   
         </div>   
-
 
         <%@include file="/vista/footer.jsp" %> 
     </body>

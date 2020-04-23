@@ -62,4 +62,20 @@ public class tipo_cuenta implements java.io.Serializable {
     private final String descripcion;
     private final double tasa_interes;
 
+    static public tipo_cuenta obtenerTipoCuenta(int n) {
+        DaoTipo_cuenta dao = DaoTipo_cuenta.obtenerInstancia();
+        return dao.obtenerTipo_cuenta(n).get();
+    }
+
+    public static List<tipo_cuenta> obtenerListaTipoCuentaStatic() {
+        DaoTipo_cuenta dao = DaoTipo_cuenta.obtenerInstancia();
+        return dao.obtenerListaTipo_cuenta();
+    }
+
+    public static boolean verificarTipoCuenta(int n) {
+
+        DaoTipo_cuenta dao = DaoTipo_cuenta.obtenerInstancia();
+        return dao.verificarTipo_cuenta(n);
+
+    }
 }

@@ -6,8 +6,11 @@ public enum CRUD_Cuenta {
             + "limite_transferencia_diaria, activa, saldo_inicial,"
             + " fecha_ultima_aplicacion, saldo_final) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); "),
-    //    MODIFICAR("UPDATE cuenta SET num_cuenta=?,tipo_cuenta_id_tipo_cuenta=?,cliente_id_cliente=?,moneda_nombre=?,fecha_creacion=?,limite_transferencia_diaria=?,activa=?,saldo_inicial=?,fecha_ultima_aplicacion=?,saldo_final=? WHERE num_cuenta=?; "),
-    //    EXCLUIR("DELETE FROM cuenta WHERE num_cuenta=?; "),
+    MODIFICAR("UPDATE cuenta SET num_cuenta=?,tipo_cuenta_id_tipo_cuenta=?,"
+            + " cliente_id_cliente=?, moneda_nombre=?, fecha_creacion=?,"
+            + " limite_transferencia_diaria=? ,activa=?, saldo_inicial=?,"
+            + " fecha_ultima_aplicacion=?, saldo_final=? WHERE num_cuenta=?; "),
+    EXCLUIR("DELETE FROM cuenta WHERE num_cuenta=?; "),
     CONSULTAR("SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta"
             + " WHERE num_cuenta=?; "),
     CONSULTARCLIENTE("SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta"

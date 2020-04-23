@@ -4,7 +4,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import modelo.cliente.Cliente;
+import modelo.cliente.DaoCliente;
+import modelo.moneda.moneda;
+import modelo.tipo_cuenta.tipo_cuenta;
 
 public class cuenta implements java.io.Serializable {
 
@@ -129,5 +134,55 @@ public class cuenta implements java.io.Serializable {
     private double saldo_inicial;
     private Date fecha_ultima_aplicacion;
     private double saldo_final;
+
+    //metodos static
+    public static boolean verificarCuenta(String n) {
+        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+
+        return daoCuenta.verificarCuenta(n);
+    }
+
+    public static cuenta obtenerCuenta(String n) {
+        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        return daoCuenta.obtenerNumeroCuenta(n).get();
+    }
+
+    public static List<cuenta> obtenerListaCuentaCliente(String n) {
+        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        return daoCuenta.obtenerListaCuentaCliente(n);
+    }
+
+    public tipo_cuenta mostrarInfoCuentaDeposito() {
+        return tipo_cuenta.obtenerTipoCuenta(getTipo_cuenta_id_tipo_cuenta());
+    }
+
+    public moneda obtenerMoneda() {
+        return moneda.obtenerMoneda(getMoneda_nombre());
+
+    }
+
+    public Cliente obtenerCliente() {
+        DaoCliente d = DaoCliente.obtenerInstancia();
+        return d.obtenerCliente(getCliente_id_cliente()).get();
+    }
+
+    public String nombreCompletoCliente() {
+        return obtenerCliente().nombreCompleto();
+    }
+
+    public static void actualizarMonto(cuenta n) {
+        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        daoCuenta.modificarCuenta(n);
+    }
+
+    public void realizarDeposito(double n) {
+        setSaldo_inicial((double) getSaldo_final());
+        setSaldo_final((double) getSaldo_final() + (double) n);
+        cambiarHoraUltimoMovimiento();
+    }
+
+    private void cambiarHoraUltimoMovimiento() {
+        this.fecha_ultima_aplicacion = servicios.ServicioFecha.fechaActualCuenta();
+    }
 
 }

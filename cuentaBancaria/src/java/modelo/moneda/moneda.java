@@ -85,4 +85,38 @@ public class moneda implements java.io.Serializable {
         }
         return s.toString();
     }
+
+    public static moneda obtenerMoneda(String n) {
+        DaoMoneda d = DaoMoneda.obtenerInstancia();
+        return d.obtenerMoneda(n).get();
+
+    }
+
+    public static String mostrarListaMonedaStatic() {
+        DaoMoneda daomoneda = DaoMoneda.obtenerInstancia();
+        StringBuilder s = new StringBuilder();
+        List<moneda> listaMoneda = daomoneda.obtenerListaMoneda();
+        if (listaMoneda.isEmpty()) {
+
+            s.append("<select name=\"moneda\" >");
+            s.append("<option selected value=\"0\"> no existe tipo moneda </option>");
+            s.append("  </select>");
+        } else {
+            s.append("<select name=\"moneda\" >");
+            s.append("<option selected value=\"0\"> Elige tipo de moneda </option>");
+
+            listaMoneda.forEach((m) -> {
+                s.append(String.format(" <option value=\"" + m.getNombreMoneda() + "\">"
+                        + m.getDescripcion() + " - " + m.getNombreMoneda() + "  "
+                        + "  " + " Compra: " + m.getSimboloMoneda()
+                        + m.getTipoCambioCompra() + " Venta: " + m.getSimboloMoneda()
+                        + m.getTipoCambioVenta()
+                        + "</option> "));
+            });
+
+            s.append("  </select>");
+
+        }
+        return s.toString();
+    }
 }

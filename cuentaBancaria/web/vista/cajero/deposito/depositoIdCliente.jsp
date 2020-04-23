@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <jsp:directive.include file="/general.jsp"/>
+        <jsp:directive.include file="/general.jsp"/>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -24,12 +24,12 @@
                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
             }
         %>
-        
+
         <title>Deposito</title>
     </head>
     <body>
-        
-         <header class="header">
+
+        <header class="header">
             <div>
                 <div> <h1>Deposito Cajero</h1></div>
 
@@ -45,28 +45,35 @@
                 </div>
             </div>
         </header>
-                <div id="wrapper"> 
-                
-                <table border="1">
-            <thead>
-                <tr>
-                    <th>Lista de las cuentas del cliente</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-</div>   
-                
-                 <%@include file="/vista/footer.jsp" %> 
+
+        <div id="wrapper">
+            <div id="contents"> 
+                <section id="seccion1">
+
+                    <article>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Lista de las cuentas del cliente</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+                </section>
+
+            </div>   
+        </div> 
+        <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>

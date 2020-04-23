@@ -57,4 +57,19 @@ public class Cliente implements java.io.Serializable {
         this.telefono = telefono;
     }
 
+    public String nombreCompleto() {
+        return getNombre() + " " + getApellidos();
+    }
+
+    //metodos static 
+    public static boolean verificarCliente(String codigoIngresado) {
+        DaoCliente daoCliente = DaoCliente.obtenerInstancia();
+        return daoCliente.verificarCliente(codigoIngresado);
+    }
+
+    public static Cliente obtenerCliente(String n) {
+
+        DaoCliente d = DaoCliente.obtenerInstancia();
+        return d.obtenerCliente(n).get();
+    }
 }

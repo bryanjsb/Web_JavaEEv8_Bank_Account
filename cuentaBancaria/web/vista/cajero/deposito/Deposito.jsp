@@ -4,7 +4,7 @@
 <%@page import="servicios.ServicioFecha"%>
 <html>
     <head>
-        <%@ include file="/general.jsp" %>
+        <jsp:directive.include file="/general.jsp"/>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
