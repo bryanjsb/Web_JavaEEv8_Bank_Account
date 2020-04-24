@@ -55,43 +55,34 @@
 
 
                     <article>
-                        <form  name="realizarDeposito" 
-                               action="realizarDepositoID" method="GET">
+                        <form  name="realizarDepositoIdTRA" 
+                               action="realizarDepositoIdTRA" method="GET">
                             <div class="info" style="border: none; ">
 
                                 <table>
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteDeposito" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaDeposito" scope="session"></jsp:useBean>
 
                                     <%
-                                        out.print(listaCuentasCliente.listarCuentahtml());
+                                        out.print(CuentasClienteDeposito.listarCuentahtml());
                                     %>
 
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
+                                            <label for="verificarId">Id Cliente&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
-                                            <input type="search" size="30" maxlength="9"
+                                            <input type="hidden" size="30" maxlength="9"
                                                    id="verificarId" name="verificarId" autocomplete="off"
-                                                   placeholder="(max 9 digitos: ej 102340567 )"
+                                                   placeholder="<%=CuentasClienteDeposito.getIdCliente()%>"
+                                                   value="<%=CuentasClienteDeposito.getIdCliente()%>"
                                                    />
-                                        </td>
 
-                                    </tr>
-
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
-
-                                        </td>
-                                        <td class="campo">
-                                            <input type="number" size="30" maxlength="9"
-                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
-
-                                                   />
+                                            <label for="verificarId" name="verificarId" 
+                                                   value=\"<%=CuentasClienteDeposito.getIdCliente()%>\">
+                                                <%=CuentasClienteDeposito.getIdCliente()%></label>
                                         </td>
 
                                     </tr>
@@ -99,17 +90,6 @@
 
 
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
-
-                                        </td>
-                                        <td class="campo">
-                                            <textarea id="motivoDeposito" name="motivoDeposito"
-                                                      cols="35" rows="2"></textarea>
-                                        </td>
-
-                                    </tr>
                                     <tfoot>
 
                                         <tr>

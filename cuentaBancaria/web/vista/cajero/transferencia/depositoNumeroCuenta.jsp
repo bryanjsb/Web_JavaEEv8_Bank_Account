@@ -43,15 +43,15 @@
                 </div>
             </div>
         </header>
-        <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
+        <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaDeposito" scope="session"></jsp:useBean>
 
             <div id="wrapper">
                 <div id="contents"> 
                     <section id="seccion1">
                         <h1>deposito por numero de cuenta</h1>
                         <article>
-                            <form class="formLogin" 
-                                  action="realizarDeposito" method="GET">
+                            <form class="formLogin" name="realizarDepositoTRA"
+                                  action="realizarDepositoTRA" method="GET">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -62,7 +62,7 @@
                                             <%
 
                                                 out.print("<label for=\"numCuenta\" >"
-                                                        + cuenta.getNum_cuenta() + "&nbsp;</label>");
+                                                        + cuentaDeposito.getNum_cuenta() + "&nbsp;</label>");
                                             %>
                                         </td>
                                     </tr>
@@ -74,7 +74,7 @@
                                         <td class="campo">
                                             <%
                                                 out.print("<label for=\"duenoCuenta\" >"
-                                                        + cuenta.nombreCompletoCliente()
+                                                        + cuentaDeposito.nombreCompletoCliente()
                                                         + "&nbsp;</label>");
                                             %>
                                         </td>
@@ -88,7 +88,7 @@
 
                                             <%
                                                 out.print("<label for=\"tipoCuenta\" >"
-                                                        + cuenta.mostrarInfoCuentaDeposito() + "&nbsp;</label>");
+                                                        + cuentaDeposito.mostrarInfoCuentaDeposito() + "&nbsp;</label>");
                                             %>
                                         </td>
 
@@ -101,8 +101,8 @@
                                         </td>
                                         <td class="campo">
                                             <%
-                                                out.print("<label for=\"moneda\" value=\" " + cuenta.getMoneda_nombre() + "\">"
-                                                        + cuenta.obtenerMoneda().getDescripcion() + "&nbsp;</label>");
+                                                out.print("<label for=\"moneda\" value=\" " + cuentaDeposito.getMoneda_nombre() + "\">"
+                                                        + cuentaDeposito.obtenerMoneda().getDescripcion() + "&nbsp;</label>");
 
                                             %>
 
@@ -114,8 +114,8 @@
                                             <label for="limieteDiario">Limite Diario:&nbsp;</label>
                                         </td>
                                         <td class="campo">
-                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getLimite_transferencia_diaria() + "\">"
-                                                        + cuenta.obtenerMoneda().getSimboloMoneda() + cuenta.getLimite_transferencia_diaria() + "&nbsp;</label>");
+                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuentaDeposito.getLimite_transferencia_diaria() + "\">"
+                                                        + cuentaDeposito.obtenerMoneda().getSimboloMoneda() + cuentaDeposito.getLimite_transferencia_diaria() + "&nbsp;</label>");
 
                                             %>
 
@@ -127,7 +127,7 @@
                                             <label for="estado">Estado:&nbsp;</label>
                                         </td>
                                         <td class="campo">
-                                            <%                                            int estadoActual = cuenta.getActiva();
+                                            <%                                            int estadoActual = cuentaDeposito.getActiva();
                                                 if (estadoActual == 0) {
                                                     out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
                                                             + "inabilitada" + "&nbsp;</label>");
@@ -146,24 +146,30 @@
                                             <label for="saldoActual">Saldo Actual:&nbsp;</label>
                                         </td>
                                         <td class="campo">
-                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuenta.getSaldo_final() + "\">"
-                                                        + cuenta.obtenerMoneda().getSimboloMoneda() + cuenta.getSaldo_final() + "&nbsp;</label>");
+                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + cuentaDeposito.getSaldo_final() + "\">"
+                                                        + cuentaDeposito.obtenerMoneda().getSimboloMoneda() + cuentaDeposito.getSaldo_final() + "&nbsp;</label>");
 
                                             %>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteDeposito" scope="session"></jsp:useBean>
+                                        <tr>
+                                            <td class="etiqueta">
+                                                <label for="verificarId">Id Cliente&nbsp;</label>
 
-                                        </td>
-                                        <td class="campo">
-                                            <input type="search" size="30" maxlength="9"
-                                                   id="verificarId" name="verificarId" autocomplete="off"
-                                                   placeholder="(max 9 digitos: ej 102340567 )"
-                                                   />
+                                            </td>
+                                            <td class="campo">
+                                                <input type="hidden" size="30" maxlength="9"
+                                                       id="verificarId" name="verificarId" autocomplete="off"
+                                                       placeholder="<%=CuentasClienteDeposito.getIdCliente()%>"
+                                                value="<%=CuentasClienteDeposito.getIdCliente()%>"
+                                                />
+
+                                            <label for="verificarId" name="verificarId" 
+                                                   value=\"<%=CuentasClienteDeposito.getIdCliente()%>\">
+                                                <%=CuentasClienteDeposito.getIdCliente()%></label>
                                         </td>
 
                                     </tr>
@@ -185,17 +191,7 @@
 
 
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
 
-                                        </td>
-                                        <td class="campo">
-                                            <textarea id="motivoDeposito" name="motivoDeposito"
-                                                      cols="35" rows="2"></textarea>
-                                        </td>
-
-                                    </tr>
 
 
 

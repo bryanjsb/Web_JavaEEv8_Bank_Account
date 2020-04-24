@@ -55,8 +55,8 @@
                 <section id="seccion1">
 
                     <article>
-                        <form class="formLogin" name="buscarClienteDeposito" id="buscarClienteDeposito"
-                              action="buscarClienteDeposito" method="GET">
+                        <form class="formLogin" name="buscarClienteDepositoTRA" id="buscarClienteDeposito"
+                              action="buscarClienteDepositoTRA" method="GET">
 
 
                             <table>

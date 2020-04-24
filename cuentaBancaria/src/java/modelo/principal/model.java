@@ -21,9 +21,9 @@ import servicios.generadorClave;
  *
  * @author Bryan
  */
-public class modelo {
+public class model {
 
-    private static modelo instancia = null;
+    private static model instancia = null;
     private final DaoCuenta daoCuenta;
 
     private final DaoMoneda daoMoneda;
@@ -39,7 +39,7 @@ public class modelo {
     private static int numMovConsecutivoTransferencia = 1;
 
     //constructor
-    private modelo() {
+    private model() {
         daoCuenta = DaoCuenta.obtenerInstancia();
         daoMoneda = DaoMoneda.obtenerInstancia();
         daoCliente = DaoCliente.obtenerInstancia();
@@ -49,9 +49,9 @@ public class modelo {
         daoUsuario = DaoUsuario.obtenerInstancia();
     }
 
-    public static modelo obtenerInstancia() {
+    public static model obtenerInstancia() {
         if (instancia == null) {
-            instancia = new modelo();
+            instancia = new model();
         }
         return instancia;
     }

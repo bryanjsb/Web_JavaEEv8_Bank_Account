@@ -60,24 +60,29 @@
                             <div class="info" style="border: none; ">
 
                                 <table>
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteRetiro" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaRetiro" scope="session"></jsp:useBean>
 
                                     <%
-                                        out.print(listaCuentasCliente.listarCuentahtml());
+                                        out.print(CuentasClienteRetiro.listarCuentahtml());
                                     %>
 
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
+                                            <label for="verificarId">Id Cliente&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
-                                            <input type="search" size="30" maxlength="9"
+                                            <input type="hidden" size="30" maxlength="9"
                                                    id="verificarId" name="verificarId" autocomplete="off"
-                                                   placeholder="(max 9 digitos: ej 102340567 )"
+                                                   placeholder="<%=CuentasClienteRetiro.getIdCliente()%>"
+                                                   value="<%=CuentasClienteRetiro.getIdCliente()%>"
                                                    />
+
+                                            <label for="verificarId" name="verificarId" 
+                                                   value=\"<%=CuentasClienteRetiro.getIdCliente()%>\">
+                                                <%=CuentasClienteRetiro.getIdCliente()%></label>
                                         </td>
 
                                     </tr>

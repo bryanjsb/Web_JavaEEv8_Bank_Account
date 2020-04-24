@@ -15,12 +15,18 @@ import javax.servlet.http.HttpSession;
 import modelo.cliente.Cliente;
 import modelo.cuenta.cuenta;
 import modelo.movimiento.movimiento;
+import modelo.principal.model;
+import modelo.transferencia.transferencia;
 
 @WebServlet(name = "controllerCajeroTransferencia",
         urlPatterns = {"/controllerCajeroTransferencia",
             "/buscarClienteRetiroTra",
             "/realizarRetiroIDTRA",
-            "/realizarRetiroNumCuentaTRA"
+            "/realizarRetiroNumCuentaTRA",
+            "/buscarClienteDepositoTRA",
+            "/realizarDepositoTRA",
+            "/realizarDepositoIdTRA",
+            "/confirmarTransferencia"
         })
 
 public class controllerCajeroTransferencia extends HttpServlet {
@@ -47,9 +53,22 @@ public class controllerCajeroTransferencia extends HttpServlet {
             verificarRetiroPorNumCuenta(request, response, sesion);
         }
 
-        if (request.getServletPath().equals("/realizarRetiroNumCuentaTRA")) {
-            comprobarTipoBusquedaRetiro(request, response, sesion);
+        if (request.getServletPath().equals("/buscarClienteDepositoTRA")) {
+            comprobarTipoBusquedaDeposito(request, response, sesion);
         }
+
+        if (request.getServletPath().equals("/realizarDepositoTRA")) {
+            verificarDepositoPorNumCuenta(request, response, sesion);
+        }
+
+        if (request.getServletPath().equals("/realizarDepositoIdTRA")) {
+            verificarDepositoPorID(request, response, sesion);
+        }
+
+        if (request.getServletPath().equals("/confirmarTransferencia")) {
+            hacerTransferencia(request, response, sesion);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="paginas. Click on the + sign on the left to edit the code.">
@@ -81,15 +100,15 @@ public class controllerCajeroTransferencia extends HttpServlet {
             if (tipoBusqueda.equals("numCuenta") && cuenta.verificarCuenta(codigoIngresado)) {
 
                 cuenta cuentaCliente = cuenta.obtenerCuenta(codigoIngresado);
-                sesion.setAttribute("cuenta", cuentaCliente);
-
+                sesion.setAttribute("cuentaRetiro", cuentaCliente);
+                sesion.setAttribute("CuentasClienteRetiro", cuentaCliente.obtenerCliente());
                 response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/transfRetiroNumeroCuenta.jsp");
 
             } else // comprueba si la busqueda es por id usuario
             if (tipoBusqueda.equals("idUsuario")
                     && Cliente.verificarCliente(codigoIngresado)) {
 
-                sesion.setAttribute("listaCuentasCliente", Cliente.obtenerCliente(codigoIngresado));
+                sesion.setAttribute("CuentasClienteRetiro", Cliente.obtenerCliente(codigoIngresado));
                 response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/transfRetiroIdCliente.jsp");
 
             }
@@ -129,9 +148,9 @@ public class controllerCajeroTransferencia extends HttpServlet {
                         ptrCuenta.getNum_cuenta(), montoRetiro,
                         servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoRetiro);
 
-                sesion.setAttribute("ptrCuenta", ptrCuenta);
-                sesion.setAttribute("ptrMovim", ptrMovim);
-                sesion.setAttribute("ptrCliente", ptrCliente);
+                sesion.setAttribute("ptrCuentaRetiro", ptrCuenta);
+                sesion.setAttribute("ptrMovimRetiro", ptrMovim);
+                sesion.setAttribute("ptrClienteRetiro", ptrCliente);
 //                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/confirmarRetiro.jsp");
                 paginaTransferenciaDeposito(request, response, sesion);
             } else {
@@ -150,10 +169,9 @@ public class controllerCajeroTransferencia extends HttpServlet {
             throws ServletException, IOException {
 
         String verificarId = request.getParameter("verificarId");
-
         Double montoRetiro = Double.parseDouble(request.getParameter("montoRetiro"));
 
-        cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuenta");
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuentaRetiro");
         String motivoRetiro = (request.getParameter("motivoRetiro"));
 
         Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
@@ -172,9 +190,9 @@ public class controllerCajeroTransferencia extends HttpServlet {
                         ptrCuenta.getNum_cuenta(), montoRetiro,
                         servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoRetiro);
 
-                sesion.setAttribute("ptrCuenta", ptrCuenta);
-                sesion.setAttribute("ptrMovim", ptrMovim);
-                sesion.setAttribute("ptrCliente", ptrCliente);
+                sesion.setAttribute("ptrCuentaRetiro", ptrCuenta);
+                sesion.setAttribute("ptrMovimRetiro", ptrMovim);
+                sesion.setAttribute("ptrClienteRetiro", ptrCliente);
 //                response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/confirmarRetiro.jsp");
                 paginaTransferenciaDeposito(request, response, sesion);
             } else {
@@ -190,9 +208,8 @@ public class controllerCajeroTransferencia extends HttpServlet {
     }
 
     // </editor-fold>
-    
     // <editor-fold defaultstate="collapsed" desc="Deposito. Click on the + sign on the left to edit the code.">
-    private void comprobarTipoBusqueda(HttpServletRequest request,
+    private void comprobarTipoBusquedaDeposito(HttpServletRequest request,
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
 
@@ -205,18 +222,17 @@ public class controllerCajeroTransferencia extends HttpServlet {
             if (tipoBusqueda.equals("numCuenta") && cuenta.verificarCuenta(codigoIngresado)) {
 
                 cuenta cuentaCliente = cuenta.obtenerCuenta(codigoIngresado);
-                sesion.setAttribute("cuenta", cuentaCliente);
-
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/depositoNumeroCuenta.jsp");
+                sesion.setAttribute("cuentaDeposito", cuentaCliente);
+                sesion.setAttribute("CuentasClienteDeposito", cuentaCliente.obtenerCliente());
+                response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/depositoNumeroCuenta.jsp");
 
             } else // comprueba si la busqueda es por id usuario
             if (tipoBusqueda.equals("idUsuario")
                     && Cliente.verificarCliente(codigoIngresado)) {
 
-//                List<cuenta> listaCuentasCliente = cuenta.obtenerListaCuentaCliente(codigoIngresado);
-//                sesion.setAttribute("listaCuentasCliente", listaCuentasCliente);
-                sesion.setAttribute("listaCuentasCliente", Cliente.obtenerCliente(codigoIngresado));
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/depositoIdCliente.jsp");
+//              
+                sesion.setAttribute("CuentasClienteDeposito", Cliente.obtenerCliente(codigoIngresado));
+                response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/depositoIdCliente.jsp");
 
             }
         } else {
@@ -236,16 +252,16 @@ public class controllerCajeroTransferencia extends HttpServlet {
         if (cuenta.verificarCuenta(numCuenta)) {
             String verificarId = request.getParameter("verificarId");
 
-            Double montoDeposito = Double.parseDouble(request.getParameter("montoDeposito"));
+            double montoDeposito = Double.parseDouble(request.getParameter("montoRetiro"));
             cuenta ptrCuenta = cuenta.obtenerCuenta(numCuenta);
-            String motivoDeposito = (request.getParameter("motivoDeposito"));
+            String motivoDeposito = (request.getParameter("motivoRetiro"));
 
             Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
 
             int aplicado = 1;
             if ((montoDeposito < 0)) {
                 aplicado = 0;
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/depositoIdCliente.jsp");
+                response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/depositoIdCliente.jsp");
 
             } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
                 // si entra es por que es su cuenta 
@@ -261,10 +277,10 @@ public class controllerCajeroTransferencia extends HttpServlet {
                     ptrCuenta.getNum_cuenta(), montoDeposito,
                     servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoDeposito);
 
-            sesion.setAttribute("ptrCuenta", ptrCuenta);
-            sesion.setAttribute("ptrMovim", ptrMovim);
-            sesion.setAttribute("ptrCliente", ptrCliente);
-            response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/confirmarDeposito.jsp");
+            sesion.setAttribute("ptrCuentaDeposito", ptrCuenta);
+            sesion.setAttribute("ptrMovimDeposito", ptrMovim);
+            sesion.setAttribute("ptrClienteDeposito", ptrCliente);
+            response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/confirmarDeposito.jsp");
 
         } else {
             response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/depositoIdCliente.jsp");
@@ -278,9 +294,9 @@ public class controllerCajeroTransferencia extends HttpServlet {
 
         String verificarId = request.getParameter("verificarId");
 
-        Double montoDeposito = Double.parseDouble(request.getParameter("montoDeposito"));
+        double montoDeposito = Double.parseDouble(request.getParameter("montoRetiro"));
 
-        cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuenta");
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuentaDeposito");
         String motivoDeposito = (request.getParameter("motivoDeposito"));
 
         Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
@@ -289,7 +305,7 @@ public class controllerCajeroTransferencia extends HttpServlet {
         if (ptrCuenta.getActiva() == 1 && ptrCuenta != null) {
             if ((montoDeposito < 0)) {
                 aplicado = 0;
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
+                response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/Deposito.jsp");
 
             } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
                 // si entra es por que es su cuenta 
@@ -305,10 +321,10 @@ public class controllerCajeroTransferencia extends HttpServlet {
                     ptrCuenta.getNum_cuenta(), montoDeposito,
                     servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoDeposito);
 
-            sesion.setAttribute("ptrCuenta", ptrCuenta);
-            sesion.setAttribute("ptrMovim", ptrMovim);
-            sesion.setAttribute("ptrCliente", ptrCliente);
-            response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/confirmarDeposito.jsp");
+            sesion.setAttribute("ptrCuentaDeposito", ptrCuenta);
+            sesion.setAttribute("ptrMovimDeposito", ptrMovim);
+            sesion.setAttribute("ptrClienteDeposito", ptrCliente);
+            response.sendRedirect("/cuentaBancaria/vista/cajero/transferencia/confirmarTransferencia.jsp");
         } else {
             response.sendRedirect("/cuentaBancaria/vista/cajero.jsp");
         }
@@ -319,8 +335,8 @@ public class controllerCajeroTransferencia extends HttpServlet {
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
 
-        cuenta ptrCuenta = (cuenta) sesion.getAttribute("ptrCuenta");
-        movimiento ptrMovim = (movimiento) sesion.getAttribute("ptrMovim");
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("ptrCuentaRetiro");
+        movimiento ptrMovim = (movimiento) sesion.getAttribute("ptrMovimRetiro");
 
         cuenta.actualizarMonto(ptrCuenta);
         movimiento.agregarMovimiento(ptrMovim);
@@ -331,12 +347,27 @@ public class controllerCajeroTransferencia extends HttpServlet {
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
 
-        cuenta ptrCuenta = (cuenta) sesion.getAttribute("ptrCuenta");
-        movimiento ptrMovim = (movimiento) sesion.getAttribute("ptrMovim");
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("ptrCuentaDeposito");
+        movimiento ptrMovim = (movimiento) sesion.getAttribute("ptrMovimDeposito");
 
         cuenta.actualizarMonto(ptrCuenta);
         movimiento.agregarMovimiento(ptrMovim);
         response.sendRedirect("/cuentaBancaria/vista/cajero/cajero.jsp");
+    }
+
+    private void hacerTransferencia(HttpServletRequest request,
+            HttpServletResponse response, HttpSession sesion)
+            throws ServletException, IOException {
+        cuenta cuenOri = (cuenta) sesion.getAttribute("ptrCuentaDeposito");
+        cuenta cuenDes = (cuenta) sesion.getAttribute("ptrCuentaRetiro");
+
+        String monto = sesion.getAttribute("montoRetiro").toString();
+        model m = model.obtenerInstancia();
+        m.agregarTransferencia(new transferencia(m.generarIdTransferenciaUnico(),
+                cuenOri.getNum_cuenta(), cuenDes.getNum_cuenta(), monto, null, 1));
+        hacerRetiro(request, response, sesion);
+        hacerDeposito(request, response, sesion);
+
     }
 // </editor-fold>
 
