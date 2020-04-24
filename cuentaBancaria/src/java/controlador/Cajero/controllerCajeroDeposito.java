@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.cliente.Cliente;
-import modelo.cuenta.DaoCuenta;
 import modelo.cuenta.cuenta;
-import modelo.moneda.moneda;
+import modelo.movimiento.movimiento;
 
 @WebServlet(name = "controllerCajeroDeposito",
         urlPatterns = {"/controllerCajeroDeposito",
             "/buscarClienteDeposito",
             "/vista/cajero/Deposito",
-            "/realizarDeposito"
+            "/realizarDeposito",
+            "/confirmarDeposito"
         })
 public class controllerCajeroDeposito extends HttpServlet {
 
@@ -38,11 +38,11 @@ public class controllerCajeroDeposito extends HttpServlet {
         }
 
         if (request.getServletPath().equals("/realizarDeposito")) {
-            realizarDeposito(request, response, sesion);
+            verificarDepositoPorNumCuenta(request, response, sesion);
         }
 
-        if (request.getServletPath().equals(" ")) {
-
+        if (request.getServletPath().equals("/confirmarDeposito")) {
+            hacerDeposito(request, response, sesion);
         }
 
         if (request.getServletPath().equals(" ")) {
@@ -90,7 +90,7 @@ public class controllerCajeroDeposito extends HttpServlet {
 
     }
 
-    private void realizarDeposito(HttpServletRequest request,
+    private void verificarDepositoPorNumCuenta(HttpServletRequest request,
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
 
@@ -98,36 +98,50 @@ public class controllerCajeroDeposito extends HttpServlet {
 
         Double montoDeposito = Double.parseDouble(request.getParameter("montoDeposito"));
 
-        String tipoMoneda = request.getParameter("moneda");
-        moneda ptrMoneda = moneda.obtenerMoneda(tipoMoneda);
         cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuenta");
-        String motivoDeposito = request.getParameter("motivoDeposito");
+        String motivoDeposito = (request.getParameter("motivoDeposito"));
 
         Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
 
+        int aplicado = 1;
         if (ptrCuenta.getActiva() == 1 && ptrCuenta != null) {
             if ((montoDeposito < 0)) {
-
+                aplicado = 0;
                 response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
 
-                
             } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
-                // si entra es por que es su cuenta
-                ptrCuenta.realizarDeposito(montoDeposito);
-                DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
-                daoCuenta.modificarCuenta(ptrCuenta);
-                
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
+                // si entra es por que es su cuenta 
             } else {
-                ptrCuenta.realizarDeposito(montoDeposito);
-                DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
-                daoCuenta.modificarCuenta(ptrCuenta);
+                // es por que  usuario  deposita a otra cuenta de otro cliente
 
-                response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/Deposito.jsp");
+                motivoDeposito += "\\  nom:" + ptrCliente.nombreCompleto();
+
             }
+            ptrCuenta.realizarDeposito(montoDeposito);
+
+            movimiento ptrMovim = new movimiento(movimiento.generarIdMovimientoUnico(),
+                    ptrCuenta.getNum_cuenta(), montoDeposito,
+                    servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoDeposito);
+
+            sesion.setAttribute("ptrCuenta", ptrCuenta);
+            sesion.setAttribute("ptrMovim", ptrMovim);
+            sesion.setAttribute("ptrCliente", ptrCliente);
+            response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/confirmarDeposito.jsp");
         } else {
             response.sendRedirect("/cuentaBancaria/vista/cajero.jsp");
         }
+    }
+
+    private void hacerDeposito(HttpServletRequest request,
+            HttpServletResponse response, HttpSession sesion)
+            throws ServletException, IOException {
+
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("ptrCuenta");
+        movimiento ptrMovim = (movimiento) sesion.getAttribute("ptrMovim");
+
+        cuenta.actualizarMonto(ptrCuenta);
+        movimiento.agregarMovimiento(ptrMovim);
+        response.sendRedirect("/cuentaBancaria/vista/cajero/cajero.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

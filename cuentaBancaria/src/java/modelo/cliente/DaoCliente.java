@@ -146,6 +146,14 @@ public class DaoCliente implements java.io.Serializable {
         return r;
     }
 
+    public void eliminarCliente(String cliente) {
+
+    }
+
+    public void modificarCliente(Cliente n) {
+
+    }
+
     public Connection obtenerConexion() throws
             ClassNotFoundException,
             IllegalAccessException,

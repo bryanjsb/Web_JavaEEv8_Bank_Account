@@ -48,3 +48,12 @@ INSERT INTO `eif209_2001_p01`.`tipo_cuenta`
   
   ;
 SELECT * FROM `eif209_2001_p01.tipo_cuenta`;
+
+
+
+INSERT INTO `eif209_2001_p01`.`movimiento` (`id_movimiento`, `cuenta_num_cuenta`, `monto`, `fecha`, `aplicado`, `movimientocol`)
+ VALUES ('1', '1', '1', '1', '1', '1')
+,  ('2', '2', '2', '2', '2', '2')
+, ('3', '3', '3', '3', '3', '3');
+
+SELECT * FROM `eif209_2001_p01.movimiento`;

@@ -182,15 +182,7 @@
 
                                     </tr>
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="moneda">tipo de moneda a depositar&nbsp;</label>
 
-                                        </td>
-                                        <td class="campo">
-                                            <%out.print(cuenta.obtenerMoneda().mostrarListaMonedaStatic());%>
-                                        </td>
-                                    </tr>
 
 
                                     <tr>
@@ -209,7 +201,7 @@
 
                                     <tr>
                                         <td class="controles" colspan="2">
-                                            <button type="submit">Realizar Deposito</button>
+                                            <button type="submit">Continuar</button>
                                         </td>
                                     </tr>
                                 </tbody>
