@@ -4,7 +4,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <jsp:directive.include file="/general.jsp"/>
+
+
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -50,26 +53,78 @@
             <div id="contents"> 
                 <section id="seccion1">
 
+
                     <article>
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>Lista de las cuentas del cliente</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <form  name="realizarDeposito" 
+                               action="realizarDepositoID" method="GET">
+                            <div class="info" style="border: none; ">
+
+                                <table>
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
+
+
+                                    <%
+                                        out.print(listaCuentasCliente.listarCuentahtml());
+                                    %>
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <input type="search" size="30" maxlength="9"
+                                                   id="verificarId" name="verificarId" autocomplete="off"
+                                                   placeholder="(max 9 digitos: ej 102340567 )"
+                                                   />
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <input type="number" size="30" maxlength="9"
+                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
+
+                                                   />
+                                        </td>
+
+                                    </tr>
+
+
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <textarea id="motivoDeposito" name="motivoDeposito"
+                                                      cols="35" rows="2"></textarea>
+                                        </td>
+
+                                    </tr>
+                                    <tfoot>
+
+                                        <tr>
+                                            <td class="controles"  >
+                                                <button type="submit"
+                                                        style="width:190px; height:25px">
+                                                    siguiente      </button>
+                                            </td>
+                                        </tr> 
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </form>
                     </article>
+
                 </section>
 
             </div>   

@@ -135,20 +135,23 @@ public class cuenta implements java.io.Serializable {
     private Date fecha_ultima_aplicacion;
     private double saldo_final;
 
+    private static DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+    private static DaoCliente daoCliente = DaoCliente.obtenerInstancia();
+
     //metodos static
     public static boolean verificarCuenta(String n) {
-        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        daoCuenta = DaoCuenta.obtenerInstancia();
 
         return daoCuenta.verificarCuenta(n);
     }
 
     public static cuenta obtenerCuenta(String n) {
-        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        daoCuenta = DaoCuenta.obtenerInstancia();
         return daoCuenta.obtenerNumeroCuenta(n).get();
     }
 
     public static List<cuenta> obtenerListaCuentaCliente(String n) {
-        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        daoCuenta = DaoCuenta.obtenerInstancia();
         return daoCuenta.obtenerListaCuentaCliente(n);
     }
 
@@ -171,7 +174,7 @@ public class cuenta implements java.io.Serializable {
     }
 
     public static void actualizarMonto(cuenta n) {
-        DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
+        daoCuenta = DaoCuenta.obtenerInstancia();
         daoCuenta.modificarCuenta(n);
     }
 
