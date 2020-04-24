@@ -72,10 +72,6 @@ public class movimiento implements java.io.Serializable {
         return String.format("%d%s%s", numMovConsecutivo, "0000", generadorClave.getPinNumber(3));
     }
 
-    /**
-     *
-     * @return
-     */
     public static int generarIdMovimientoUnico() {
 
         DaoMovimiento daoMov = DaoMovimiento.obtenerInstancia();

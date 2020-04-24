@@ -2,16 +2,23 @@ package modelo.transferencia;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import servicios.generadorClave;
 
 public class transferencia implements Serializable {
 
-    public transferencia(int id_transferencia, String cuenta_origen, String cuenta_destino, String monto, Date fecha, int aplicado) {
+    public transferencia(int id_transferencia, String cuenta_origen,
+            String cuenta_destino, String monto, Date fecha, int aplicado) {
         this.id_transferencia = id_transferencia;
         this.cuenta_origen = cuenta_origen;
         this.cuenta_destino = cuenta_destino;
         this.monto = monto;
         this.fecha = fecha;
         this.aplicado = aplicado;
+    }
+
+    public transferencia() {
+        this(0, "", "", "", null, 0);
     }
 
     public int getId_transferencia() {
@@ -49,5 +56,4 @@ public class transferencia implements Serializable {
     private final String monto;
     private final Date fecha;
     private final int aplicado;
-
 }

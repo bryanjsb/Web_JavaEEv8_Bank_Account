@@ -28,13 +28,13 @@
             }
         %>
 
-        <title>Retiro</title>
+        <title>Deposito</title>
     </head>
     <body>
 
         <header class="header">
             <div>
-                <div> <h1>Retiro Cajero</h1></div>
+                <div> <h1>Deposito Cajero</h1></div>
 
                 <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
                  <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
@@ -55,13 +55,13 @@
 
 
                     <article>
-                        <form  name="realizarRetiroID" 
-                               action="realizarRetiroID" method="GET">
+                        <form  name="realizarDeposito" 
+                               action="realizarDepositoID" method="GET">
                             <div class="info" style="border: none; ">
 
                                 <table>
                                     <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
+
 
                                     <%
                                         out.print(listaCuentasCliente.listarCuentahtml());
@@ -84,12 +84,12 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="montoRetiro">Cantidad del retiro&nbsp;</label>
+                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
                                             <input type="number" size="30" maxlength="9"
-                                                   id="montoRetiro" name="montoRetiro" autocomplete="off"
+                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
 
                                                    />
                                         </td>
@@ -101,26 +101,24 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="motivoRetiro">Motivo del del retiro&nbsp;</label>
+                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
-                                            <textarea id="motivoRetiro" name="motivoRetiro"
+                                            <textarea id="motivoDeposito" name="motivoDeposito"
                                                       cols="35" rows="2"></textarea>
                                         </td>
 
                                     </tr>
-
-
-
-                                    <tr>
-                                        <td class="controles" colspan="2">
-                                            <button type="submit">Continuar</button>
-                                        </td>
-                                    </tr>
                                     <tfoot>
 
-
+                                        <tr>
+                                            <td class="controles"  >
+                                                <button type="submit"
+                                                        style="width:190px; height:25px">
+                                                    siguiente      </button>
+                                            </td>
+                                        </tr> 
                                     </tfoot>
                                 </table>
                             </div>

@@ -69,7 +69,7 @@
                             <a href="vista/cajero/retiro/retiro">Retiro</a>
                         </p>
                         <p>
-                            <a href="vista/cajero/transferencia.jsp">Transferencia en cajas</a>
+                            <a href="controllerCajeroTransferencia">Transferencia en cajas</a>
                         </p>
                         <p>
                             <a href="vista/cajero/acreditacion.jsp">Acreditación de intereses</a>

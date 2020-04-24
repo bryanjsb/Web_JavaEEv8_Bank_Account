@@ -55,8 +55,8 @@
 
 
                     <article>
-                        <form  name="realizarRetiroID" 
-                               action="realizarRetiroID" method="GET">
+                        <form  name="realizarRetiroIDTRA" 
+                               action="realizarRetiroIDTRA" method="GET">
                             <div class="info" style="border: none; ">
 
                                 <table>
