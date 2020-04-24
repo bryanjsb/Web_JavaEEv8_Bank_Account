@@ -188,4 +188,10 @@ public class cuenta implements java.io.Serializable {
         this.fecha_ultima_aplicacion = servicios.ServicioFecha.fechaActualCuenta();
     }
 
+    public void realizarRetiro(Double n) {
+        setSaldo_inicial((double) getSaldo_final());
+        setSaldo_final((double) getSaldo_final() - (double) n);
+        cambiarHoraUltimoMovimiento();
+    }
+
 }

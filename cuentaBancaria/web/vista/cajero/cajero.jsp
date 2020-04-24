@@ -66,7 +66,7 @@
                             <a href="vista/cajero/Deposito">Depósito</a>
                         </p>
                         <p>
-                            <a href="vista/cajero/retiro.jsp">Retiro</a>
+                            <a href="vista/cajero/retiro/retiro">Retiro</a>
                         </p>
                         <p>
                             <a href="vista/cajero/transferencia.jsp">Transferencia en cajas</a>
