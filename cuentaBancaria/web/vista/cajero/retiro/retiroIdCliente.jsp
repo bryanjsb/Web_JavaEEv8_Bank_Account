@@ -55,13 +55,13 @@
 
 
                     <article>
-                        <form  name="realizarRetiro" 
+                        <form  name="realizarRetiroID" 
                                action="realizarRetiroID" method="GET">
                             <div class="info" style="border: none; ">
 
                                 <table>
                                     <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-
+<jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
 
                                     <%
                                         out.print(listaCuentasCliente.listarCuentahtml());
@@ -84,7 +84,7 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="montoRetiro">Cantidad del Retiro&nbsp;</label>
+                                            <label for="montoRetiro">Cantidad del retiro&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
@@ -101,7 +101,7 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="motivoRetiro">Motivo del del Retiro&nbsp;</label>
+                                            <label for="motivoRetiro">Motivo del del retiro&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
@@ -110,15 +110,17 @@
                                         </td>
 
                                     </tr>
+
+
+
+                                    <tr>
+                                        <td class="controles" colspan="2">
+                                            <button type="submit">Continuar</button>
+                                        </td>
+                                    </tr>
                                     <tfoot>
 
-                                        <tr>
-                                            <td class="controles"  >
-                                                <button type="submit"
-                                                        style="width:190px; height:25px">
-                                                    siguiente      </button>
-                                            </td>
-                                        </tr> 
+                                        
                                     </tfoot>
                                 </table>
                             </div>

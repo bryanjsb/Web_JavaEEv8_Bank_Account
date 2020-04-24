@@ -24,12 +24,12 @@
             }
         %>
 
-        <title>Deposito</title>
+        <title>Retiro</title>
     </head>
     <body>
         <header class="header">
             <div>
-                <div> <h1>Deposito Cajero</h1></div>
+                <div> <h1>Retiro Cajero</h1></div>
 
                 <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
                  <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
@@ -48,10 +48,10 @@
             <div id="wrapper">
                 <div id="contents"> 
                     <section id="seccion1">
-                        <h1>deposito por numero de cuenta</h1>
+                        <h1>Retiro por numero de cuenta</h1>
                         <article>
-                            <form class="formLogin" 
-                                  action="realizarDeposito" method="GET">
+                            <form class="formLogin" name="realizarRetiroNumCuenta"
+                                  action="realizarRetiroNumCuenta" method="GET">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -88,7 +88,7 @@
 
                                             <%
                                                 out.print("<label for=\"tipoCuenta\" >"
-                                                        + cuenta.mostrarInfoCuentaDeposito() + "&nbsp;</label>");
+                                                        + cuenta.mostrarInfoCuentaRetiro() + "&nbsp;</label>");
                                             %>
                                         </td>
 
@@ -170,12 +170,12 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
+                                            <label for="montoRetiro">Cantidad del Retiro&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
                                             <input type="number" size="30" maxlength="9"
-                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
+                                                   id="montoRetiro" name="montoRetiro" autocomplete="off"
 
                                                    />
                                         </td>
@@ -187,11 +187,11 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
+                                            <label for="motivoRetiro">Motivo del del Retiro&nbsp;</label>
 
                                         </td>
                                         <td class="campo">
-                                            <textarea id="motivoDeposito" name="motivoDeposito"
+                                            <textarea id="motivoRetiro" name="motivoRetiro"
                                                       cols="35" rows="2"></textarea>
                                         </td>
 

@@ -159,6 +159,11 @@ public class cuenta implements java.io.Serializable {
         return tipo_cuenta.obtenerTipoCuenta(getTipo_cuenta_id_tipo_cuenta());
     }
 
+    
+    public tipo_cuenta mostrarInfoCuentaRetiro(){
+    return tipo_cuenta.obtenerTipoCuenta(getTipo_cuenta_id_tipo_cuenta());
+    }
+    
     public moneda obtenerMoneda() {
         return moneda.obtenerMoneda(getMoneda_nombre());
 

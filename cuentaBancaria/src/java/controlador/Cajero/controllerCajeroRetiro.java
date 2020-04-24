@@ -25,10 +25,9 @@ import modelo.movimiento.movimiento;
         urlPatterns = {"/controllerCajeroRetiro",
             "/buscarClienteRetiro",
             "/realizarRetiroID",
-        "/vista/cajero/retiro/retiro",
-        "/realizarRetiroID",
-        "/confirmarRetiro",
-        
+            "/vista/cajero/retiro/retiro",
+            "/confirmarRetiro",
+            "/realizarRetiroNumCuenta"
         })
 public class controllerCajeroRetiro extends HttpServlet {
 
@@ -45,7 +44,7 @@ public class controllerCajeroRetiro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession(true);
-        
+
         if (request.getServletPath().equals("/vista/cajero/retiro/retiro")) {
             paginaRetiro(request, response);
 
@@ -55,22 +54,26 @@ public class controllerCajeroRetiro extends HttpServlet {
             comprobarTipoBusqueda(request, response, sesion);
 
         }
-        
+
         if (request.getServletPath().equals("/realizarRetiroID")) {
             verificarRetiroPorID(request, response, sesion);
         }
-        
+
+        if (request.getServletPath().equals("/realizarRetiroNumCuenta")) {
+            verificarRetiroPorNumCuenta(request, response, sesion);
+        }
+
         if (request.getServletPath().equals("/confirmarRetiro")) {
             hacerRetiro(request, response, sesion);
         }
     }
 
-     private void paginaRetiro(HttpServletRequest request, HttpServletResponse response)
+    private void paginaRetiro(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiro.jsp");
 
     }
-     
+
     private void comprobarTipoBusqueda(HttpServletRequest request,
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
@@ -104,7 +107,6 @@ public class controllerCajeroRetiro extends HttpServlet {
 
     }
 
-   
     private void verificarRetiroPorID(HttpServletRequest request,
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
@@ -121,36 +123,76 @@ public class controllerCajeroRetiro extends HttpServlet {
             Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
 
             int aplicado = 1;
-            if ((montoRetiro < 0)||(montoRetiro>ptrCuenta.getSaldo_final())) {
+            if ((montoRetiro < 0) || (montoRetiro > ptrCuenta.getSaldo_final())) {
                 aplicado = 0;
                 response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiroIdCliente.jsp");
 
             } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
                 // si entra es por que es su cuenta 
+                ptrCuenta.realizarRetiro(montoRetiro);
+
+                movimiento ptrMovim = new movimiento(movimiento.generarIdMovimientoUnico(),
+                        ptrCuenta.getNum_cuenta(), montoRetiro,
+                        servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoRetiro);
+
+                sesion.setAttribute("ptrCuenta", ptrCuenta);
+                sesion.setAttribute("ptrMovim", ptrMovim);
+                sesion.setAttribute("ptrCliente", ptrCliente);
+                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/confirmarRetiro.jsp");
             } else {
-                // es por que  usuario  deposita a otra cuenta de otro cliente
 
-                motivoRetiro += "\\  nom:" + ptrCliente.nombreCompleto();
-
+                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiroIdCliente.jsp");
             }
-            ptrCuenta.realizarRetiro(montoRetiro);
-
-            movimiento ptrMovim = new movimiento(movimiento.generarIdMovimientoUnico(),
-                    ptrCuenta.getNum_cuenta(), montoRetiro,
-                    servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoRetiro);
-
-            sesion.setAttribute("ptrCuenta", ptrCuenta);
-            sesion.setAttribute("ptrMovim", ptrMovim);
-            sesion.setAttribute("ptrCliente", ptrCliente);
-            response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/confirmarRetiro.jsp");
 
         } else {
             response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiroIdCliente.jsp");
         }
 
     }
-    
-    
+
+    private void verificarRetiroPorNumCuenta(HttpServletRequest request,
+            HttpServletResponse response, HttpSession sesion)
+            throws ServletException, IOException {
+
+        String verificarId = request.getParameter("verificarId");
+
+        Double montoRetiro = Double.parseDouble(request.getParameter("montoRetiro"));
+
+        cuenta ptrCuenta = (cuenta) sesion.getAttribute("cuenta");
+        String motivoRetiro = (request.getParameter("motivoRetiro"));
+
+        Cliente ptrCliente = Cliente.obtenerCliente(verificarId);
+
+        int aplicado = 1;
+        if (ptrCuenta.getActiva() == 1 && ptrCuenta != null) {
+            if ((montoRetiro < 0) || (montoRetiro > ptrCuenta.getSaldo_final())) {
+                aplicado = 0;
+                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiro.jsp");
+
+            } else if (ptrCuenta.getCliente_id_cliente().equals(verificarId)) {
+                // si entra es por que es su cuenta 
+                ptrCuenta.realizarRetiro(montoRetiro);
+
+                movimiento ptrMovim = new movimiento(movimiento.generarIdMovimientoUnico(),
+                        ptrCuenta.getNum_cuenta(), montoRetiro,
+                        servicios.ServicioFecha.fechaActualCuenta(), aplicado, motivoRetiro);
+
+                sesion.setAttribute("ptrCuenta", ptrCuenta);
+                sesion.setAttribute("ptrMovim", ptrMovim);
+                sesion.setAttribute("ptrCliente", ptrCliente);
+                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/confirmarRetiro.jsp");
+            } else {
+                // es por que  usuario  deposita a otra cuenta de otro cliente
+
+                response.sendRedirect("/cuentaBancaria/vista/cajero/retiro/retiroNumeroCuenta.jsp");
+
+            }
+
+        } else {
+            response.sendRedirect("/cuentaBancaria/vista/cajero.jsp");
+        }
+    }
+
     private void hacerRetiro(HttpServletRequest request,
             HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
