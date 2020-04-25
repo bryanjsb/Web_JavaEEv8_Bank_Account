@@ -54,13 +54,18 @@
             <div id="wrapper">
                 <div id="contents"> 
                     <section id="seccion1">
-                        <h1>Confirmar Retiro</h1>
+                        <h1>Confirmar Transferencia</h1>
                         <article>
                             <form class="formLogin" name="confirmarTransferencia"
                                   action="confirmarTransferencia" method="GET">
 
                                 <table>
                                     <tbody>
+                                        <tr>
+                                            <td colspan="2"> 
+                                                <h3>Cuenta donde se retira el dinero</h3>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td class="etiqueta">
                                                 <label for="numCuenta" >numero de Cuenta&nbsp;</label>
@@ -167,20 +172,6 @@
 
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="nombreDepositante">Nombre del depositante&nbsp;</label>
-
-                                        </td>
-                                        <td class="campo">
-                                            <%                                                 out.print("<label for=\"nombreDepositante\" value=\" " + 0 + "\">"
-                                                        + ptrClienteRetiro.nombreCompleto() + "&nbsp;</label>");
-
-                                            %>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td class="etiqueta">
                                             <label for="motivoRetiro">Motivo del del Retiro&nbsp;</label>
 
                                         </td>
@@ -192,9 +183,133 @@
                                         </td>
                                     </tr>
 
+                                    <jsp:useBean class="modelo.cuenta.cuenta" id="ptrCuentaDeposito" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.movimiento.movimiento" id="ptrMovimDeposito" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="ptrClienteDeposito" scope="session"></jsp:useBean>
+                                        <tr>
+                                            <td colspan="2">
+                                                <h3>Cuenta donde se debita el dinero</h3>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td class="etiqueta">
+                                                <label for="numCuenta" >numero de Cuenta&nbsp;</label>
+                                            </td>
+                                            <td class="campo">
+                                            <%                                                out.print("<label for=\"numCuenta\" >"
+                                                        + ptrCuentaDeposito.getNum_cuenta() + "&nbsp;</label>");
+                                            %>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="duenoCuenta" >Dueño de la cuenta&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%
+                                                out.print("<label for=\"duenoCuenta\" >"
+                                                        + ptrCuentaDeposito.nombreCompletoCliente()
+                                                        + "&nbsp;</label>");
+                                            %>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="tipoCuenta">tipo de cuenta&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+
+                                            <%
+                                                out.print("<label for=\"tipoCuenta\" >"
+                                                        + ptrCuentaDeposito.mostrarInfoCuentaRetiro() + "&nbsp;</label>");
+                                            %>
+                                        </td>
+
+                                    </tr>
 
 
                                     <tr>
+                                        <td class="etiqueta">
+                                            <label for="moneda">Moneda&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%
+                                                out.print("<label for=\"moneda\" value=\" " + ptrCuentaDeposito.getMoneda_nombre() + "\">"
+                                                        + ptrCuentaDeposito.obtenerMoneda().getDescripcion() + "&nbsp;</label>");
+
+                                            %>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="estado">Estado:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <% estadoActual = ptrCuentaDeposito.getActiva();
+                                                if (estadoActual == 0) {
+                                                    out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
+                                                            + "inabilitada" + "&nbsp;</label>");
+
+                                                } else {
+                                                    out.print("<label for=\"limieteDiario\" value=\" " + estadoActual + "\">"
+                                                            + "Activa" + "&nbsp;</label>");
+                                                }
+                                            %>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="saldoActual">Saldo Actual:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%                          out.print("<label for=\"limieteDiario\" value=\" " + ptrCuentaDeposito.getSaldo_final() + "\">"
+                                                        + ptrCuentaDeposito.obtenerMoneda().getSimboloMoneda() + ptrCuentaDeposito.getSaldo_final() + "&nbsp;</label>");
+
+                                            %>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="montoRetiro">Cantidad del Retiro&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <%                                                 out.print("<label for=\"montoRetiro\" value=\" " + 0 + "\">"
+                                                        + ptrMovimDeposito.getMonto() + "&nbsp;</label>");
+
+                                            %>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="motivoRetiro">Motivo del del Retiro&nbsp;</label>
+
+                                        </td>
+                                        <td class="etiqueta">
+                                            <%                                            out.print("<label for=\"motivoRetiro\" value=\" " + 0 + "\">"
+                                                        + ptrMovimDeposito.getMovimientocol() + "&nbsp;</label>");
+
+                                            %>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+
                                         <td class="controles" colspan="2">
                                             <button type="submit">Realizar Retiro</button>
                                         </td>
