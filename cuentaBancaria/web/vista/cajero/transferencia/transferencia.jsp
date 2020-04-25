@@ -55,7 +55,7 @@
                 <section id="seccion1">
 
                     <article>
-                        <form class="formLogin" name="buscarClienteTra" id="buscarClienteRetiro"
+                        <form class="formLogin" name="buscarClienteRetiroTra"
                               action="buscarClienteRetiroTra" method="GET">
 
 

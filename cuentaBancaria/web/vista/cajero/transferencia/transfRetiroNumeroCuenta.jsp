@@ -44,7 +44,7 @@
             </div>
         </header>
         <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaRetiro" scope="session"></jsp:useBean>
-
+        <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteRetiro" scope="session"></jsp:useBean>
             <div id="wrapper">
                 <div id="contents"> 
                     <section id="seccion1">
@@ -155,18 +155,18 @@
                                     </tr>
 
 
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteRetiro" scope="session"></jsp:useBean>
-                                        <tr>
-                                            <td class="etiqueta">
-                                                <label for="verificarId">Id Cliente&nbsp;</label>
 
-                                            </td>
-                                            <td class="campo">
-                                                <input type="hidden" size="30" maxlength="9"
-                                                       id="verificarId" name="verificarId" autocomplete="off"
-                                                       placeholder="<%=CuentasClienteRetiro.getIdCliente()%>"
-                                                value="<%=CuentasClienteRetiro.getIdCliente()%>"
-                                                />
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="verificarId">Id Cliente&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <input type="hidden" size="30" maxlength="9"
+                                                   id="verificarId" name="verificarId" autocomplete="off"
+                                                   placeholder="<%=CuentasClienteRetiro.getIdCliente()%>"
+                                                   value="<%=CuentasClienteRetiro.getIdCliente()%>"
+                                                   />
 
                                             <label for="verificarId" name="verificarId" 
                                                    value=\"<%=CuentasClienteRetiro.getIdCliente()%>\">

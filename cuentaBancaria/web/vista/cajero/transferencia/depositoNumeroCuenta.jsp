@@ -174,26 +174,35 @@
 
                                     </tr>
 
+
                                     <tr>
                                         <td class="etiqueta">
-                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
-
+                                            <label for="montoDeposito">Monto deposito:&nbsp;</label>
                                         </td>
                                         <td class="campo">
-                                            <input type="number" size="30" maxlength="9"
-                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
+                                            <%                          out.print("<label for=\"montoDeposito\" value=\" " + cuentaDeposito.getSaldo_final() + "\">"
+                                                        + cuentaDeposito.obtenerMoneda().getSimboloMoneda() + cuentaDeposito.getSaldo_final() + "&nbsp;</label>");
 
-                                                   />
+                                            %>
+
                                         </td>
-
                                     </tr>
 
 
 
 
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="motivoDeposito">Motivo deposito:&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <%                          out.print("<label for=\"montoDeposito\" value=\" " + cuentaDeposito.getSaldo_final() + "\">"
+                                                        + cuentaDeposito.obtenerMoneda().getSimboloMoneda() + cuentaDeposito.getSaldo_final() + "&nbsp;</label>");
 
+                                            %>
 
-
+                                        </td>
+                                    </tr>
 
                                     <tr>
                                         <td class="controles" colspan="2">
