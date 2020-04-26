@@ -1,9 +1,3 @@
-<%-- 
-    Document   : confirmarRetiro
-    Created on : 23/04/2020, 01:15:24 AM
-    Author     : Bryan
---%>
-
 <%@page import="servicios.ServicioFecha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

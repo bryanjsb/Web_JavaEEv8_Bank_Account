@@ -71,8 +71,6 @@ public class controllerCajeroDeposito extends HttpServlet {
             if (tipoBusqueda.equals("idUsuario")
                     && Cliente.verificarCliente(codigoIngresado)) {
 
-//                List<cuenta> listaCuentasCliente = cuenta.obtenerListaCuentaCliente(codigoIngresado);
-//                sesion.setAttribute("listaCuentasCliente", listaCuentasCliente);
                 sesion.setAttribute("listaCuentasCliente", Cliente.obtenerCliente(codigoIngresado));
                 response.sendRedirect("/cuentaBancaria/vista/cajero/deposito/depositoIdCliente.jsp");
 

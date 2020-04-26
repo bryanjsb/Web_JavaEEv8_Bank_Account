@@ -2,8 +2,6 @@ package modelo.transferencia;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import servicios.generadorClave;
 
 public class transferencia implements Serializable {
 
