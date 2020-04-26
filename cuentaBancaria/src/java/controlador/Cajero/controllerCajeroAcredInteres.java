@@ -1,6 +1,8 @@
 package controlador.Cajero;
 
+import modelo.acreditacion.acreditacion;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,30 +11,61 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.cuenta.DaoCuenta;
 import modelo.cuenta.cuenta;
+import modelo.movimiento.movimiento;
 
-@WebServlet(name = "controllerCajeroAcredInteres", urlPatterns = {"/controllerCajeroAcredInteres"})
+@WebServlet(name = "controllerCajeroAcredInteres",
+        urlPatterns = {"/controllerCajeroAcredInteres",
+            "/aplicarAcreditacion",
+            "/confirmarAcreditacion"
+        })
 public class controllerCajeroAcredInteres extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-         HttpSession sesion = request.getSession(true);
-         if (request.getServletPath().equals("/controllerCajeroAcredInteres")) {
+        HttpSession sesion = request.getSession(true);
 
-            paginaAcreditacion(request, response,sesion);
+        acreditacion c = new acreditacion();
+        sesion.setAttribute("acreditacion", c);
+
+        if (request.getServletPath().equals("/controllerCajeroAcredInteres")) {
+
+            paginaAcreditacion(request, response, sesion);
+        }
+
+        if (request.getServletPath().equals("/aplicarAcreditacion")) {
+
+            this.confirmarAcreditacion(request, response, sesion);
+        }
+
+        if (request.getServletPath().equals("/confirmarAcreditacion")) {
+
+            aplicarAcreditacion(request, response, sesion);
         }
     }
 
-    
-    private void paginaAcreditacion(HttpServletRequest request, HttpServletResponse response , HttpSession sesion)
+    private void paginaAcreditacion(HttpServletRequest request, HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
-        
-        cuenta c=new cuenta();
-        sesion.setAttribute("listaCuentaPositivo", c);
-        
+
         response.sendRedirect("vista/cajero/acreditacion/acreditacion.jsp");
     }
+
+    private void confirmarAcreditacion(HttpServletRequest request, HttpServletResponse response, HttpSession sesion)
+            throws ServletException, IOException {
+
+        response.sendRedirect("vista/cajero/acreditacion/acreditacionConfirmar.jsp");
+
+    }
+
+    private void aplicarAcreditacion(HttpServletRequest request, HttpServletResponse response, HttpSession sesion)
+            throws ServletException, IOException {
+
+        acreditacion c = (acreditacion) sesion.getAttribute("acreditacion");
+        c.hacerDeposito();
+        response.sendRedirect("controllerCajero");
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

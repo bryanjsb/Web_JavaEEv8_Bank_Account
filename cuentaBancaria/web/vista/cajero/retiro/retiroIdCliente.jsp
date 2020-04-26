@@ -31,16 +31,16 @@
         <title>Retiro</title>
     </head>
     <body>
-        
+
         <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
+        <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
 
-        <header class="header">
-            <div>
-                <div> <h1>Retiro Cajero</h1></div>
+            <header class="header">
+                <div>
+                    <div> <h1>Retiro Cajero</h1></div>
 
-                <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
-                 <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
+                    <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
+                     <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
                 <div>
                     <nav>
                         <ul id="button">
@@ -118,10 +118,10 @@
 
                                     </tfoot>
                                 </table>
-                                
-                                
+
+
                                 <table class="tabla">
-                                     <%
+                                    <%
                                         out.print(listaCuentasCliente.listarCuentahtml());
                                     %>
                                 </table>

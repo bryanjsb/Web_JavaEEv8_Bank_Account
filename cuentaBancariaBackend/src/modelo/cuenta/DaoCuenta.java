@@ -161,7 +161,7 @@ public class DaoCuenta implements java.io.Serializable {
         }
         return r;
     }
-      
+
     public List<cuenta> obtenerListaCuenta() {
         List<cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -193,9 +193,8 @@ public class DaoCuenta implements java.io.Serializable {
         }
         return r;
     }
-    
-    
-     public List<cuenta> obtenerListaCuentaSaldoPositivo() {
+
+    public List<cuenta> obtenerListaCuentaSaldoPositivo() {
         List<cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();

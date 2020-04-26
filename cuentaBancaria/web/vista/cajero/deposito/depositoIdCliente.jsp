@@ -59,73 +59,73 @@
                                action="realizarDepositoID" method="GET">
                             <div class="info" style="border: none; ">
 
-                                
-                                        
-                                       
-                                            <table>
-                                                <tr>
-                                                    <td class="etiqueta">
-                                                        <label for="verificarId">Verificar Id Cliente&nbsp;</label>
-
-                                                    </td>
-                                                    <td class="campo">
-                                                        <input type="search" size="30" maxlength="9"
-                                                               id="verificarId" name="verificarId" autocomplete="off"
-                                                               placeholder="(max 9 digitos: ej 102340567 )"
-                                                               />
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="etiqueta">
-                                                        <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
-
-                                                    </td>
-                                                    <td class="campo">
-                                                        <input type="number" size="30" maxlength="9"
-                                                               id="montoDeposito" name="montoDeposito" autocomplete="off"
-
-                                                               />
-                                                    </td>
-
-                                                </tr>
 
 
 
+                                <table>
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="verificarId">Verificar Id Cliente&nbsp;</label>
 
-                                                <tr>
-                                                    <td class="etiqueta">
-                                                        <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
+                                        </td>
+                                        <td class="campo">
+                                            <input type="search" size="30" maxlength="9"
+                                                   id="verificarId" name="verificarId" autocomplete="off"
+                                                   placeholder="(max 9 digitos: ej 102340567 )"
+                                                   />
+                                        </td>
 
-                                                    </td>
-                                                    <td class="campo">
-                                                        <textarea id="motivoDeposito" name="motivoDeposito"
-                                                                  cols="35" rows="2"></textarea>
-                                                    </td>
+                                    </tr>
 
-                                                </tr>
-                                                <tfoot>
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="montoDeposito">Cantidad del deposito&nbsp;</label>
 
-                                                    <tr>
-                                                        <td class="controles"  >
-                                                            <button type="submit"
-                                                                    style="width:190px; height:25px">
-                                                                siguiente      </button>
-                                                        </td>
-                                                    </tr> 
-                                                </tfoot>
-                                            </table>
-                                        
-                                            <table class="tabla">
-                                                <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
+                                        </td>
+                                        <td class="campo">
+                                            <input type="number" size="30" maxlength="9"
+                                                   id="montoDeposito" name="montoDeposito" autocomplete="off"
+
+                                                   />
+                                        </td>
+
+                                    </tr>
 
 
-                                                <%
-                                                    out.print(listaCuentasCliente.listarCuentahtml());
-                                                %>
-                                            </table>
-                                        
+
+
+                                    <tr>
+                                        <td class="etiqueta">
+                                            <label for="motivoDeposito">Motivo del del deposito&nbsp;</label>
+
+                                        </td>
+                                        <td class="campo">
+                                            <textarea id="motivoDeposito" name="motivoDeposito"
+                                                      cols="35" rows="2"></textarea>
+                                        </td>
+
+                                    </tr>
+                                    <tfoot>
+
+                                        <tr>
+                                            <td class="controles"  >
+                                                <button type="submit"
+                                                        style="width:190px; height:25px">
+                                                    siguiente      </button>
+                                            </td>
+                                        </tr> 
+                                    </tfoot>
+                                </table>
+
+                                <table class="tabla">
+                                    <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
+
+
+                                    <%
+                                        out.print(listaCuentasCliente.listarCuentahtml());
+                                    %>
+                                </table>
+
 
 
 

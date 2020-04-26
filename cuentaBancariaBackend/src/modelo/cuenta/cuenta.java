@@ -9,6 +9,7 @@ import java.util.Locale;
 import modelo.cliente.Cliente;
 import modelo.cliente.DaoCliente;
 import modelo.moneda.moneda;
+import modelo.tipo_cuenta.DaoTipo_cuenta;
 import modelo.tipo_cuenta.tipo_cuenta;
 
 public class cuenta implements java.io.Serializable {
@@ -137,6 +138,7 @@ public class cuenta implements java.io.Serializable {
 
     private static DaoCuenta daoCuenta = DaoCuenta.obtenerInstancia();
     private static DaoCliente daoCliente = DaoCliente.obtenerInstancia();
+    private static DaoTipo_cuenta dtc = DaoTipo_cuenta.obtenerInstancia();
 
     //metodos static
     public static boolean verificarCuenta(String n) {
@@ -198,43 +200,11 @@ public class cuenta implements java.io.Serializable {
         cambiarHoraUltimoMovimiento();
     }
 
-     public String obtenerListaCuentaHTML() {
-        StringBuilder r = new StringBuilder();
-        r.append("<table class=\"tabla\">");
+    public void acreditarIntereses() {
+        tipo_cuenta t = dtc.obtenerTipo_cuenta(this.getTipo_cuenta_id_tipo_cuenta()).get();
 
-        r.append("<thead>");
-        r.append("<th width=\"250px\">Numero de Cuenta</th>");
-        r.append("<th width=\"150px\">Tipo de Cuenta</th>");
-        r.append("<th width=\"150px\">Cliente</th>");
-        r.append("<th width=\"150px\">Moneda</th>");
-        r.append("<th width=\"150px\">Estado</th>");
-        r.append("<th width=\"150px\">Saldo</th>");
-        r.append("</thead>");
+        double interes = getSaldo_final() * t.getTasa_interes();
+        realizarDeposito(interes);
 
-        r.append("<tbody>");
-        List<cuenta> cuenta = daoCuenta.obtenerListaCuentaSaldoPositivo();
-        for (cuenta e : cuenta) {
-            r.append("<tr>");
-            r.append(String.format("<td width=\"250px\"><label>%s</label></td>", e.getNum_cuenta()));
-            r.append(String.format("<td width=\"150px\"><label>%s</label></td>", e.getTipo_cuenta_id_tipo_cuenta()));
-            r.append(String.format("<td width=\"150px\"><label>%s</label></td>", e.getCliente_id_cliente()));
-            r.append(String.format("<td width=\"150px\"><label>%s</label></td>", e.getMoneda_nombre()));
-            
-            if (e.getActiva() == 1) {
-                r.append(String.format("<td width=\"150px\"><label>%s</label></td>", "activa"));
-            } else {
-                r.append(String.format("<td width=\"150px\"><label>%s</label></td>", "inactiva"));
-            }
-            r.append(String.format("<td width=\"150px\"><label>%s</label></td>", e.getSaldo_final()));
-            r.append("</tr>");
-        }
-        r.append("</tbody>");
-
-        r.append("</table>");
-        return r.toString();
-    }
-     
-    public String listarCuentasSaldoPositivo(){
-        return obtenerListaCuentaHTML();
     }
 }

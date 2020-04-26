@@ -104,7 +104,7 @@ public class Cliente implements java.io.Serializable {
                 r.append(String.format("<td width=\"80px\"><label>%s</label></td>", "inactiva"));
             }
 
-            r.append(String.format("<td width=\"180px\"><label>%s</label></td>",e.getSaldo_final()));
+            r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.getSaldo_final()));
             r.append("</tr>");
         }
         r.append("</tbody>");

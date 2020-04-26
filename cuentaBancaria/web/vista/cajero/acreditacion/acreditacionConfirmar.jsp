@@ -1,4 +1,5 @@
-<%@page import="modelo.cuenta.DaoCuenta"%>
+<%@page import="java.util.List"%>
+<%@page import="modelo.cuenta.cuenta"%>
 <%@page import="modelo.usuario.Usuario"%>
 <!DOCTYPE html>
 <html>
@@ -55,24 +56,25 @@
             <div id="contents">
                 <section id="seccion1">
                     <article>
-                        <h2>Aplicar Intereses a todas las cuentas</h2>
+                        <h2>Confirmar Intereses a todas las cuentas</h2>
                     </article>
                     <article>
-                        <form action="aplicarAcreditacion">
+                        <form action="confirmarAcreditacion">
 
                             <table>
                                 <tr>
 
 
                                     <td>
-                                        <button>Aplicar Intereses</button>
+                                        <button>Confirmar Intereses</button>
                                     </td>
                                 </tr>
                             </table>
 
 
                             <%
-                                out.print(acreditacion.mostrarCuentasPositivas());
+
+                                out.print(acreditacion.mostrarCuentasInteresAplicado());
                             %>
 
 
