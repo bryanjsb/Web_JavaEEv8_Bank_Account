@@ -1,0 +1,92 @@
+
+/*.tabla thead {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.tabla thead tr {
+    background-color: darkolivegreen;
+    display: block;
+     width: 100%; 
+}
+
+.tabla tbody {
+    display: block;
+    height: 360px;
+    overflow: auto;
+    width: 100%;
+}
+
+.tabla tbody tr {
+    width: 100%;
+}
+
+.tabla th {
+    padding-left: 16px;
+    text-align: left;    
+}
+
+.tabla th,
+.tabla td {
+    padding: 4px 12px 4px 12px;
+    border-right: 1px dotted darkolivegreen;
+}
+
+.tabla tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.tabla tbody tr:nth-child(even) {
+    background-color: #d5dec5;
+}*/
+
+
+
+.tabla {
+    border-collapse: collapse;
+    font-size: 10pt;
+    padding: 8px;
+    width: 100%;
+}
+
+.tabla thead {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.tabla thead th {
+    background-color: #0c2461;
+    display: inline-block;
+
+    /* width: 100%; */
+}
+
+.tabla tbody {
+    display: block;
+    height: 360px;
+    overflow: auto;
+    width: 100%;
+}
+
+.tabla tbody tr {
+    width: 100%;
+}
+
+.tabla th {
+    padding-left: 16px;
+    text-align: left;    
+}
+
+.tabla th,
+.tabla td {
+    padding: 4px 12px 4px 12px;
+    border-right: 1px solid darkolivegreen;
+}
+
+.tabla tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.tabla tbody tr:nth-child(even) {
+    background-color: bisque;
+}

@@ -161,12 +161,45 @@ public class DaoCuenta implements java.io.Serializable {
         }
         return r;
     }
-
+      
     public List<cuenta> obtenerListaCuenta() {
         List<cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
                 ResultSet rs = stm.executeQuery(CRUD_Cuenta.LISTAR.obtenerComando())) {
+            while (rs.next()) {
+                cuenta e = new cuenta(
+                        rs.getString("num_cuenta"),
+                        rs.getInt("tipo_cuenta_id_tipo_cuenta"),
+                        rs.getString("cliente_id_cliente"),
+                        rs.getString("moneda_nombre"),
+                        rs.getDate("fecha_creacion"),
+                        rs.getDouble("limite_transferencia_diaria"),
+                        rs.getInt("activa"),
+                        rs.getDouble("saldo_inicial"),
+                        rs.getDate("fecha_ultima_aplicacion"),
+                        rs.getDouble("saldo_final")
+                );
+                r.add(e);
+            }
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+        return r;
+    }
+    
+    
+     public List<cuenta> obtenerListaCuentaSaldoPositivo() {
+        List<cuenta> r = new ArrayList<>();
+        try (Connection cnx = obtenerConexion();
+                Statement stm = cnx.createStatement();
+                ResultSet rs = stm.executeQuery(CRUD_Cuenta.LISTARSALDOPOSITIVO.obtenerComando())) {
             while (rs.next()) {
                 cuenta e = new cuenta(
                         rs.getString("num_cuenta"),

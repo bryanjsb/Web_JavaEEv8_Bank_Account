@@ -31,6 +31,9 @@
         <title>Retiro</title>
     </head>
     <body>
+        
+        <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
+                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
 
         <header class="header">
             <div>
@@ -60,14 +63,6 @@
                             <div class="info" style="border: none; ">
 
                                 <table>
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="listaCuentasCliente" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuenta" scope="session"></jsp:useBean>
-
-                                    <%
-                                        out.print(listaCuentasCliente.listarCuentahtml());
-                                    %>
-
-
                                     <tr>
                                         <td class="etiqueta">
                                             <label for="verificarId">Verificar Id Cliente&nbsp;</label>
@@ -122,6 +117,13 @@
 
 
                                     </tfoot>
+                                </table>
+                                
+                                
+                                <table class="tabla">
+                                     <%
+                                        out.print(listaCuentasCliente.listarCuentahtml());
+                                    %>
                                 </table>
                             </div>
                         </form>

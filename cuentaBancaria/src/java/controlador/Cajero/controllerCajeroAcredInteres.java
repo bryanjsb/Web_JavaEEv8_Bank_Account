@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.cuenta.DaoCuenta;
+import modelo.cuenta.cuenta;
 
 @WebServlet(name = "controllerCajeroAcredInteres", urlPatterns = {"/controllerCajeroAcredInteres"})
 public class controllerCajeroAcredInteres extends HttpServlet {
@@ -14,8 +17,22 @@ public class controllerCajeroAcredInteres extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+         HttpSession sesion = request.getSession(true);
+         if (request.getServletPath().equals("/controllerCajeroAcredInteres")) {
+
+            paginaAcreditacion(request, response,sesion);
+        }
     }
 
+    
+    private void paginaAcreditacion(HttpServletRequest request, HttpServletResponse response , HttpSession sesion)
+            throws ServletException, IOException {
+        
+        cuenta c=new cuenta();
+        sesion.setAttribute("listaCuentaPositivo", c);
+        
+        response.sendRedirect("vista/cajero/acreditacion/acreditacion.jsp");
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

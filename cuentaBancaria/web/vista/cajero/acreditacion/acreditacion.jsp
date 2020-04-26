@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-
 <%@page import="modelo.usuario.Usuario"%>
-
+<!DOCTYPE html>
 <html>
     <head>
-
-        <jsp:directive.include file="/general.jsp"/>
+        <%@ include file="/general.jsp" %>
         <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate"); %>
         <%
             //comprueba que tenga la misma seccion
@@ -25,21 +22,21 @@
                 request.getRequestDispatcher("/seccionCaducada").forward(request, response);
             }
         %>
+
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String ideUsuario = usuario.getIdUsuario();
         %>
-        <title>Cuenta Cajero <%= ideUsuario%></title>
+        <title>Acreditación de intereses</title>
     </head>
-
     <body>
+          <jsp:useBean class="modelo.cuenta.cuenta" id="listaCuentaPositivo" scope="session"></jsp:useBean>
         <header class="header">
             <div>
 
                 <div> <h1>Pagina Principal Cajero:<%= ideUsuario%></h1></div>
                 <%@page import="servicios.ServicioFecha"%>
                 <div><p class="headerFecha" >Fecha: <%= ServicioFecha.fechaActual()%> </p></div>
-                 <!--<div><p class="headerHora" >Hora: <%= ServicioFecha.HoraActual()%> </p></div>-->
                 <div>
                     <nav>
                         <ul id="button">
@@ -50,40 +47,33 @@
                 </div>
             </div>
         </header>
-
+                
+                
+                
         <div id="wrapper">
-
             <div id="contents">
-
                 <section id="seccion1">
-                    <h3>Menu Principal</h3>
-                    <article>
-
-                        <p>
-                            <a href="vista/cajero/apertura_cuenta">Apertura de cuentas</a>
-                        </p>
-                        <p>
-                            <a href="vista/cajero/Deposito">Depósito</a>
-                        </p>
-                        <p>
-                            <a href="vista/cajero/retiro/retiro">Retiro</a>
-                        </p>
-                        <p>
-                            <a href="controllerCajeroTransferencia">Transferencia en cajas</a>
-                        </p>
-                        <p>
-                            <a href="controllerCajeroAcredInteres">Acreditación de intereses</a>
-                        </p>
+<article>
+                    <h2>Aplicar Intereses a todas las cuentas</h2>
                     </article>
+                    
+                    <article>
+                        <%
+                        out.print(listaCuentaPositivo.listarCuentasSaldoPositivo());
+                        %>
+                    </article>
+                </section>
+                
+                <section id="seccion1">
+
+                    
                 </section>
             </div>
 
 
-
         </div>
 
-        <%@include file="/vista/footer.jsp" %> 
+
+         <%@include file="/vista/footer.jsp" %> 
     </body>
-
 </html>
-
