@@ -14,7 +14,8 @@ import modelo.usuario.Usuario;
 @WebServlet(name = "controllerCliente",
         urlPatterns = {"/controllerCliente",
             "/enviarMovConsulta",
-            "/regresarConsultaCuenta"
+            "/regresarConsultaCuenta",
+            "/cancelar"
         })
 public class controllerCliente extends HttpServlet {
 
@@ -24,6 +25,10 @@ public class controllerCliente extends HttpServlet {
 
         HttpSession sesion = request.getSession(true);
         if (request.getServletPath().equals("/controllerCliente")) {
+            this.paginaPrincipalCliente(request, response, sesion);
+        }
+
+        if (request.getServletPath().equals("/cancelar")) {
             this.paginaPrincipalCliente(request, response, sesion);
         }
 

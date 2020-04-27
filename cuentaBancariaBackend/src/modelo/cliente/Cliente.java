@@ -114,6 +114,43 @@ public class Cliente implements java.io.Serializable {
 
     }
 
+    public String listarCuentaVincular() {
+        StringBuilder r = new StringBuilder();
+//        r.append("<table class=\"listaCuentaCliente\">");
+        r.append(String.format("<h2>Lista de la cuentas del cliente %s</h2>", nombreCompleto()));
+        r.append("<thead>");
+
+        r.append("<th width=\"180px\">Seleccione cuenta</th>");
+        r.append("<th width=\"180px\">numero de cuenta</th>");
+        r.append("<th width=\"180px\">Tipo de Cuenta</th>");
+        r.append("<th width=\"80px\">estado</th>");
+        r.append("<th width=\"80px\">moneda</th>");
+        r.append("</thead>");
+
+        r.append("<tbody>");
+        List<cuenta> listaCuenta = daoCuenta.obtenerListaCuentaCliente(getIdCliente());
+        for (cuenta e : listaCuenta) {
+            r.append("<tr>");
+            r.append(String.format("<td width=\"180px\"><input type=\"radio\" name=\"numCuentaCliente\" value=\"%s\"</td>", e.getNum_cuenta()));
+            r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.getNum_cuenta()));
+            r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.mostrarInfoCuentaDeposito().getDescripcion()));
+
+            if (e.getActiva() == 1) {
+                r.append(String.format("<td width=\"80px\"><label>%s</label></td>", "activa"));
+            } else {
+                r.append(String.format("<td width=\"80px\"><label>%s</label></td>", "inactiva"));
+            }
+
+            r.append(String.format("<td width=\"80px\"><label>%s</label></td>", e.getMoneda_nombre()));
+            r.append("</tr>");
+        }
+        r.append("</tbody>");
+//
+//        r.append("</table>");
+        return r.toString();
+
+    }
+
     public String listarCuentaVerMovimientos() {
         StringBuilder r = new StringBuilder();
 //        r.append("<table class=\"listaCuentaCliente\">");
@@ -136,7 +173,7 @@ public class Cliente implements java.io.Serializable {
             r.append(String.format("<input type=\"hidden\" name=\"ClienteMov\" value=\"%s\">", e.getNum_cuenta()));
             r.append(String.format("<button type=\"submit\">ver Movimientos</button>"));
             r.append(String.format("</td>"));
-            
+
             r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.getNum_cuenta()));
             r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.mostrarInfoCuentaDeposito().getDescripcion()));
 

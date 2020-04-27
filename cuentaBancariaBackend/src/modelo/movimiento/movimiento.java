@@ -72,8 +72,6 @@ public class movimiento implements java.io.Serializable {
     public void setMovimientocol(String movimientocol) {
         this.movimientocol = movimientocol;
     }
-    
-
 
     @Override
     public String toString() {
@@ -86,12 +84,12 @@ public class movimiento implements java.io.Serializable {
     }
 
     private static int numMovConsecutivo = 1;
-    private  int id_movimiento;
-    private  String num_cuenta;
-    private  double monto;
-    private  Date fecha;
-    private  int aplicado;
-    private  String movimientocol;
+    private int id_movimiento;
+    private String num_cuenta;
+    private double monto;
+    private Date fecha;
+    private int aplicado;
+    private String movimientocol;
 
     //daos
     public static boolean verificarMovimiento(String idMovimiento) {
@@ -120,22 +118,23 @@ public class movimiento implements java.io.Serializable {
         daoMov.agregarMovimiento(m);
 
     }
-    
+
     public static void obtenerMovimiento(String m) {
         DaoMovimiento daoMov = DaoMovimiento.obtenerInstancia();
         daoMov.obtenerMovimiento(m);
 
     }
-    
+
     public List<movimiento> obtenerListaMovimiento(String m) {
         DaoMovimiento daoMov = DaoMovimiento.obtenerInstancia();
         return daoMov.obtenerListaMovimientos(m);
     }
 
-     public String listarCuentaVerMovimientos() {
-         return this.listarCuentaVerMovimientos(getNum_cuenta());
-     }
-     public String listarCuentaVerMovimientos(String m) {
+    public String listarCuentaVerMovimientos() {
+        return this.listarCuentaVerMovimientos(getNum_cuenta());
+    }
+
+    public String listarCuentaVerMovimientos(String m) {
         StringBuilder r = new StringBuilder();
         r.append("<table class=\"tabla\">");
         r.append(String.format("<h2>Lista de movimientos de la cuenta %s</h2>", m));
@@ -154,23 +153,23 @@ public class movimiento implements java.io.Serializable {
         for (movimiento e : lista) {
             r.append("<tr>");
 //            r.append(String.format("<td width=\"180px\"><input type=\"button\" name=\"ClienteMov\" value=\"%s\"</td>","ver Movimientos"));
-            
+
             r.append(String.format("<td width=\"150px\"><label>%s</label></td>", e.getId_movimiento()));
             r.append(String.format("<td width=\"180px\"><label>%s</label></td>", e.getNum_cuenta()));
 
             r.append(String.format("<td width=\"100px\"><label>%s</label></td>", e.getMonto()));
             r.append(String.format("<td width=\"100px\"><label>%s</label></td>", e.getFecha()));
-            if(e.getAplicado()==1){
-            r.append(String.format("<td width=\"100px\"><label>%s</label></td>", "APLICADO"));
-            
-            }else{
-            r.append(String.format("<td width=\"100px\"><label>%s</label></td>", "NO APLICADO"));
+            if (e.getAplicado() == 1) {
+                r.append(String.format("<td width=\"100px\"><label>%s</label></td>", "APLICADO"));
+
+            } else {
+                r.append(String.format("<td width=\"100px\"><label>%s</label></td>", "NO APLICADO"));
             }
             r.append(String.format("<td width=\"200px\" height=\"100px\"><label>%s</label></td>", e.getMovimientocol()));
             r.append("</tr>");
-           
+
         }
-        
+
         r.append("</tbody>");
 
         r.append("</table>");
