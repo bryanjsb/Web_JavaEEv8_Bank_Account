@@ -29,7 +29,7 @@
         <%
             // Usuario usuario = (Usuario) session.getAttribute("usuario");
             //String ideUsuario = usuario.getIdUsuario();
-%>
+        %>
 
 
         <title>Cuenta Cliente</title>

@@ -52,54 +52,53 @@
         <div id="wrapper">
             <div id="contents"> 
                 <section id="seccion1">
+                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteDeposito" scope="session"></jsp:useBean>
+                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaDeposito" scope="session"></jsp:useBean>
 
 
-                    <article>
-                        <form  name="realizarDepositoIdTRA" 
-                               action="realizarDepositoIdTRA" method="GET">
-                            <div class="info" style="border: none; ">
+                        <article>
+                            <form  name="realizarDepositoIdTRA" 
+                                   action="realizarDepositoIdTRA" method="GET">
+                                <div class="info" style="border: none; ">
 
-                                <table>
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteDeposito" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaDeposito" scope="session"></jsp:useBean>
-
-                                    <%
-                                        out.print(CuentasClienteDeposito.listarCuentahtml());
-                                    %>
+                                    <table>
 
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="verificarId">Id Cliente&nbsp;</label>
 
-                                        </td>
-                                        <td class="campo">
-                                            <input type="hidden" size="30" maxlength="9"
-                                                   id="verificarId" name="verificarId" autocomplete="off"
-                                                   placeholder="<%=CuentasClienteDeposito.getIdCliente()%>"
-                                                   value="<%=CuentasClienteDeposito.getIdCliente()%>"
-                                                   />
+
+
+                                        <tr>
+                                            <td class="etiqueta">
+                                                <label for="verificarId">Id Cliente&nbsp;</label>
+
+                                            </td>
+                                            <td class="campo">
+                                                <input type="hidden" size="30" maxlength="9"
+                                                       id="verificarId" name="verificarId" autocomplete="off"
+                                                       placeholder="<%=CuentasClienteDeposito.getIdCliente()%>"
+                                                value="<%=CuentasClienteDeposito.getIdCliente()%>"
+                                                />
 
                                             <label for="verificarId" name="verificarId" 
                                                    value=\"<%=CuentasClienteDeposito.getIdCliente()%>\">
                                                 <%=CuentasClienteDeposito.getIdCliente()%></label>
                                         </td>
 
+
+                                        <td class="controles"  >
+                                            <button type="submit"
+                                                    style="width:190px; height:25px">
+                                                siguiente      </button>
+                                        </td>
                                     </tr>
 
+                                </table>
 
 
-
-                                    <tfoot>
-
-                                        <tr>
-                                            <td class="controles"  >
-                                                <button type="submit"
-                                                        style="width:190px; height:25px">
-                                                    siguiente      </button>
-                                            </td>
-                                        </tr> 
-                                    </tfoot>
+                                <table class="tabla">
+                                    <%
+                                        out.print(CuentasClienteDeposito.listarCuentahtml());
+                                    %>
                                 </table>
                             </div>
                         </form>

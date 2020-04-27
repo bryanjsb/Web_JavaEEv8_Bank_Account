@@ -59,26 +59,23 @@
                                action="realizarRetiroIDTRA" method="GET">
                             <div class="info" style="border: none; ">
 
-                                <table>
-                                    <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteRetiro" scope="session"></jsp:useBean>
-                                    <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaRetiro" scope="session"></jsp:useBean>
 
-                                    <%
-                                        out.print(CuentasClienteRetiro.listarCuentahtml());
-                                    %>
+                                <jsp:useBean class="modelo.cliente.Cliente" id="CuentasClienteRetiro" scope="session"></jsp:useBean>
+                                <jsp:useBean class="modelo.cuenta.cuenta" id="cuentaRetiro" scope="session"></jsp:useBean>
 
 
-                                    <tr>
-                                        <td class="etiqueta">
-                                            <label for="verificarId">Id Cliente&nbsp;</label>
+                                    <table>
+                                        <tr>
+                                            <td class="etiqueta">
+                                                <label for="verificarId">Id Cliente&nbsp;</label>
 
-                                        </td>
-                                        <td class="campo">
-                                            <input type="hidden" size="30" maxlength="9"
-                                                   id="verificarId" name="verificarId" autocomplete="off"
-                                                   placeholder="<%=CuentasClienteRetiro.getIdCliente()%>"
-                                                   value="<%=CuentasClienteRetiro.getIdCliente()%>"
-                                                   />
+                                            </td>
+                                            <td class="campo">
+                                                <input type="hidden" size="30" maxlength="9"
+                                                       id="verificarId" name="verificarId" autocomplete="off"
+                                                       placeholder="<%=CuentasClienteRetiro.getIdCliente()%>"
+                                                value="<%=CuentasClienteRetiro.getIdCliente()%>"
+                                                />
 
                                             <label for="verificarId" name="verificarId" 
                                                    value=\"<%=CuentasClienteRetiro.getIdCliente()%>\">
@@ -127,6 +124,13 @@
 
 
                                     </tfoot>
+                                </table>
+
+                                <table class="tabla">
+                                    <%
+                                        out.print(CuentasClienteRetiro.listarCuentahtml());
+                                    %>
+
                                 </table>
                             </div>
                         </form>
