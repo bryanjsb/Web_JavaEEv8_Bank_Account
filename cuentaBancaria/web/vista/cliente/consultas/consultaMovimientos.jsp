@@ -29,7 +29,7 @@
         <%
             // Usuario usuario = (Usuario) session.getAttribute("usuario");
             //String ideUsuario = usuario.getIdUsuario();
-        %>
+%>
 
 
         <title>Cuenta Cliente</title>
@@ -38,7 +38,7 @@
     <body>
         <jsp:useBean class="modelo.usuario.Usuario" id="usuario" scope="session"></jsp:useBean>
         <jsp:useBean class="modelo.cliente.Cliente" id="cliente" scope="session"></jsp:useBean>
-
+        <jsp:useBean class="modelo.movimiento.movimiento" id="movimiento" scope="session"></jsp:useBean>
             <header class="header">
                 <div>
 
@@ -62,6 +62,14 @@
             <div id="contents">
                 <section id="seccion1">
 
+                    <form action="regresarConsultaCuenta" name="regresarConsultaCuenta" method="GET">
+                        <input type="submit" value="Volver a lista cuentas">
+                        <%
+                            out.print(movimiento.listarCuentaVerMovimientos());
+                        %>
+
+
+                    </form>
 
                 </section>
             </div>

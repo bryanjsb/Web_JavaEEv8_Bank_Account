@@ -10,6 +10,8 @@ public enum CRUD_Movimiento {
             + " WHERE id_movimiento=?; "),
     LISTAR("SELECT id_movimiento, cuenta_num_cuenta, monto, fecha, aplicado, movimientocol FROM movimiento"
             + " ORDER BY id_movimiento; "),
+    LISTARNUMCUENTA("SELECT id_movimiento, cuenta_num_cuenta, monto, fecha, aplicado, movimientocol FROM movimiento"
+            + " ORDER BY id_movimiento; "),
     VERIFICAR("SELECT id_movimiento FROM movimiento WHERE id_movimiento=?; ");
 
     CRUD_Movimiento(String comando) {

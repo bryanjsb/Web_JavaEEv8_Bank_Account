@@ -62,6 +62,18 @@
             <div id="contents">
                 <section id="seccion1">
 
+                    <form action="enviarMovConsulta" name="enviarMovConsulta" method="GET">
+
+                        <table class="tabla">
+
+                            <%
+                                out.print(cliente.listarCuentaVerMovimientos());
+                            %>
+                        </table>
+
+                    </form>
+
+
 
                 </section>
             </div>

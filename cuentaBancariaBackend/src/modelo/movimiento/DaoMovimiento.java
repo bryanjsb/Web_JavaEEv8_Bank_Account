@@ -90,6 +90,39 @@ public class DaoMovimiento implements java.io.Serializable {
         return r;
     }
 
+    public List<movimiento> obtenerListaMovimientos(String numCuenta) {
+        List<movimiento> r = new ArrayList<>();
+        try (Connection cnx = obtenerConexion();
+                Statement stm = cnx.createStatement();
+                ResultSet rs = stm.executeQuery(CRUD_Movimiento.LISTAR.obtenerComando())) {
+            while (rs.next()) {
+                String n = rs.getString("cuenta_num_cuenta");
+                if (n.equals(numCuenta)) {
+
+                    movimiento e = new movimiento(
+                            rs.getInt("id_movimiento"),
+                            n,
+                            rs.getDouble("monto"),
+                            rs.getDate("fecha"),
+                            rs.getInt("aplicado"),
+                            rs.getString("movimientocol")
+                    );
+                    r.add(e);
+                }
+
+            }
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        } finally {
+            bd.cerrarConexion();
+        }
+        return r;
+    }
+
     public List<movimiento> obtenerListaMovimientos() {
         List<movimiento> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -151,11 +184,12 @@ public class DaoMovimiento implements java.io.Serializable {
     public static void main(String[] args) {
         DaoMovimiento d = DaoMovimiento.obtenerInstancia();
 
-        if (d.agregarMovimiento(new movimiento(344555, "2020-CRC-197-546767-9",
-                6566767, servicios.ServicioFecha.fechaActualCuenta(), 1, "gfggghghg"))) {
-
-            System.out.println("insertado");
-        }
+//        if (d.agregarMovimiento(new movimiento(344555, "2020-CRC-197-546767-9",
+//                6566767, servicios.ServicioFecha.fechaActualCuenta(), 1, "gfggghghg"))) {
+//
+//            System.out.println("insertado");
+//        }
+        System.out.println(d.obtenerListaMovimientos("2020-CRC-258-414499-4"));
         if (d.verificarMovimiento("0")) {
             System.out.println("encontrado");
         }
@@ -163,8 +197,8 @@ public class DaoMovimiento implements java.io.Serializable {
             System.out.println(" no encontrado");
         }
 
-        d.obtenerListaMovimientos().forEach((t) -> {
-            System.out.println(t);
-        });
+//        d.obtenerListaMovimientos().forEach((t) -> {
+//            System.out.println(t);
+//        });
     }
 }
