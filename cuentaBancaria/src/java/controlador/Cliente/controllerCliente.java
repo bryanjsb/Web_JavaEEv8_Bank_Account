@@ -6,31 +6,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.cliente.Cliente;
+import modelo.usuario.Usuario;
 
 @WebServlet(name = "controllerCliente",
         urlPatterns = {"/controllerCliente"})
 public class controllerCliente extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        HttpSession sesion = request.getSession(true);
         if (request.getServletPath().equals("/controllerCliente")) {
-            this.paginaPrincipalCliente(request, response);
+            this.paginaPrincipalCliente(request, response, sesion);
         }
     }
 
-    private void paginaPrincipalCliente(HttpServletRequest request, HttpServletResponse response)
+    private void paginaPrincipalCliente(HttpServletRequest request, HttpServletResponse response, HttpSession sesion)
             throws ServletException, IOException {
+
+        Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+
+        Cliente cliente = Cliente.obtenerCliente(usuario.getIdUsuario());
+
+        sesion.setAttribute("cliente", cliente);
         response.sendRedirect("vista/cliente/cliente.jsp");
 
     }

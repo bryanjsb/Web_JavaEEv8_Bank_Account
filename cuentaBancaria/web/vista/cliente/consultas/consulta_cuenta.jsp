@@ -62,19 +62,7 @@
             <div id="contents">
                 <section id="seccion1">
 
-                    <p>
-                        <a href="vista/cliente/consultas/consulta_cuenta.jsp">Consulta de cuentas</a>
-                    </p>
 
-                    <p>
-                        <a href="vista/cliente/consultas/consultaMovimientos.jsp">Consulta de movimientos</a>
-                    </p>
-                    <p>
-                        <a href="vista/cliente/vincularCuenta/vincularCuentas.jsp">Vinculación de cuentas favoritas</a>
-                    </p>
-                    <p>
-                        <a href="vista/cliente/transferencia/transferenciaRemota.jsp">Transferencias remotas</a>
-                    </p>
                 </section>
             </div>
 
@@ -82,4 +70,3 @@
         <%@include file="/vista/footer.jsp" %> 
     </body>
 </html>
-
